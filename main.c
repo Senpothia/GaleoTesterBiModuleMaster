@@ -98,7 +98,9 @@ void main(void) {
 
     // Détermination mode de fonctionnement: master/slave
     // Affichage message d'accueil
-
+    
+    __delay_ms(1000);
+    
     if (GPIO4_GetValue() == 0) {
 
         // Entrée IO4 à 0V: mode esclave activé
@@ -122,7 +124,31 @@ void main(void) {
          */
     }
 
-    __delay_ms(1000);
+    if (GPIO1_GetValue() == 1) {
+
+        testLeds = true;
+       // REL8_SetLow();
+        
+    } else {
+
+        testLeds = false;
+        //REL8_SetHigh();
+        
+
+    }
+    
+   
+    
+    if (GPIO2_GetValue() == 0) {
+
+        pap = true;
+
+    } else {
+
+        pap = false;
+    }
+
+   // __delay_ms(1000);
 
 
     while (1) {
@@ -140,27 +166,27 @@ void main(void) {
 
 
         REL8_SetLow();
+        /*
+                if (GPIO1_GetValue() == 1) {
 
-        if (GPIO1_GetValue() == 1) {
+                    testLeds = true;
 
-            testLeds = true;
+                } else {
 
-        } else {
+                    testLeds = false;
 
-            testLeds = false;
+                }
 
-        }
+                if (GPIO2_GetValue() == 0) {
 
-        if (GPIO2_GetValue() == 0) {
+                    pap = true;
 
-            pap = true;
+                } else {
 
-        } else {
+                    pap = false;
+                }
 
-            pap = false;
-        }
-
-
+         */
         // Attente de démarrage
 
 
@@ -181,7 +207,7 @@ void main(void) {
         // test I2C vers esclave
 
         __delay_ms(100);
-     
+
         LCD_Init(0x46);
         displayManager(TITRE, "Master en test", BOARD_REQUEST, OK_REQUEST);
         __delay_ms(100);
@@ -241,7 +267,7 @@ void main(void) {
         while (SSPCON2bits.PEN); //Attente fin de STOP
         
          */
-        
+
         slaveStatus = getSlaveStatus(25);
         //  Résultat de reception
 
@@ -307,7 +333,7 @@ void main(void) {
             pressBP2(false);
             alerteDefaut("ETAPE 1", &testActif, &testVoyants);
             sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-     
+
         }
 
         __delay_ms(1000);
@@ -335,7 +361,7 @@ void main(void) {
                 testActif = false;
                 alerteDefaut("ETAPE 2", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-      
+
             }
         }
 
@@ -358,7 +384,7 @@ void main(void) {
                     testActif = false;
                     alerteDefaut("ETAPE 3", &testActif, &testVoyants);
                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-        
+
                 } else {
 
                     printf("-> TEST:3:1");
@@ -447,7 +473,7 @@ void main(void) {
                 testActif = false;
                 alerteDefaut("ETAPE 6", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-     
+
             }
 
         }
@@ -568,7 +594,7 @@ void main(void) {
                 displayManager("ETAPE 10", "TEST LED CLAVIER", slectureAN1, LIGNE_VIDE); // Ligne de test: affichage valeur de mesure analogique
                 REL8_SetHigh();
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-  
+
             }
             __delay_ms(2000);
 
@@ -605,7 +631,7 @@ void main(void) {
                 pressBP2(false);
                 alerteDefaut("ETAPE 12", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-             
+
             }
 
             __delay_ms(1000);
@@ -633,7 +659,7 @@ void main(void) {
                 testActif = false;
                 alerteDefaut("ETAPE 13", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-               
+
             } else {
 
                 printf("-> TEST:13:1");
@@ -660,7 +686,7 @@ void main(void) {
                 testActif = false;
                 alerteDefaut("ETAPE 14", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-             
+
             }
 
         }
@@ -686,7 +712,7 @@ void main(void) {
                 testActif = false;
                 alerteDefaut("ETAPE 15", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-            
+
             }
 
         }
@@ -709,7 +735,7 @@ void main(void) {
             } else {
 
                 alerteDefautEtape16("ETAPE 16", &testActif, &testVoyants, &automatique, &programmation);
-               
+
             }
 
         }
@@ -735,7 +761,7 @@ void main(void) {
                 testActif = false;
                 alerteDefaut("ETAPE 17", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-            
+
             }
 
         }

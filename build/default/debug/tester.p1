@@ -45,8 +45,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 C:\Program Files\Microchip\xc8\v2.32\pic\include\builtins.h
 [v __delay `JF183 ~T0 @X0 0 e ]
 [p i __delay ]
-"21 ./display.h
-[; ;./display.h: 21: void displayManager(char s1[], char s2[], char s3[], char s4[]);
+"23 ./display.h
+[; ;./display.h: 23: void displayManager(char s1[], char s2[], char s3[], char s4[]);
 [v _displayManager `(v ~T0 @X0 0 ef4`*uc`*uc`*uc`*uc ]
 "36 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\string.h
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\string.h: 36: char *strcat (char *restrict, const char *restrict);
@@ -1492,8 +1492,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _testAct `*a ~T0 @X0 1 r2 ]
 [v _testVoy `*a ~T0 @X0 1 r3 ]
 [f ]
-[v F3753 `uc ~T0 @X0 -> 20 `i s ]
-[i F3753
+[v F3754 `uc ~T0 @X0 -> 20 `i s ]
+[i F3754
 :U ..
 "338
 [; ;tester.c: 338:     char error[20] = "-> ERREUR: ";
@@ -1512,9 +1512,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _error `uc ~T0 @X0 -> 20 `i a ]
-[e = _error F3753 ]
-[v F3755 `uc ~T0 @X0 -> 10 `i s ]
-[i F3755
+[e = _error F3754 ]
+[v F3756 `uc ~T0 @X0 -> 10 `i s ]
+[i F3756
 :U ..
 "339
 [; ;tester.c: 339:     char eol[10] = "\r\n";
@@ -1524,7 +1524,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _eol `uc ~T0 @X0 -> 10 `i a ]
-[e = _eol F3755 ]
+[e = _eol F3756 ]
 "340
 [; ;tester.c: 340:     ledNonConforme(1);
 [e ( _ledNonConforme (1 -> -> 1 `i `a ]
@@ -2741,8 +2741,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _autom `*a ~T0 @X0 1 r4 ]
 [v _prog `*a ~T0 @X0 1 r5 ]
 [f ]
-[v F3808 `uc ~T0 @X0 -> 20 `i s ]
-[i F3808
+[v F3809 `uc ~T0 @X0 -> 20 `i s ]
+[i F3809
 :U ..
 "784
 [; ;tester.c: 784:     char error[20] = "-> ERREUR: ";
@@ -2761,9 +2761,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _error `uc ~T0 @X0 -> 20 `i a ]
-[e = _error F3808 ]
-[v F3810 `uc ~T0 @X0 -> 10 `i s ]
-[i F3810
+[e = _error F3809 ]
+[v F3811 `uc ~T0 @X0 -> 10 `i s ]
+[i F3811
 :U ..
 "785
 [; ;tester.c: 785:     char eol[10] = "\r\n";
@@ -2773,7 +2773,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _eol `uc ~T0 @X0 -> 10 `i a ]
-[e = _eol F3810 ]
+[e = _eol F3811 ]
 "786
 [; ;tester.c: 786:     ledNonConforme(1);
 [e ( _ledNonConforme (1 -> -> 1 `i `a ]

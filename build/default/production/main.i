@@ -5870,6 +5870,8 @@ void main(void) {
 
 
 
+    _delay((unsigned long)((1000)*(16000000/4000.0)));
+
     if (PORTCbits.RC5 == 0) {
 
 
@@ -5881,10 +5883,34 @@ void main(void) {
 
 
         I2C_Master_Init();
-# 123 "main.c"
+# 125 "main.c"
     }
 
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
+    if (PORTCbits.RC0 == 1) {
+
+        testLeds = 1;
+
+
+    } else {
+
+        testLeds = 0;
+
+
+
+    }
+
+
+
+    if (PORTCbits.RC1 == 0) {
+
+        pap = 1;
+
+    } else {
+
+        pap = 0;
+    }
+
+
 
 
     while (1) {
@@ -5902,30 +5928,7 @@ void main(void) {
 
 
         do { LATAbits.LATA7 = 0; } while(0);
-
-        if (PORTCbits.RC0 == 1) {
-
-            testLeds = 1;
-
-        } else {
-
-            testLeds = 0;
-
-        }
-
-        if (PORTCbits.RC1 == 0) {
-
-            pap = 1;
-
-        } else {
-
-            pap = 0;
-        }
-
-
-
-
-
+# 193 "main.c"
         while (!testActif) {
 
             attenteDemarrage3(&automatique, &testActif, &programmation);
@@ -5949,17 +5952,17 @@ void main(void) {
         _delay((unsigned long)((100)*(16000000/4000.0)));
         LCD_Init(0x4E);
         displayManager("ETAPE 1", "TEST 3 RELAIS ON", "", "");
-# 245 "main.c"
+# 271 "main.c"
         slaveStatus = getSlaveStatus(25);
 
 
 
         if (slaveStatus == 0x55) {
-# 268 "main.c"
+# 294 "main.c"
         }
 
         _delay((unsigned long)((100)*(16000000/4000.0)));
-# 291 "main.c"
+# 317 "main.c"
         pressBP1(1);
         pressBP2(1);
         _delay((unsigned long)((1000)*(16000000/4000.0)));

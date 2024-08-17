@@ -5393,9 +5393,9 @@ typedef struct
 # 95 "mcc_generated_files/adc.h"
 typedef enum
 {
-    C4 = 0x5,
-    C3 = 0x6,
-    C2 = 0x7,
+    AN3 = 0x8,
+    AN4 = 0x9,
+    AN2 = 0xA,
     VIN1 = 0xC,
     channel_Temp = 0x1D,
     channel_DAC = 0x1E,

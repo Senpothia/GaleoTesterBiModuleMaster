@@ -5401,6 +5401,8 @@ void noBacklight();
 void LCD_SR();
 void LCD_SL();
 void LCD_Clear();
+
+void I2C_Slave_Init();
 # 3 "I2C_LCD.c" 2
 
 
@@ -5588,4 +5590,16 @@ void LCD_Clear()
 {
   LCD_CMD(0x01);
   _delay((unsigned long)((40)*(16000000/4000000.0)));
+}
+
+void I2C_Slave_Init() {
+    SSPADD = 50;
+    SSPCON = 0b00110110;
+    SSPCON2 = 0;
+    SSPSTAT = 0x80;
+    TRISC3 = 1;
+    TRISC4 = 1;
+    GIE = 1;
+    PEIE = 1;
+    SSPIE = 1;
 }

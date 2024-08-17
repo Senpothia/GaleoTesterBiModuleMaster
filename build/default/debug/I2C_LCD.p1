@@ -54,6 +54,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "114 ./I2C_LCD.h
 [; ;./I2C_LCD.h: 114: void LCD_CMD(unsigned char CMD);
 [v _LCD_CMD `(v ~T0 @X0 0 ef1`uc ]
+"8417 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h: 8417: extern volatile __bit GIE __attribute__((address(0x5F)));
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"8834
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h: 8834: extern volatile __bit PEIE __attribute__((address(0x5E)));
+[v _PEIE `Vb ~T0 @X0 0 e@94 ]
+"9482
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h: 9482: extern volatile __bit SSPIE __attribute__((address(0x48B)));
+[v _SSPIE `Vb ~T0 @X0 0 e@1163 ]
 "55 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1176,4 +1185,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 "189
 [; ;I2C_LCD.c: 189: }
 [e :UE 418 ]
+}
+"191
+[; ;I2C_LCD.c: 191: void I2C_Slave_Init() {
+[v _I2C_Slave_Init `(v ~T0 @X0 1 ef ]
+{
+[e :U _I2C_Slave_Init ]
+[f ]
+"192
+[; ;I2C_LCD.c: 192:     SSPADD = 50;
+[e = _SSPADD -> -> 50 `i `uc ]
+"193
+[; ;I2C_LCD.c: 193:     SSPCON = 0b00110110;
+[e = _SSPCON -> -> 54 `i `uc ]
+"194
+[; ;I2C_LCD.c: 194:     SSPCON2 = 0;
+[e = _SSPCON2 -> -> 0 `i `uc ]
+"195
+[; ;I2C_LCD.c: 195:     SSPSTAT = 0x80;
+[e = _SSPSTAT -> -> 128 `i `uc ]
+"196
+[; ;I2C_LCD.c: 196:     TRISC3 = 1;
+[e = _TRISC3 -> -> 1 `i `b ]
+"197
+[; ;I2C_LCD.c: 197:     TRISC4 = 1;
+[e = _TRISC4 -> -> 1 `i `b ]
+"198
+[; ;I2C_LCD.c: 198:     GIE = 1;
+[e = _GIE -> -> 1 `i `b ]
+"199
+[; ;I2C_LCD.c: 199:     PEIE = 1;
+[e = _PEIE -> -> 1 `i `b ]
+"200
+[; ;I2C_LCD.c: 200:     SSPIE = 1;
+[e = _SSPIE -> -> 1 `i `b ]
+"201
+[; ;I2C_LCD.c: 201: }
+[e :UE 419 ]
 }

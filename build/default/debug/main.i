@@ -7,7 +7,7 @@
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 55 "main.c"
+# 56 "main.c"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\xc.h" 1 3
@@ -5381,9 +5381,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 426 "./mcc_generated_files/pin_manager.h"
+# 516 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 438 "./mcc_generated_files/pin_manager.h"
+# 528 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -5670,9 +5670,9 @@ typedef struct
 # 95 "./mcc_generated_files/adc.h"
 typedef enum
 {
-    C4 = 0x5,
-    C3 = 0x6,
-    C2 = 0x7,
+    AN3 = 0x8,
+    AN4 = 0x9,
+    AN2 = 0xA,
     VIN1 = 0xC,
     channel_Temp = 0x1D,
     channel_DAC = 0x1E,
@@ -5754,7 +5754,7 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 99 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 55 "main.c" 2
+# 56 "main.c" 2
 
 # 1 "./I2C_LCD.h" 1
 # 99 "./I2C_LCD.h"
@@ -5782,7 +5782,9 @@ void noBacklight();
 void LCD_SR();
 void LCD_SL();
 void LCD_Clear();
-# 56 "main.c" 2
+
+void I2C_Slave_Init();
+# 57 "main.c" 2
 
 # 1 "./tester.h" 1
 
@@ -5818,13 +5820,24 @@ void attenteDemarrage3(_Bool *, _Bool *, _Bool *);
 void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
-# 57 "main.c" 2
-
-# 1 "./display.h" 1
-# 21 "./display.h"
-void displayManager(char s1[], char s2[], char s3[], char s4[]);
 # 58 "main.c" 2
 
+# 1 "./display.h" 1
+# 23 "./display.h"
+void displayManager(char s1[], char s2[], char s3[], char s4[]);
+# 59 "main.c" 2
+
+# 1 "./I2C_tester.h" 1
+# 60 "main.c" 2
+
+
+
+# 1 "./I2C-tester.h" 1
+
+
+char getSlaveStatus(char code);
+void writeSlave(char code);
+# 63 "main.c" 2
 
 
 
@@ -5842,9 +5855,7 @@ void main(void) {
 
 
     (INTCONbits.PEIE = 1);
-# 85 "main.c"
-    I2C_Master_Init();
-    LCD_Init(0x4E);
+# 88 "main.c"
     _Bool testActif = 0;
     _Bool testVoyants = 0;
     int lectureAN1;
@@ -5853,64 +5864,79 @@ void main(void) {
     _Bool automatique = 0;
     _Bool pap = 0;
     _Bool programmation = 1;
+    _Bool master = 1;
+    char slaveStatus;
 
 
 
 
-
-
-    displayManager("TEST CARTE D925ED4", "POSITIONNER CARTE", "APPUYER SUR OK", "");
     _delay((unsigned long)((1000)*(16000000/4000.0)));
+
+    if (PORTCbits.RC5 == 0) {
+
+
+        master = 0;
+        I2C_Slave_Init();
+
+
+    } else {
+
+
+        I2C_Master_Init();
+# 125 "main.c"
+    }
+
+    if (PORTCbits.RC0 == 1) {
+
+        testLeds = 1;
+
+
+    } else {
+
+        testLeds = 0;
+
+
+
+    }
+
+
+
+    if (PORTCbits.RC1 == 0) {
+
+        pap = 1;
+
+    } else {
+
+        pap = 0;
+    }
+
+
 
 
     while (1) {
 
+        LCD_Init(0x4E);
+        displayManager("TEST CARTE D925ED4", "MODULE MAITRE", "POSITIONNER CARTE", "APPUYER SUR OK");
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+
+        LCD_Init(0x46);
+        displayManager("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
+        _delay((unsigned long)((100)*(16000000/4000.0)));
 
 
 
 
 
         do { LATAbits.LATA7 = 0; } while(0);
-
-        if (PORTCbits.RC0 == 1) {
-
-            testLeds = 1;
-
-        } else {
-
-            testLeds = 0;
-
-        }
-
-        if (PORTCbits.RC1 == 0) {
-
-            pap = 1;
-
-        } else {
-
-            pap = 0;
-        }
-
-
-
-
-        displayManager("TEST CARTE D925ED4", "ATTENTE DEMARRAGE", "BI MODULES", "APPUYER SUR OK");
-        _delay((unsigned long)((100)*(16000000/4000.0)));
-
+# 193 "main.c"
         while (!testActif) {
 
             attenteDemarrage3(&automatique, &testActif, &programmation);
         }
 
 
-
-
-
-
-
         programmation = 0;
         startAlert();
-        displayManager("ETAPE 1", "TEST 3 RELAIS ON", "", "");
         testActif = 1;
         ledConforme(0);
         ledNonConforme(0);
@@ -5918,12 +5944,25 @@ void main(void) {
 
 
 
-        I2C_Master_Start();
-        I2C_Master_Write(0x50);
-        I2C_Master_Write(0x00);
-        I2C_Master_Stop();
-        _delay((unsigned long)((500)*(16000000/4000.0)));
-# 178 "main.c"
+
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+
+        LCD_Init(0x46);
+        displayManager("TEST CARTE D925ED4", "Master en test", "POSITIONNER CARTE", "APPUYER SUR OK");
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+        LCD_Init(0x4E);
+        displayManager("ETAPE 1", "TEST 3 RELAIS ON", "", "");
+# 271 "main.c"
+        slaveStatus = getSlaveStatus(25);
+
+
+
+        if (slaveStatus == 0x55) {
+# 294 "main.c"
+        }
+
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+# 317 "main.c"
         pressBP1(1);
         pressBP2(1);
         _delay((unsigned long)((1000)*(16000000/4000.0)));
@@ -6051,7 +6090,6 @@ void main(void) {
                     alerteDefaut("ETAPE 5", &testActif, &testVoyants);
                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 
-
                 } else {
 
                     printf("-> TEST:5:1");
@@ -6111,7 +6149,6 @@ void main(void) {
                 testActif = 0;
                 alerteDefaut("ETAPE 7", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-
             }
 
         }
@@ -6137,7 +6174,6 @@ void main(void) {
                 testActif = 0;
                 alerteDefaut("ETAPE 8", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-
             }
 
         }
@@ -6167,10 +6203,9 @@ void main(void) {
             } else {
 
                 alerteDefaut("ETAPE 9", &testActif, &testVoyants);
-
+                displayManager("ETAPE 9", "TEST LED CLAVIER", slectureAN1, "");
                 do { LATAbits.LATA7 = 0; } while(0);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-
 
             }
 
@@ -6196,7 +6231,7 @@ void main(void) {
             lectureAN1 = ADC_GetConversion(VIN1);
             int buffer = sprintf(slectureAN1, "%d", lectureAN1);
 
-            if (lectureAN1 < 650) {
+            if (lectureAN1 < 700) {
 
 
                 do { LATAbits.LATA7 = 0; } while(0);
@@ -6208,7 +6243,6 @@ void main(void) {
                 displayManager("ETAPE 10", "TEST LED CLAVIER", slectureAN1, "");
                 do { LATAbits.LATA7 = 1; } while(0);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-
 
             }
             _delay((unsigned long)((2000)*(16000000/4000.0)));
@@ -6247,7 +6281,6 @@ void main(void) {
                 alerteDefaut("ETAPE 12", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 
-
             }
 
             _delay((unsigned long)((1000)*(16000000/4000.0)));
@@ -6275,11 +6308,6 @@ void main(void) {
                 testActif = 0;
                 alerteDefaut("ETAPE 13", &testActif, &testVoyants);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-
-
-
-
-
 
             } else {
 
@@ -6355,9 +6383,7 @@ void main(void) {
 
             } else {
 
-
                 alerteDefautEtape16("ETAPE 16", &testActif, &testVoyants, &automatique, &programmation);
-
 
             }
 
@@ -6407,7 +6433,6 @@ void main(void) {
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 
                 _delay((unsigned long)((2000)*(16000000/4000.0)));
-
             } else {
 
                 printf("-> TEST:18:1");
@@ -6423,7 +6448,6 @@ void main(void) {
             ledConforme(1);
             alimenter(0);
             okAlert();
-
             attenteAquittement(&automatique, &testActif);
             initialConditions(&testActif, &testVoyants, &automatique, &programmation);
             _delay((unsigned long)((2000)*(16000000/4000.0)));

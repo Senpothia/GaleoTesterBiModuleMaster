@@ -5388,9 +5388,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 426 "./mcc_generated_files/pin_manager.h"
+# 516 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 438 "./mcc_generated_files/pin_manager.h"
+# 528 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -5677,9 +5677,9 @@ typedef struct
 # 95 "./mcc_generated_files/adc.h"
 typedef enum
 {
-    C4 = 0x5,
-    C3 = 0x6,
-    C2 = 0x7,
+    AN3 = 0x8,
+    AN4 = 0x9,
+    AN2 = 0xA,
     VIN1 = 0xC,
     channel_Temp = 0x1D,
     channel_DAC = 0x1E,
@@ -5789,6 +5789,8 @@ void noBacklight();
 void LCD_SR();
 void LCD_SL();
 void LCD_Clear();
+
+void I2C_Slave_Init();
 # 11 "tester.c" 2
 
 # 1 "./tester.h" 1
@@ -5828,7 +5830,7 @@ void marchePAP();
 # 12 "tester.c" 2
 
 # 1 "./display.h" 1
-# 21 "./display.h"
+# 23 "./display.h"
 void displayManager(char s1[], char s2[], char s3[], char s4[]);
 # 13 "tester.c" 2
 
