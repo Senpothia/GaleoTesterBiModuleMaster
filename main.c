@@ -95,6 +95,7 @@ void main(void) {
     bool programmation = true;
     bool master = true;
     char slaveStatus;
+    bool slaveInTest = false;
 
     // Détermination mode de fonctionnement: master/slave
     // Affichage message d'accueil
@@ -106,33 +107,24 @@ void main(void) {
         // Entrée IO4 à 0V: mode esclave activé
         master = false;
         I2C_Slave_Init();
-        // LCD_Init(0x46); // Initialize LCD module with I2C address = 0x46
+       
 
     } else {
 
         // Entrée IO4 à 5V: mode maitre activé
         I2C_Master_Init();
-        /*
-        //LCD_Init(0x4E); // Initialize LCD module with I2C address = 0x4E
-        LCD_Init(0x46);
-        displayManager(TITRE, MODE_SLAVE, BOARD_REQUEST, OK_REQUEST);
-        __delay_ms(100);
-
-        LCD_Init(0x4E);
-        displayManager(TITRE, MODE_MASTER, BOARD_REQUEST, OK_REQUEST);
-        __delay_ms(100);
-         */
+      
     }
 
     if (GPIO1_GetValue() == 1) {
 
         testLeds = true;
-       // REL8_SetLow();
+       
         
     } else {
 
         testLeds = false;
-        //REL8_SetHigh();
+      
         
 
     }
@@ -148,7 +140,7 @@ void main(void) {
         pap = false;
     }
 
-   // __delay_ms(1000);
+ 
 
 
     while (1) {
@@ -166,33 +158,13 @@ void main(void) {
 
 
         REL8_SetLow();
-        /*
-                if (GPIO1_GetValue() == 1) {
-
-                    testLeds = true;
-
-                } else {
-
-                    testLeds = false;
-
-                }
-
-                if (GPIO2_GetValue() == 0) {
-
-                    pap = true;
-
-                } else {
-
-                    pap = false;
-                }
-
-         */
+       
         // Attente de démarrage
 
 
         while (!testActif) {
 
-            attenteDemarrage3(&automatique, &testActif, &programmation);
+            attenteDemarrage3(&automatique, &testActif, &programmation, &slaveInTest);
         }
 
 
@@ -267,14 +239,14 @@ void main(void) {
         while (SSPCON2bits.PEN); //Attente fin de STOP
         
          */
-
-        slaveStatus = getSlaveStatus(25);
+       
+        //slaveStatus = getSlaveStatus(25);  // lancement test sur esclave
         //  Résultat de reception
 
-
+        /*
         if (slaveStatus == 0x55) {
 
-            /*
+            
              * Premier test
              * 
              //C4_SetHigh();
@@ -289,11 +261,13 @@ void main(void) {
              startAlert();
              startAlert();
              startAlert();
-             */
+       
 
         }
 
         __delay_ms(100);
+              */
+        
 
         /*
         __delay_ms(10000);

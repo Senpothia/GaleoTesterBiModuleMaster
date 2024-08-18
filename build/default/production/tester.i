@@ -5823,7 +5823,7 @@ void startAlert(void);
 void errorAlert(void);
 void okAlert(void);
 void attenteDemarrage2(_Bool *, _Bool *);
-void attenteDemarrage3(_Bool *, _Bool *, _Bool *);
+void attenteDemarrage3(_Bool *, _Bool *, _Bool *, _Bool *);
 void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
@@ -5891,6 +5891,14 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 15 "tester.c" 2
+
+# 1 "./I2C-tester.h" 1
+
+
+char getSlaveStatus(char code);
+void writeSlave(char code);
+char startTestSlave();
+# 16 "tester.c" 2
 
 
 void alimenter(_Bool active) {
@@ -6275,7 +6283,7 @@ _Bool reponseOperateur(_Bool automatique) {
                         repOperateur = 1;
                         break;
                     }
-# 417 "tester.c"
+# 418 "tester.c"
                     case '9':
                     {
 
@@ -6479,7 +6487,7 @@ void attenteDemarrage2(_Bool *autom, _Bool *testAct) {
 
 }
 
-void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog) {
+void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive) {
 
     unsigned char reception;
     _Bool repOperateur = 0;
@@ -6520,7 +6528,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog) {
                     break;
                 }
 
-                   case '6':
+                case '6':
                 {
                     printf("-> ERREUR PROGRAMMATION\r\n");
                     displayManager("TEST CARTE D925ED4", "", "ERREUR PROGRAMMATION", "");
@@ -6580,6 +6588,32 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog) {
                     _delay((unsigned long)((50)*(16000000/4000.0)));
                     repOperateur = 1;
                     do { LATAbits.LATA7 = 0; } while(0);
+                    break;
+                }
+
+                case 'a':
+                {
+                    char responseSlave = startTestSlave();
+                    if (responseSlave == 'a') {
+
+                        printf("-> SLAVE_TEST ON\r\n");
+                        *autom = 1;
+                        *testAct = 0;
+                        *testSlaveActive = 1;
+                        *prog = 0;
+                        _delay((unsigned long)((50)*(16000000/4000.0)));
+                        repOperateur = 1;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = 1;
+
+                    }
+
+
+
+
                     break;
                 }
 

@@ -5816,7 +5816,7 @@ void startAlert(void);
 void errorAlert(void);
 void okAlert(void);
 void attenteDemarrage2(_Bool *, _Bool *);
-void attenteDemarrage3(_Bool *, _Bool *, _Bool *);
+void attenteDemarrage3(_Bool *, _Bool *, _Bool *, _Bool *);
 void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
@@ -5837,6 +5837,7 @@ void displayManager(char s1[], char s2[], char s3[], char s4[]);
 
 char getSlaveStatus(char code);
 void writeSlave(char code);
+char startTestSlave();
 # 63 "main.c" 2
 
 
@@ -5866,6 +5867,7 @@ void main(void) {
     _Bool programmation = 1;
     _Bool master = 1;
     char slaveStatus;
+    _Bool slaveInTest = 0;
 
 
 
@@ -5883,7 +5885,7 @@ void main(void) {
 
 
         I2C_Master_Init();
-# 125 "main.c"
+
     }
 
     if (PORTCbits.RC0 == 1) {
@@ -5928,10 +5930,13 @@ void main(void) {
 
 
         do { LATAbits.LATA7 = 0; } while(0);
-# 193 "main.c"
+
+
+
+
         while (!testActif) {
 
-            attenteDemarrage3(&automatique, &testActif, &programmation);
+            attenteDemarrage3(&automatique, &testActif, &programmation, &slaveInTest);
         }
 
 
@@ -5952,17 +5957,7 @@ void main(void) {
         _delay((unsigned long)((100)*(16000000/4000.0)));
         LCD_Init(0x4E);
         displayManager("ETAPE 1", "TEST 3 RELAIS ON", "", "");
-# 271 "main.c"
-        slaveStatus = getSlaveStatus(25);
-
-
-
-        if (slaveStatus == 0x55) {
-# 294 "main.c"
-        }
-
-        _delay((unsigned long)((100)*(16000000/4000.0)));
-# 317 "main.c"
+# 291 "main.c"
         pressBP1(1);
         pressBP2(1);
         _delay((unsigned long)((1000)*(16000000/4000.0)));

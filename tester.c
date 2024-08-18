@@ -13,6 +13,7 @@
 #include "display.h"
 #include <stdio.h>
 #include <string.h>
+#include "I2C-tester.h"
 
 void alimenter(bool active) {
 
@@ -617,7 +618,7 @@ void attenteDemarrage2(bool *autom, bool *testAct) {
 
 }
 
-void attenteDemarrage3(bool *autom, bool *testAct, bool *prog) {
+void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveActive) {
 
     unsigned char reception;
     bool repOperateur = false;
@@ -657,8 +658,8 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog) {
                     repOperateur = true;
                     break;
                 }
-                
-                   case '6':
+
+                case '6':
                 {
                     printf("-> ERREUR PROGRAMMATION\r\n");
                     displayManager(TITRE, LIGNE_VIDE, ERREUR_PROGRAMMATION, LIGNE_VIDE);
@@ -718,6 +719,32 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog) {
                     __delay_ms(50);
                     repOperateur = true;
                     REL8_SetLow();
+                    break;
+                }
+
+                case 'a':
+                {
+                    char responseSlave = startTestSlave();
+                    if (responseSlave == 'a') {
+
+                        printf("-> SLAVE_TEST ON\r\n");
+                        *autom = true;
+                        *testAct = false;
+                        *testSlaveActive = true;
+                        *prog = false;
+                        __delay_ms(50);
+                        repOperateur = true;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = true;
+
+                    }
+
+
+
+
                     break;
                 }
 

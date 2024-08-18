@@ -46,3 +46,12 @@ void writeSlave(char code) {
     while (SSPCON2bits.PEN); //Attente fin de STOP
 
 }
+
+
+char startTestSlave(){
+    
+    return getSlaveStatus('a');
+
+}
+
+

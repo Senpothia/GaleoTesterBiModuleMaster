@@ -5380,6 +5380,7 @@ extern __bank0 __bit __timeout;
 
 char getSlaveStatus(char code);
 void writeSlave(char code);
+void startTestSlave();
 # 3 "I2C-tester.c" 2
 
 
@@ -5425,5 +5426,12 @@ void writeSlave(char code) {
     while (SSPSTATbits.R_nW);
     SSPCON2bits.PEN = 1;
     while (SSPCON2bits.PEN);
+
+}
+
+
+void startTestSlave(){
+
+
 
 }

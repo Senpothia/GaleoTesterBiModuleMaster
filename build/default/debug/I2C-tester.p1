@@ -739,3 +739,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;I2C-tester.c: 48: }
 [e :UE 413 ]
 }
+"51
+[; ;I2C-tester.c: 51: void startTestSlave(){
+[v _startTestSlave `(v ~T0 @X0 1 ef ]
+{
+[e :U _startTestSlave ]
+[f ]
+"55
+[; ;I2C-tester.c: 55: }
+[e :UE 432 ]
+}

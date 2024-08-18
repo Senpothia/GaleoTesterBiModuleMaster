@@ -65,6 +65,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2437
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h: 2437: extern volatile LATBbits_t LATBbits __attribute__((address(0x10D)));
 [v _LATBbits `VS120 ~T0 @X0 0 e@269 ]
+"5 ./I2C-tester.h
+[; ;./I2C-tester.h: 5: char startTestSlave();
+[v _startTestSlave `(uc ~T0 @X0 0 e? ]
 "55 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -593,742 +596,742 @@ Version 4.0 HI-TECH Software Intermediate Code
 "213 ./mcc_generated_files/i2c_master.h
 [; ;./mcc_generated_files/i2c_master.h: 213: void (*MSSP_InterruptHandler)(void);
 [v _MSSP_InterruptHandler `*F3348 ~T0 @X0 1 e ]
-"17 tester.c
-[; ;tester.c: 17: void alimenter(_Bool active) {
+"18 tester.c
+[; ;tester.c: 18: void alimenter(_Bool active) {
 [v _alimenter `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _alimenter ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"19
-[; ;tester.c: 19:     if (active) {
+"20
+[; ;tester.c: 20:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 386  ]
 {
-"21
-[; ;tester.c: 21:         do { LATAbits.LATA0 = 1; } while(0);
+"22
+[; ;tester.c: 22:         do { LATAbits.LATA0 = 1; } while(0);
 [e :U 389 ]
 {
 [e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
 }
 [e :U 388 ]
-"22
-[; ;tester.c: 22:     } else {
+"23
+[; ;tester.c: 23:     } else {
 }
 [e $U 390  ]
 [e :U 386 ]
 {
-"23
-[; ;tester.c: 23:         do { LATAbits.LATA0 = 0; } while(0);
+"24
+[; ;tester.c: 24:         do { LATAbits.LATA0 = 0; } while(0);
 [e :U 393 ]
 {
 [e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
 }
 [e :U 392 ]
-"24
-[; ;tester.c: 24:     }
+"25
+[; ;tester.c: 25:     }
 }
 [e :U 390 ]
-"25
-[; ;tester.c: 25: }
+"26
+[; ;tester.c: 26: }
 [e :UE 385 ]
 }
-"27
-[; ;tester.c: 27: void pressBP1(_Bool active) {
+"28
+[; ;tester.c: 28: void pressBP1(_Bool active) {
 [v _pressBP1 `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _pressBP1 ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"29
-[; ;tester.c: 29:     if (active) {
+"30
+[; ;tester.c: 30:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 395  ]
 {
-"31
-[; ;tester.c: 31:         do { LATAbits.LATA1 = 1; } while(0);
+"32
+[; ;tester.c: 32:         do { LATAbits.LATA1 = 1; } while(0);
 [e :U 398 ]
 {
 [e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 }
 [e :U 397 ]
-"32
-[; ;tester.c: 32:     } else {
+"33
+[; ;tester.c: 33:     } else {
 }
 [e $U 399  ]
 [e :U 395 ]
 {
-"33
-[; ;tester.c: 33:         do { LATAbits.LATA1 = 0; } while(0);
+"34
+[; ;tester.c: 34:         do { LATAbits.LATA1 = 0; } while(0);
 [e :U 402 ]
 {
 [e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
 }
 [e :U 401 ]
-"34
-[; ;tester.c: 34:     }
+"35
+[; ;tester.c: 35:     }
 }
 [e :U 399 ]
-"35
-[; ;tester.c: 35: }
+"36
+[; ;tester.c: 36: }
 [e :UE 394 ]
 }
-"37
-[; ;tester.c: 37: void pressBP2(_Bool active) {
+"38
+[; ;tester.c: 38: void pressBP2(_Bool active) {
 [v _pressBP2 `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _pressBP2 ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"39
-[; ;tester.c: 39:     if (active) {
+"40
+[; ;tester.c: 40:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 404  ]
 {
-"41
-[; ;tester.c: 41:         do { LATAbits.LATA2 = 1; } while(0);
+"42
+[; ;tester.c: 42:         do { LATAbits.LATA2 = 1; } while(0);
 [e :U 407 ]
 {
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 }
 [e :U 406 ]
-"42
-[; ;tester.c: 42:     } else {
+"43
+[; ;tester.c: 43:     } else {
 }
 [e $U 408  ]
 [e :U 404 ]
 {
-"43
-[; ;tester.c: 43:         do { LATAbits.LATA2 = 0; } while(0);
+"44
+[; ;tester.c: 44:         do { LATAbits.LATA2 = 0; } while(0);
 [e :U 411 ]
 {
 [e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
 }
 [e :U 410 ]
-"44
-[; ;tester.c: 44:     }
+"45
+[; ;tester.c: 45:     }
 }
 [e :U 408 ]
-"45
-[; ;tester.c: 45: }
+"46
+[; ;tester.c: 46: }
 [e :UE 403 ]
 }
-"47
-[; ;tester.c: 47: void setHorloge(_Bool active) {
+"48
+[; ;tester.c: 48: void setHorloge(_Bool active) {
 [v _setHorloge `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _setHorloge ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"49
-[; ;tester.c: 49:     if (active) {
+"50
+[; ;tester.c: 50:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 413  ]
 {
-"51
-[; ;tester.c: 51:         do { LATAbits.LATA3 = 1; } while(0);
+"52
+[; ;tester.c: 52:         do { LATAbits.LATA3 = 1; } while(0);
 [e :U 416 ]
 {
 [e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
 }
 [e :U 415 ]
-"52
-[; ;tester.c: 52:     } else {
+"53
+[; ;tester.c: 53:     } else {
 }
 [e $U 417  ]
 [e :U 413 ]
 {
-"53
-[; ;tester.c: 53:         do { LATAbits.LATA3 = 0; } while(0);
+"54
+[; ;tester.c: 54:         do { LATAbits.LATA3 = 0; } while(0);
 [e :U 420 ]
 {
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 }
 [e :U 419 ]
-"54
-[; ;tester.c: 54:     }
+"55
+[; ;tester.c: 55:     }
 }
 [e :U 417 ]
-"56
-[; ;tester.c: 56: }
+"57
+[; ;tester.c: 57: }
 [e :UE 412 ]
 }
-"58
-[; ;tester.c: 58: _Bool testR1(_Bool active) {
+"59
+[; ;tester.c: 59: _Bool testR1(_Bool active) {
 [v _testR1 `(a ~T0 @X0 1 ef1`a ]
 {
 [e :U _testR1 ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"60
-[; ;tester.c: 60:     _Bool result = 0;
+"61
+[; ;tester.c: 61:     _Bool result = 0;
 [v _result `a ~T0 @X0 1 a ]
 [e = _result -> -> 0 `i `a ]
-"61
-[; ;tester.c: 61:     if (active) {
+"62
+[; ;tester.c: 62:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 422  ]
 {
-"63
-[; ;tester.c: 63:         if (PORTDbits.RD0 == 1 && PORTDbits.RD1 == 0) {
+"64
+[; ;tester.c: 64:         if (PORTDbits.RD0 == 1 && PORTDbits.RD1 == 0) {
 [e $ ! && == -> . . _PORTDbits 0 0 `i -> 1 `i == -> . . _PORTDbits 0 1 `i -> 0 `i 423  ]
 {
-"65
-[; ;tester.c: 65:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "66
-[; ;tester.c: 66:         }
+[; ;tester.c: 66:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"67
+[; ;tester.c: 67:         }
 }
 [e :U 423 ]
-"67
-[; ;tester.c: 67:     }
+"68
+[; ;tester.c: 68:     }
 }
 [e :U 422 ]
-"69
-[; ;tester.c: 69:     if (!active) {
+"70
+[; ;tester.c: 70:     if (!active) {
 [e $ ! ! != -> _active `i -> 0 `i 424  ]
 {
-"71
-[; ;tester.c: 71:         if (PORTDbits.RD0 == 0 && PORTDbits.RD1 == 1) {
+"72
+[; ;tester.c: 72:         if (PORTDbits.RD0 == 0 && PORTDbits.RD1 == 1) {
 [e $ ! && == -> . . _PORTDbits 0 0 `i -> 0 `i == -> . . _PORTDbits 0 1 `i -> 1 `i 425  ]
 {
-"74
-[; ;tester.c: 74:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "75
-[; ;tester.c: 75:         }
+[; ;tester.c: 75:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"76
+[; ;tester.c: 76:         }
 }
 [e :U 425 ]
-"76
-[; ;tester.c: 76:     }
+"77
+[; ;tester.c: 77:     }
 }
 [e :U 424 ]
-"78
-[; ;tester.c: 78:     return result;
+"79
+[; ;tester.c: 79:     return result;
 [e ) _result ]
 [e $UE 421  ]
-"79
-[; ;tester.c: 79: }
+"80
+[; ;tester.c: 80: }
 [e :UE 421 ]
 }
-"81
-[; ;tester.c: 81: _Bool testR2(_Bool active) {
+"82
+[; ;tester.c: 82: _Bool testR2(_Bool active) {
 [v _testR2 `(a ~T0 @X0 1 ef1`a ]
 {
 [e :U _testR2 ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"83
-[; ;tester.c: 83:     _Bool result = 0;
+"84
+[; ;tester.c: 84:     _Bool result = 0;
 [v _result `a ~T0 @X0 1 a ]
 [e = _result -> -> 0 `i `a ]
-"84
-[; ;tester.c: 84:     if (active) {
+"85
+[; ;tester.c: 85:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 427  ]
 {
-"86
-[; ;tester.c: 86:         if (PORTDbits.RD3 == 1 && PORTDbits.RD4 == 0) {
+"87
+[; ;tester.c: 87:         if (PORTDbits.RD3 == 1 && PORTDbits.RD4 == 0) {
 [e $ ! && == -> . . _PORTDbits 0 3 `i -> 1 `i == -> . . _PORTDbits 0 4 `i -> 0 `i 428  ]
 {
-"88
-[; ;tester.c: 88:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "89
-[; ;tester.c: 89:         }
+[; ;tester.c: 89:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"90
+[; ;tester.c: 90:         }
 }
 [e :U 428 ]
-"90
-[; ;tester.c: 90:     }
+"91
+[; ;tester.c: 91:     }
 }
 [e :U 427 ]
-"92
-[; ;tester.c: 92:     if (!active) {
+"93
+[; ;tester.c: 93:     if (!active) {
 [e $ ! ! != -> _active `i -> 0 `i 429  ]
 {
-"94
-[; ;tester.c: 94:         if (PORTDbits.RD3 == 0 && PORTDbits.RD4 == 1) {
+"95
+[; ;tester.c: 95:         if (PORTDbits.RD3 == 0 && PORTDbits.RD4 == 1) {
 [e $ ! && == -> . . _PORTDbits 0 3 `i -> 0 `i == -> . . _PORTDbits 0 4 `i -> 1 `i 430  ]
 {
-"96
-[; ;tester.c: 96:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "97
-[; ;tester.c: 97:         }
+[; ;tester.c: 97:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"98
+[; ;tester.c: 98:         }
 }
 [e :U 430 ]
-"98
-[; ;tester.c: 98:     }
+"99
+[; ;tester.c: 99:     }
 }
 [e :U 429 ]
-"100
-[; ;tester.c: 100:     return result;
+"101
+[; ;tester.c: 101:     return result;
 [e ) _result ]
 [e $UE 426  ]
-"101
-[; ;tester.c: 101: }
+"102
+[; ;tester.c: 102: }
 [e :UE 426 ]
 }
-"103
-[; ;tester.c: 103: _Bool testR3(_Bool active) {
+"104
+[; ;tester.c: 104: _Bool testR3(_Bool active) {
 [v _testR3 `(a ~T0 @X0 1 ef1`a ]
 {
 [e :U _testR3 ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"106
-[; ;tester.c: 106:     _Bool result = 0;
+"107
+[; ;tester.c: 107:     _Bool result = 0;
 [v _result `a ~T0 @X0 1 a ]
 [e = _result -> -> 0 `i `a ]
-"107
-[; ;tester.c: 107:     if (active) {
+"108
+[; ;tester.c: 108:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 432  ]
 {
-"109
-[; ;tester.c: 109:         if (PORTDbits.RD5 == 1 && PORTDbits.RD6 == 0) {
+"110
+[; ;tester.c: 110:         if (PORTDbits.RD5 == 1 && PORTDbits.RD6 == 0) {
 [e $ ! && == -> . . _PORTDbits 0 5 `i -> 1 `i == -> . . _PORTDbits 0 6 `i -> 0 `i 433  ]
 {
-"111
-[; ;tester.c: 111:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "112
-[; ;tester.c: 112:         }
+[; ;tester.c: 112:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"113
+[; ;tester.c: 113:         }
 }
 [e :U 433 ]
-"113
-[; ;tester.c: 113:     }
+"114
+[; ;tester.c: 114:     }
 }
 [e :U 432 ]
-"115
-[; ;tester.c: 115:     if (!active) {
+"116
+[; ;tester.c: 116:     if (!active) {
 [e $ ! ! != -> _active `i -> 0 `i 434  ]
 {
-"117
-[; ;tester.c: 117:         if (PORTDbits.RD5 == 0 && PORTDbits.RD6 == 1) {
+"118
+[; ;tester.c: 118:         if (PORTDbits.RD5 == 0 && PORTDbits.RD6 == 1) {
 [e $ ! && == -> . . _PORTDbits 0 5 `i -> 0 `i == -> . . _PORTDbits 0 6 `i -> 1 `i 435  ]
 {
-"119
-[; ;tester.c: 119:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "120
-[; ;tester.c: 120:         }
+[; ;tester.c: 120:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"121
+[; ;tester.c: 121:         }
 }
 [e :U 435 ]
-"121
-[; ;tester.c: 121:     }
+"122
+[; ;tester.c: 122:     }
 }
 [e :U 434 ]
-"123
-[; ;tester.c: 123:     return result;
+"124
+[; ;tester.c: 124:     return result;
 [e ) _result ]
 [e $UE 431  ]
-"124
-[; ;tester.c: 124: }
+"125
+[; ;tester.c: 125: }
 [e :UE 431 ]
 }
-"126
-[; ;tester.c: 126: _Bool testOK(_Bool active) {
+"127
+[; ;tester.c: 127: _Bool testOK(_Bool active) {
 [v _testOK `(a ~T0 @X0 1 ef1`a ]
 {
 [e :U _testOK ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"128
-[; ;tester.c: 128:     _Bool result = 0;
+"129
+[; ;tester.c: 129:     _Bool result = 0;
 [v _result `a ~T0 @X0 1 a ]
 [e = _result -> -> 0 `i `a ]
-"129
-[; ;tester.c: 129:     if (active) {
+"130
+[; ;tester.c: 130:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 437  ]
 {
-"131
-[; ;tester.c: 131:         if (PORTDbits.RD2 == 0) {
+"132
+[; ;tester.c: 132:         if (PORTDbits.RD2 == 0) {
 [e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 438  ]
 {
-"133
-[; ;tester.c: 133:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "134
-[; ;tester.c: 134:         }
+[; ;tester.c: 134:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"135
+[; ;tester.c: 135:         }
 }
 [e :U 438 ]
-"135
-[; ;tester.c: 135:     }
+"136
+[; ;tester.c: 136:     }
 }
 [e :U 437 ]
-"137
-[; ;tester.c: 137:     if (!active) {
+"138
+[; ;tester.c: 138:     if (!active) {
 [e $ ! ! != -> _active `i -> 0 `i 439  ]
 {
-"139
-[; ;tester.c: 139:         if (PORTDbits.RD2 == 1) {
+"140
+[; ;tester.c: 140:         if (PORTDbits.RD2 == 1) {
 [e $ ! == -> . . _PORTDbits 0 2 `i -> 1 `i 440  ]
 {
-"141
-[; ;tester.c: 141:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "142
-[; ;tester.c: 142:         }
+[; ;tester.c: 142:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"143
+[; ;tester.c: 143:         }
 }
 [e :U 440 ]
-"143
-[; ;tester.c: 143:     }
+"144
+[; ;tester.c: 144:     }
 }
 [e :U 439 ]
-"145
-[; ;tester.c: 145:     return result;
+"146
+[; ;tester.c: 146:     return result;
 [e ) _result ]
 [e $UE 436  ]
-"147
-[; ;tester.c: 147: }
+"148
+[; ;tester.c: 148: }
 [e :UE 436 ]
 }
-"149
-[; ;tester.c: 149: _Bool testNOK(_Bool active) {
+"150
+[; ;tester.c: 150: _Bool testNOK(_Bool active) {
 [v _testNOK `(a ~T0 @X0 1 ef1`a ]
 {
 [e :U _testNOK ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"151
-[; ;tester.c: 151:     _Bool result = 0;
+"152
+[; ;tester.c: 152:     _Bool result = 0;
 [v _result `a ~T0 @X0 1 a ]
 [e = _result -> -> 0 `i `a ]
-"152
-[; ;tester.c: 152:     if (active) {
+"153
+[; ;tester.c: 153:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 442  ]
 {
-"154
-[; ;tester.c: 154:         if (PORTDbits.RD7 == 0) {
+"155
+[; ;tester.c: 155:         if (PORTDbits.RD7 == 0) {
 [e $ ! == -> . . _PORTDbits 0 7 `i -> 0 `i 443  ]
 {
-"156
-[; ;tester.c: 156:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "157
-[; ;tester.c: 157:         }
+[; ;tester.c: 157:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"158
+[; ;tester.c: 158:         }
 }
 [e :U 443 ]
-"158
-[; ;tester.c: 158:     }
+"159
+[; ;tester.c: 159:     }
 }
 [e :U 442 ]
-"160
-[; ;tester.c: 160:     if (!active) {
+"161
+[; ;tester.c: 161:     if (!active) {
 [e $ ! ! != -> _active `i -> 0 `i 444  ]
 {
-"162
-[; ;tester.c: 162:         if (PORTDbits.RD7 == 1) {
+"163
+[; ;tester.c: 163:         if (PORTDbits.RD7 == 1) {
 [e $ ! == -> . . _PORTDbits 0 7 `i -> 1 `i 445  ]
 {
-"164
-[; ;tester.c: 164:             result = 1;
-[e = _result -> -> 1 `i `a ]
 "165
-[; ;tester.c: 165:         }
+[; ;tester.c: 165:             result = 1;
+[e = _result -> -> 1 `i `a ]
+"166
+[; ;tester.c: 166:         }
 }
 [e :U 445 ]
-"166
-[; ;tester.c: 166:     }
+"167
+[; ;tester.c: 167:     }
 }
 [e :U 444 ]
-"168
-[; ;tester.c: 168:     return result;
+"169
+[; ;tester.c: 169:     return result;
 [e ) _result ]
 [e $UE 441  ]
-"169
-[; ;tester.c: 169: }
+"170
+[; ;tester.c: 170: }
 [e :UE 441 ]
 }
-"171
-[; ;tester.c: 171: _Bool controlVisuel() {
+"172
+[; ;tester.c: 172: _Bool controlVisuel() {
 [v _controlVisuel `(a ~T0 @X0 1 ef ]
 {
 [e :U _controlVisuel ]
 [f ]
-"173
-[; ;tester.c: 173:     _Bool result = 0;
+"174
+[; ;tester.c: 174:     _Bool result = 0;
 [v _result `a ~T0 @X0 1 a ]
 [e = _result -> -> 0 `i `a ]
-"176
-[; ;tester.c: 176:     if (PORTDbits.RD2 == 0) {
+"177
+[; ;tester.c: 177:     if (PORTDbits.RD2 == 0) {
 [e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 447  ]
 {
-"178
-[; ;tester.c: 178:         result = 1;
-[e = _result -> -> 1 `i `a ]
 "179
-[; ;tester.c: 179:     }
+[; ;tester.c: 179:         result = 1;
+[e = _result -> -> 1 `i `a ]
+"180
+[; ;tester.c: 180:     }
 }
 [e :U 447 ]
-"181
-[; ;tester.c: 181:     if (PORTDbits.RD2 == 1) {
+"182
+[; ;tester.c: 182:     if (PORTDbits.RD2 == 1) {
 [e $ ! == -> . . _PORTDbits 0 2 `i -> 1 `i 448  ]
 {
-"183
-[; ;tester.c: 183:         result = 0;
+"184
+[; ;tester.c: 184:         result = 0;
 [e = _result -> -> 0 `i `a ]
-"185
-[; ;tester.c: 185:     }
+"186
+[; ;tester.c: 186:     }
 }
 [e :U 448 ]
-"187
-[; ;tester.c: 187: }
+"188
+[; ;tester.c: 188: }
 [e :UE 446 ]
 }
-"189
-[; ;tester.c: 189: void ledNonConforme(_Bool active) {
+"190
+[; ;tester.c: 190: void ledNonConforme(_Bool active) {
 [v _ledNonConforme `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _ledNonConforme ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"191
-[; ;tester.c: 191:     if (active) {
+"192
+[; ;tester.c: 192:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 450  ]
 {
-"193
-[; ;tester.c: 193:         do { LATEbits.LATE1 = 1; } while(0);
+"194
+[; ;tester.c: 194:         do { LATEbits.LATE1 = 1; } while(0);
 [e :U 453 ]
 {
 [e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
 }
 [e :U 452 ]
-"194
-[; ;tester.c: 194:     } else {
+"195
+[; ;tester.c: 195:     } else {
 }
 [e $U 454  ]
 [e :U 450 ]
 {
-"195
-[; ;tester.c: 195:         do { LATEbits.LATE1 = 0; } while(0);
+"196
+[; ;tester.c: 196:         do { LATEbits.LATE1 = 0; } while(0);
 [e :U 457 ]
 {
 [e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
 }
 [e :U 456 ]
-"196
-[; ;tester.c: 196:     }
+"197
+[; ;tester.c: 197:     }
 }
 [e :U 454 ]
-"197
-[; ;tester.c: 197: }
+"198
+[; ;tester.c: 198: }
 [e :UE 449 ]
 }
-"199
-[; ;tester.c: 199: void ledConforme(_Bool active) {
+"200
+[; ;tester.c: 200: void ledConforme(_Bool active) {
 [v _ledConforme `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _ledConforme ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"201
-[; ;tester.c: 201:     if (active) {
+"202
+[; ;tester.c: 202:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 459  ]
 {
-"203
-[; ;tester.c: 203:         do { LATEbits.LATE0 = 1; } while(0);
+"204
+[; ;tester.c: 204:         do { LATEbits.LATE0 = 1; } while(0);
 [e :U 462 ]
 {
 [e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
 }
 [e :U 461 ]
-"204
-[; ;tester.c: 204:     } else {
+"205
+[; ;tester.c: 205:     } else {
 }
 [e $U 463  ]
 [e :U 459 ]
 {
-"205
-[; ;tester.c: 205:         do { LATEbits.LATE0 = 0; } while(0);
+"206
+[; ;tester.c: 206:         do { LATEbits.LATE0 = 0; } while(0);
 [e :U 466 ]
 {
 [e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
 }
 [e :U 465 ]
-"206
-[; ;tester.c: 206:     }
+"207
+[; ;tester.c: 207:     }
 }
 [e :U 463 ]
-"207
-[; ;tester.c: 207: }
+"208
+[; ;tester.c: 208: }
 [e :UE 458 ]
 }
-"209
-[; ;tester.c: 209: void ledProgession(_Bool active) {
+"210
+[; ;tester.c: 210: void ledProgession(_Bool active) {
 [v _ledProgession `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _ledProgession ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"211
-[; ;tester.c: 211:     if (active) {
+"212
+[; ;tester.c: 212:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 468  ]
 {
-"213
-[; ;tester.c: 213:         do { LATEbits.LATE2 = 1; } while(0);
+"214
+[; ;tester.c: 214:         do { LATEbits.LATE2 = 1; } while(0);
 [e :U 471 ]
 {
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 }
 [e :U 470 ]
-"215
-[; ;tester.c: 215:     } else {
+"216
+[; ;tester.c: 216:     } else {
 }
 [e $U 472  ]
 [e :U 468 ]
 {
-"217
-[; ;tester.c: 217:         do { LATEbits.LATE2 = 0; } while(0);
+"218
+[; ;tester.c: 218:         do { LATEbits.LATE2 = 0; } while(0);
 [e :U 475 ]
 {
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 }
 [e :U 474 ]
-"218
-[; ;tester.c: 218:     }
+"219
+[; ;tester.c: 219:     }
 }
 [e :U 472 ]
-"219
-[; ;tester.c: 219: }
+"220
+[; ;tester.c: 220: }
 [e :UE 467 ]
 }
-"221
-[; ;tester.c: 221: void attenteDemarrage(_Bool *autom, _Bool *testAct) {
+"222
+[; ;tester.c: 222: void attenteDemarrage(_Bool *autom, _Bool *testAct) {
 [v _attenteDemarrage `(v ~T0 @X0 1 ef2`*a`*a ]
 {
 [e :U _attenteDemarrage ]
 [v _autom `*a ~T0 @X0 1 r1 ]
 [v _testAct `*a ~T0 @X0 1 r2 ]
 [f ]
-"224
-[; ;tester.c: 224:     unsigned char reception;
-[v _reception `uc ~T0 @X0 1 a ]
 "225
-[; ;tester.c: 225:     _Bool repOperateur = 0;
+[; ;tester.c: 225:     unsigned char reception;
+[v _reception `uc ~T0 @X0 1 a ]
+"226
+[; ;tester.c: 226:     _Bool repOperateur = 0;
 [v _repOperateur `a ~T0 @X0 1 a ]
 [e = _repOperateur -> -> 0 `i `a ]
-"227
-[; ;tester.c: 227:     if (!*autom) {
+"228
+[; ;tester.c: 228:     if (!*autom) {
 [e $ ! ! != -> *U _autom `i -> 0 `i 477  ]
 {
-"229
-[; ;tester.c: 229:         while (PORTDbits.RD2 == 1 && !*autom) {
+"230
+[; ;tester.c: 230:         while (PORTDbits.RD2 == 1 && !*autom) {
 [e $U 478  ]
 [e :U 479 ]
 {
-"231
-[; ;tester.c: 231:             if (PORTDbits.RD2 == 0) {
+"232
+[; ;tester.c: 232:             if (PORTDbits.RD2 == 0) {
 [e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 481  ]
 {
-"233
-[; ;tester.c: 233:                 if (!*testAct) {
+"234
+[; ;tester.c: 234:                 if (!*testAct) {
 [e $ ! ! != -> *U _testAct `i -> 0 `i 482  ]
 {
-"235
-[; ;tester.c: 235:                     printf("-> TEST MANUEL EN COURS\r\n");
+"236
+[; ;tester.c: 236:                     printf("-> TEST MANUEL EN COURS\r\n");
 [e ( _printf :s 1C ]
-"237
-[; ;tester.c: 237:                 } else {
+"238
+[; ;tester.c: 238:                 } else {
 }
 [e $U 483  ]
 [e :U 482 ]
 {
-"239
-[; ;tester.c: 239:                     printf("-> FIN TEST MANUEL\r\n");
-[e ( _printf :s 2C ]
 "240
-[; ;tester.c: 240:                 }
+[; ;tester.c: 240:                     printf("-> FIN TEST MANUEL\r\n");
+[e ( _printf :s 2C ]
+"241
+[; ;tester.c: 241:                 }
 }
 [e :U 483 ]
-"242
-[; ;tester.c: 242:             }
+"243
+[; ;tester.c: 243:             }
 }
 [e :U 481 ]
-"244
-[; ;tester.c: 244:             if (eusartRxCount != 0) {
+"245
+[; ;tester.c: 245:             if (eusartRxCount != 0) {
 [e $ ! != -> _eusartRxCount `i -> 0 `i 484  ]
 {
-"246
-[; ;tester.c: 246:                 *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
 "247
-[; ;tester.c: 247:                 reception = EUSART_Read();
-[e = _reception ( _EUSART_Read ..  ]
-"249
-[; ;tester.c: 249:                 switch (reception)
-[e $U 486  ]
-"250
-[; ;tester.c: 250:                 {
-{
-"254
-[; ;tester.c: 254:                     case '1':
-[e :U 487 ]
-"255
-[; ;tester.c: 255:                     {
-{
-"256
-[; ;tester.c: 256:                         printf("-> TEST ON\r\n");
-[e ( _printf :s 3C ]
-"257
-[; ;tester.c: 257:                         *autom = 1;
+[; ;tester.c: 247:                 *autom = 1;
 [e = *U _autom -> -> 1 `i `a ]
+"248
+[; ;tester.c: 248:                 reception = EUSART_Read();
+[e = _reception ( _EUSART_Read ..  ]
+"250
+[; ;tester.c: 250:                 switch (reception)
+[e $U 486  ]
+"251
+[; ;tester.c: 251:                 {
+{
+"255
+[; ;tester.c: 255:                     case '1':
+[e :U 487 ]
+"256
+[; ;tester.c: 256:                     {
+{
+"257
+[; ;tester.c: 257:                         printf("-> TEST ON\r\n");
+[e ( _printf :s 3C ]
 "258
-[; ;tester.c: 258:                         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;tester.c: 258:                         *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
 "259
-[; ;tester.c: 259:                         repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 259:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "260
-[; ;tester.c: 260:                         break;
-[e $U 485  ]
-"261
-[; ;tester.c: 261:                     }
-}
-"263
-[; ;tester.c: 263:                     case '0':
-[e :U 488 ]
-"264
-[; ;tester.c: 264:                     {
-{
-"265
-[; ;tester.c: 265:                         printf("-> TEST OFF\r\n");
-[e ( _printf :s 4C ]
-"266
-[; ;tester.c: 266:                         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"267
-[; ;tester.c: 267:                         repOperateur = 1;
+[; ;tester.c: 260:                         repOperateur = 1;
 [e = _repOperateur -> -> 1 `i `a ]
-"268
-[; ;tester.c: 268:                         *autom = 0;
-[e = *U _autom -> -> 0 `i `a ]
-"269
-[; ;tester.c: 269:                         break;
+"261
+[; ;tester.c: 261:                         break;
 [e $U 485  ]
-"270
-[; ;tester.c: 270:                     }
+"262
+[; ;tester.c: 262:                     }
 }
-"272
-[; ;tester.c: 272:                     case '4':
-[e :U 489 ]
-"273
-[; ;tester.c: 273:                     {
+"264
+[; ;tester.c: 264:                     case '0':
+[e :U 488 ]
+"265
+[; ;tester.c: 265:                     {
 {
-"274
-[; ;tester.c: 274:                         printf("-> TEST ACQUITTE\r\n");
-[e ( _printf :s 5C ]
-"275
-[; ;tester.c: 275:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+"266
+[; ;tester.c: 266:                         printf("-> TEST OFF\r\n");
+[e ( _printf :s 4C ]
+"267
+[; ;tester.c: 267:                         _delay((unsigned long)((50)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"276
-[; ;tester.c: 276:                         repOperateur = 0;
-[e = _repOperateur -> -> 0 `i `a ]
-"277
-[; ;tester.c: 277:                         *autom = 0;
+"268
+[; ;tester.c: 268:                         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"269
+[; ;tester.c: 269:                         *autom = 0;
 [e = *U _autom -> -> 0 `i `a ]
-"278
-[; ;tester.c: 278:                         break;
+"270
+[; ;tester.c: 270:                         break;
 [e $U 485  ]
-"279
-[; ;tester.c: 279:                     }
+"271
+[; ;tester.c: 271:                     }
 }
+"273
+[; ;tester.c: 273:                     case '4':
+[e :U 489 ]
+"274
+[; ;tester.c: 274:                     {
+{
+"275
+[; ;tester.c: 275:                         printf("-> TEST ACQUITTE\r\n");
+[e ( _printf :s 5C ]
+"276
+[; ;tester.c: 276:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"277
+[; ;tester.c: 277:                         repOperateur = 0;
+[e = _repOperateur -> -> 0 `i `a ]
+"278
+[; ;tester.c: 278:                         *autom = 0;
+[e = *U _autom -> -> 0 `i `a ]
+"279
+[; ;tester.c: 279:                         break;
+[e $U 485  ]
 "280
-[; ;tester.c: 280:                 }
+[; ;tester.c: 280:                     }
+}
+"281
+[; ;tester.c: 281:                 }
 }
 [e $U 485  ]
 [e :U 486 ]
@@ -1337,124 +1340,124 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 52 `ui `i 489
  485 ]
 [e :U 485 ]
-"281
-[; ;tester.c: 281:             }
+"282
+[; ;tester.c: 282:             }
 }
 [e :U 484 ]
-"283
-[; ;tester.c: 283:         }
+"284
+[; ;tester.c: 284:         }
 }
 [e :U 478 ]
-"229
-[; ;tester.c: 229:         while (PORTDbits.RD2 == 1 && !*autom) {
+"230
+[; ;tester.c: 230:         while (PORTDbits.RD2 == 1 && !*autom) {
 [e $ && == -> . . _PORTDbits 0 2 `i -> 1 `i ! != -> *U _autom `i -> 0 `i 479  ]
 [e :U 480 ]
-"284
-[; ;tester.c: 284:         repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
 "285
-[; ;tester.c: 285:     }
+[; ;tester.c: 285:         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"286
+[; ;tester.c: 286:     }
 }
 [e :U 477 ]
-"287
-[; ;tester.c: 287:     if (*autom) {
+"288
+[; ;tester.c: 288:     if (*autom) {
 [e $ ! != -> *U _autom `i -> 0 `i 490  ]
 {
-"289
-[; ;tester.c: 289:         while (!repOperateur) {
+"290
+[; ;tester.c: 290:         while (!repOperateur) {
 [e $U 491  ]
 [e :U 492 ]
 {
-"295
-[; ;tester.c: 295:             if (eusartRxCount != 0) {
+"296
+[; ;tester.c: 296:             if (eusartRxCount != 0) {
 [e $ ! != -> _eusartRxCount `i -> 0 `i 494  ]
 {
-"296
-[; ;tester.c: 296:                 *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
 "297
-[; ;tester.c: 297:                 reception = EUSART_Read();
-[e = _reception ( _EUSART_Read ..  ]
-"299
-[; ;tester.c: 299:                 switch (reception)
-[e $U 496  ]
-"300
-[; ;tester.c: 300:                 {
-{
-"301
-[; ;tester.c: 301:                     case '1':
-[e :U 497 ]
-"302
-[; ;tester.c: 302:                     {
-{
-"303
-[; ;tester.c: 303:                         printf("-> TEST ON\r\n");
-[e ( _printf :s 6C ]
-"304
-[; ;tester.c: 304:                         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"305
-[; ;tester.c: 305:                         repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
-"306
-[; ;tester.c: 306:                         *autom = 1;
+[; ;tester.c: 297:                 *autom = 1;
 [e = *U _autom -> -> 1 `i `a ]
+"298
+[; ;tester.c: 298:                 reception = EUSART_Read();
+[e = _reception ( _EUSART_Read ..  ]
+"300
+[; ;tester.c: 300:                 switch (reception)
+[e $U 496  ]
+"301
+[; ;tester.c: 301:                 {
+{
+"302
+[; ;tester.c: 302:                     case '1':
+[e :U 497 ]
+"303
+[; ;tester.c: 303:                     {
+{
+"304
+[; ;tester.c: 304:                         printf("-> TEST ON\r\n");
+[e ( _printf :s 6C ]
+"305
+[; ;tester.c: 305:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"306
+[; ;tester.c: 306:                         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
 "307
-[; ;tester.c: 307:                         break;
-[e $U 495  ]
+[; ;tester.c: 307:                         *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
 "308
-[; ;tester.c: 308:                     }
+[; ;tester.c: 308:                         break;
+[e $U 495  ]
+"309
+[; ;tester.c: 309:                     }
 }
-"310
-[; ;tester.c: 310:                     case '0':
-[e :U 498 ]
 "311
-[; ;tester.c: 311:                     {
-{
+[; ;tester.c: 311:                     case '0':
+[e :U 498 ]
 "312
-[; ;tester.c: 312:                         printf("-> TEST OFF\r\n");
-[e ( _printf :s 7C ]
-"313
-[; ;tester.c: 313:                         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"314
-[; ;tester.c: 314:                         repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
-"315
-[; ;tester.c: 315:                         *autom = 0;
-[e = *U _autom -> -> 0 `i `a ]
-"316
-[; ;tester.c: 316:                         break;
-[e $U 495  ]
-"317
-[; ;tester.c: 317:                     }
-}
-"319
-[; ;tester.c: 319:                     case '4':
-[e :U 499 ]
-"320
-[; ;tester.c: 320:                     {
+[; ;tester.c: 312:                     {
 {
-"321
-[; ;tester.c: 321:                         printf("-> TEST ACQUITTE\r\n");
-[e ( _printf :s 8C ]
-"322
-[; ;tester.c: 322:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+"313
+[; ;tester.c: 313:                         printf("-> TEST OFF\r\n");
+[e ( _printf :s 7C ]
+"314
+[; ;tester.c: 314:                         _delay((unsigned long)((50)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"323
-[; ;tester.c: 323:                         repOperateur = 1;
+"315
+[; ;tester.c: 315:                         repOperateur = 1;
 [e = _repOperateur -> -> 1 `i `a ]
-"324
-[; ;tester.c: 324:                         *autom = 0;
+"316
+[; ;tester.c: 316:                         *autom = 0;
 [e = *U _autom -> -> 0 `i `a ]
-"325
-[; ;tester.c: 325:                         break;
+"317
+[; ;tester.c: 317:                         break;
 [e $U 495  ]
-"326
-[; ;tester.c: 326:                     }
+"318
+[; ;tester.c: 318:                     }
 }
+"320
+[; ;tester.c: 320:                     case '4':
+[e :U 499 ]
+"321
+[; ;tester.c: 321:                     {
+{
+"322
+[; ;tester.c: 322:                         printf("-> TEST ACQUITTE\r\n");
+[e ( _printf :s 8C ]
+"323
+[; ;tester.c: 323:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"324
+[; ;tester.c: 324:                         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"325
+[; ;tester.c: 325:                         *autom = 0;
+[e = *U _autom -> -> 0 `i `a ]
+"326
+[; ;tester.c: 326:                         break;
+[e $U 495  ]
 "327
-[; ;tester.c: 327:                 }
+[; ;tester.c: 327:                     }
+}
+"328
+[; ;tester.c: 328:                 }
 }
 [e $U 495  ]
 [e :U 496 ]
@@ -1463,28 +1466,28 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 52 `ui `i 499
  495 ]
 [e :U 495 ]
-"329
-[; ;tester.c: 329:             }
+"330
+[; ;tester.c: 330:             }
 }
 [e :U 494 ]
-"330
-[; ;tester.c: 330:         }
+"331
+[; ;tester.c: 331:         }
 }
 [e :U 491 ]
-"289
-[; ;tester.c: 289:         while (!repOperateur) {
+"290
+[; ;tester.c: 290:         while (!repOperateur) {
 [e $ ! != -> _repOperateur `i -> 0 `i 492  ]
 [e :U 493 ]
-"332
-[; ;tester.c: 332:     }
+"333
+[; ;tester.c: 333:     }
 }
 [e :U 490 ]
-"334
-[; ;tester.c: 334: }
+"335
+[; ;tester.c: 335: }
 [e :UE 476 ]
 }
-"336
-[; ;tester.c: 336: void alerteDefaut(char etape[], _Bool *testAct, _Bool *testVoy) {
+"337
+[; ;tester.c: 337: void alerteDefaut(char etape[], _Bool *testAct, _Bool *testVoy) {
 [v _alerteDefaut `(v ~T0 @X0 1 ef3`*uc`*a`*a ]
 {
 [e :U _alerteDefaut ]
@@ -1492,11 +1495,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _testAct `*a ~T0 @X0 1 r2 ]
 [v _testVoy `*a ~T0 @X0 1 r3 ]
 [f ]
-[v F3754 `uc ~T0 @X0 -> 20 `i s ]
-[i F3754
+[v F3760 `uc ~T0 @X0 -> 20 `i s ]
+[i F3760
 :U ..
-"338
-[; ;tester.c: 338:     char error[20] = "-> ERREUR: ";
+"339
+[; ;tester.c: 339:     char error[20] = "-> ERREUR: ";
 -> 45 `c
 -> 62 `c
 -> 32 `c
@@ -1512,187 +1515,187 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _error `uc ~T0 @X0 -> 20 `i a ]
-[e = _error F3754 ]
-[v F3756 `uc ~T0 @X0 -> 10 `i s ]
-[i F3756
+[e = _error F3760 ]
+[v F3762 `uc ~T0 @X0 -> 10 `i s ]
+[i F3762
 :U ..
-"339
-[; ;tester.c: 339:     char eol[10] = "\r\n";
+"340
+[; ;tester.c: 340:     char eol[10] = "\r\n";
 -> 13 `c
 -> 10 `c
 -> 0 `c
 ..
 ]
 [v _eol `uc ~T0 @X0 -> 10 `i a ]
-[e = _eol F3756 ]
-"340
-[; ;tester.c: 340:     ledNonConforme(1);
-[e ( _ledNonConforme (1 -> -> 1 `i `a ]
+[e = _eol F3762 ]
 "341
-[; ;tester.c: 341:     ledProgession(1);
-[e ( _ledProgession (1 -> -> 1 `i `a ]
+[; ;tester.c: 341:     ledNonConforme(1);
+[e ( _ledNonConforme (1 -> -> 1 `i `a ]
 "342
-[; ;tester.c: 342:     ledConforme(0);
-[e ( _ledConforme (1 -> -> 0 `i `a ]
+[; ;tester.c: 342:     ledProgession(1);
+[e ( _ledProgession (1 -> -> 1 `i `a ]
 "343
-[; ;tester.c: 343:     alimenter(0);
-[e ( _alimenter (1 -> -> 0 `i `a ]
+[; ;tester.c: 343:     ledConforme(0);
+[e ( _ledConforme (1 -> -> 0 `i `a ]
 "344
-[; ;tester.c: 344:     displayManager(etape, "TEST NON CONFORME", "ATTENTE ACQUITTEMENT", "");
-[e ( _displayManager (4 , , , _etape :s 9C :s 10C :s 11C ]
+[; ;tester.c: 344:     alimenter(0);
+[e ( _alimenter (1 -> -> 0 `i `a ]
 "345
-[; ;tester.c: 345:     printf(strcat(strcat(error, etape), eol));
-[e ( _printf -> ( _strcat (2 , ( _strcat (2 , &U _error -> _etape `*Cuc -> &U _eol `*Cuc `*Cuc ]
+[; ;tester.c: 345:     displayManager(etape, "TEST NON CONFORME", "ATTENTE ACQUITTEMENT", "");
+[e ( _displayManager (4 , , , _etape :s 9C :s 10C :s 11C ]
 "346
-[; ;tester.c: 346:     errorAlert();
+[; ;tester.c: 346:     printf(strcat(strcat(error, etape), eol));
+[e ( _printf -> ( _strcat (2 , ( _strcat (2 , &U _error -> _etape `*Cuc -> &U _eol `*Cuc `*Cuc ]
+"347
+[; ;tester.c: 347:     errorAlert();
 [e ( _errorAlert ..  ]
-"348
-[; ;tester.c: 348:     while (PORTDbits.RD2 == 0) {
+"349
+[; ;tester.c: 349:     while (PORTDbits.RD2 == 0) {
 [e $U 501  ]
 [e :U 502 ]
 {
-"350
-[; ;tester.c: 350:     }
+"351
+[; ;tester.c: 351:     }
 }
 [e :U 501 ]
-"348
-[; ;tester.c: 348:     while (PORTDbits.RD2 == 0) {
+"349
+[; ;tester.c: 349:     while (PORTDbits.RD2 == 0) {
 [e $ == -> . . _PORTDbits 0 2 `i -> 0 `i 502  ]
 [e :U 503 ]
-"353
-[; ;tester.c: 353:     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
 "354
-[; ;tester.c: 354:     *testVoy = 0;
+[; ;tester.c: 354:     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"355
+[; ;tester.c: 355:     *testVoy = 0;
 [e = *U _testVoy -> -> 0 `i `a ]
-"356
-[; ;tester.c: 356: }
+"357
+[; ;tester.c: 357: }
 [e :UE 500 ]
 }
-"358
-[; ;tester.c: 358: _Bool reponseOperateur(_Bool automatique) {
+"359
+[; ;tester.c: 359: _Bool reponseOperateur(_Bool automatique) {
 [v _reponseOperateur `(a ~T0 @X0 1 ef1`a ]
 {
 [e :U _reponseOperateur ]
 [v _automatique `a ~T0 @X0 1 r1 ]
 [f ]
-"360
-[; ;tester.c: 360:     _Bool reponse = 0;
+"361
+[; ;tester.c: 361:     _Bool reponse = 0;
 [v _reponse `a ~T0 @X0 1 a ]
 [e = _reponse -> -> 0 `i `a ]
-"361
-[; ;tester.c: 361:     _Bool repOperateur = 0;
+"362
+[; ;tester.c: 362:     _Bool repOperateur = 0;
 [v _repOperateur `a ~T0 @X0 1 a ]
 [e = _repOperateur -> -> 0 `i `a ]
-"362
-[; ;tester.c: 362:     unsigned char reception;
+"363
+[; ;tester.c: 363:     unsigned char reception;
 [v _reception `uc ~T0 @X0 1 a ]
-"364
-[; ;tester.c: 364:     if (automatique) {
+"365
+[; ;tester.c: 365:     if (automatique) {
 [e $ ! != -> _automatique `i -> 0 `i 505  ]
 {
-"366
-[; ;tester.c: 366:         while (!repOperateur) {
+"367
+[; ;tester.c: 367:         while (!repOperateur) {
 [e $U 506  ]
 [e :U 507 ]
 {
-"368
-[; ;tester.c: 368:             if (eusartRxCount != 0) {
+"369
+[; ;tester.c: 369:             if (eusartRxCount != 0) {
 [e $ ! != -> _eusartRxCount `i -> 0 `i 509  ]
 {
-"370
-[; ;tester.c: 370:                 reception = EUSART_Read();
+"371
+[; ;tester.c: 371:                 reception = EUSART_Read();
 [e = _reception ( _EUSART_Read ..  ]
-"372
-[; ;tester.c: 372:                 switch (reception)
-[e $U 511  ]
 "373
-[; ;tester.c: 373:                 {
+[; ;tester.c: 373:                 switch (reception)
+[e $U 511  ]
+"374
+[; ;tester.c: 374:                 {
 {
-"376
-[; ;tester.c: 376:                     case '0':
-[e :U 512 ]
 "377
-[; ;tester.c: 377:                     {
-{
+[; ;tester.c: 377:                     case '0':
+[e :U 512 ]
 "378
-[; ;tester.c: 378:                         __asm("reset");
+[; ;tester.c: 378:                     {
+{
+"379
+[; ;tester.c: 379:                         __asm("reset");
 [; <" reset ;# ">
-"380
-[; ;tester.c: 380:                     }
+"381
+[; ;tester.c: 381:                     }
 }
-"382
-[; ;tester.c: 382:                     case '2':
-[e :U 513 ]
 "383
-[; ;tester.c: 383:                     {
+[; ;tester.c: 383:                     case '2':
+[e :U 513 ]
+"384
+[; ;tester.c: 384:                     {
 {
-"385
-[; ;tester.c: 385:                         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "386
-[; ;tester.c: 386:                         reponse = 1;
-[e = _reponse -> -> 1 `i `a ]
+[; ;tester.c: 386:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "387
-[; ;tester.c: 387:                         repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
-"388
-[; ;tester.c: 388:                         break;
-[e $U 510  ]
-"389
-[; ;tester.c: 389:                     }
-}
-"391
-[; ;tester.c: 391:                     case '3':
-[e :U 514 ]
-"392
-[; ;tester.c: 392:                     {
-{
-"394
-[; ;tester.c: 394:                         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"395
-[; ;tester.c: 395:                         reponse = 0;
-[e = _reponse -> -> 0 `i `a ]
-"396
-[; ;tester.c: 396:                         repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
-"397
-[; ;tester.c: 397:                         break;
-[e $U 510  ]
-"398
-[; ;tester.c: 398:                     }
-}
-"417
-[; ;tester.c: 417:                     case '9':
-[e :U 515 ]
-"418
-[; ;tester.c: 418:                     {
-{
-"420
-[; ;tester.c: 420:                         _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"421
-[; ;tester.c: 421:                         reponse = 1;
+[; ;tester.c: 387:                         reponse = 1;
 [e = _reponse -> -> 1 `i `a ]
-"422
-[; ;tester.c: 422:                         repOperateur = 1;
+"388
+[; ;tester.c: 388:                         repOperateur = 1;
 [e = _repOperateur -> -> 1 `i `a ]
+"389
+[; ;tester.c: 389:                         break;
+[e $U 510  ]
+"390
+[; ;tester.c: 390:                     }
+}
+"392
+[; ;tester.c: 392:                     case '3':
+[e :U 514 ]
+"393
+[; ;tester.c: 393:                     {
+{
+"395
+[; ;tester.c: 395:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"396
+[; ;tester.c: 396:                         reponse = 0;
+[e = _reponse -> -> 0 `i `a ]
+"397
+[; ;tester.c: 397:                         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"398
+[; ;tester.c: 398:                         break;
+[e $U 510  ]
+"399
+[; ;tester.c: 399:                     }
+}
+"418
+[; ;tester.c: 418:                     case '9':
+[e :U 515 ]
+"419
+[; ;tester.c: 419:                     {
+{
+"421
+[; ;tester.c: 421:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"422
+[; ;tester.c: 422:                         reponse = 1;
+[e = _reponse -> -> 1 `i `a ]
 "423
-[; ;tester.c: 423:                         do { LATAbits.LATA7 = 0; } while(0);
+[; ;tester.c: 423:                         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"424
+[; ;tester.c: 424:                         do { LATAbits.LATA7 = 0; } while(0);
 [e :U 518 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 517 ]
-"424
-[; ;tester.c: 424:                         break;
-[e $U 510  ]
 "425
-[; ;tester.c: 425:                     }
-}
+[; ;tester.c: 425:                         break;
+[e $U 510  ]
 "426
-[; ;tester.c: 426:                 }
+[; ;tester.c: 426:                     }
+}
+"427
+[; ;tester.c: 427:                 }
 }
 [e $U 510  ]
 [e :U 511 ]
@@ -1702,159 +1705,159 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 57 `ui `i 515
  510 ]
 [e :U 510 ]
-"428
-[; ;tester.c: 428:             }
+"429
+[; ;tester.c: 429:             }
 }
 [e :U 509 ]
-"430
-[; ;tester.c: 430:         }
+"431
+[; ;tester.c: 431:         }
 }
 [e :U 506 ]
-"366
-[; ;tester.c: 366:         while (!repOperateur) {
+"367
+[; ;tester.c: 367:         while (!repOperateur) {
 [e $ ! != -> _repOperateur `i -> 0 `i 507  ]
 [e :U 508 ]
-"432
-[; ;tester.c: 432:     }
+"433
+[; ;tester.c: 433:     }
 }
 [e :U 505 ]
-"434
-[; ;tester.c: 434:     if (!automatique) {
+"435
+[; ;tester.c: 435:     if (!automatique) {
 [e $ ! ! != -> _automatique `i -> 0 `i 519  ]
 {
-"436
-[; ;tester.c: 436:         while (!repOperateur) {
+"437
+[; ;tester.c: 437:         while (!repOperateur) {
 [e $U 520  ]
 [e :U 521 ]
 {
-"438
-[; ;tester.c: 438:             if (testNOK(1)) {
+"439
+[; ;tester.c: 439:             if (testNOK(1)) {
 [e $ ! != -> ( _testNOK (1 -> -> 1 `i `a `i -> 0 `i 523  ]
 {
-"439
-[; ;tester.c: 439:                 reponse = 0;
-[e = _reponse -> -> 0 `i `a ]
 "440
-[; ;tester.c: 440:                 repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 440:                 reponse = 0;
+[e = _reponse -> -> 0 `i `a ]
 "441
-[; ;tester.c: 441:             }
+[; ;tester.c: 441:                 repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"442
+[; ;tester.c: 442:             }
 }
 [e :U 523 ]
-"442
-[; ;tester.c: 442:             if (testOK(1)) {
+"443
+[; ;tester.c: 443:             if (testOK(1)) {
 [e $ ! != -> ( _testOK (1 -> -> 1 `i `a `i -> 0 `i 524  ]
 {
-"443
-[; ;tester.c: 443:                 reponse = 1;
-[e = _reponse -> -> 1 `i `a ]
 "444
-[; ;tester.c: 444:                 repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 444:                 reponse = 1;
+[e = _reponse -> -> 1 `i `a ]
 "445
-[; ;tester.c: 445:             }
+[; ;tester.c: 445:                 repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"446
+[; ;tester.c: 446:             }
 }
 [e :U 524 ]
-"446
-[; ;tester.c: 446:         }
+"447
+[; ;tester.c: 447:         }
 }
 [e :U 520 ]
-"436
-[; ;tester.c: 436:         while (!repOperateur) {
+"437
+[; ;tester.c: 437:         while (!repOperateur) {
 [e $ ! != -> _repOperateur `i -> 0 `i 521  ]
 [e :U 522 ]
-"448
-[; ;tester.c: 448:     }
+"449
+[; ;tester.c: 449:     }
 }
 [e :U 519 ]
-"450
-[; ;tester.c: 450:     return reponse;
+"451
+[; ;tester.c: 451:     return reponse;
 [e ) _reponse ]
 [e $UE 504  ]
-"452
-[; ;tester.c: 452: }
+"453
+[; ;tester.c: 453: }
 [e :UE 504 ]
 }
-"454
-[; ;tester.c: 454: void setP1(_Bool active) {
+"455
+[; ;tester.c: 455: void setP1(_Bool active) {
 [v _setP1 `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _setP1 ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"456
-[; ;tester.c: 456:     if (active) {
+"457
+[; ;tester.c: 457:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 526  ]
 {
-"458
-[; ;tester.c: 458:         do { LATAbits.LATA4 = 1; } while(0);
+"459
+[; ;tester.c: 459:         do { LATAbits.LATA4 = 1; } while(0);
 [e :U 529 ]
 {
 [e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 528 ]
-"459
-[; ;tester.c: 459:     } else {
+"460
+[; ;tester.c: 460:     } else {
 }
 [e $U 530  ]
 [e :U 526 ]
 {
-"460
-[; ;tester.c: 460:         do { LATAbits.LATA4 = 0; } while(0);
+"461
+[; ;tester.c: 461:         do { LATAbits.LATA4 = 0; } while(0);
 [e :U 533 ]
 {
 [e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
 }
 [e :U 532 ]
-"461
-[; ;tester.c: 461:     }
+"462
+[; ;tester.c: 462:     }
 }
 [e :U 530 ]
-"463
-[; ;tester.c: 463: }
+"464
+[; ;tester.c: 464: }
 [e :UE 525 ]
 }
-"465
-[; ;tester.c: 465: void setP2(_Bool active) {
+"466
+[; ;tester.c: 466: void setP2(_Bool active) {
 [v _setP2 `(v ~T0 @X0 1 ef1`a ]
 {
 [e :U _setP2 ]
 [v _active `a ~T0 @X0 1 r1 ]
 [f ]
-"467
-[; ;tester.c: 467:     if (active) {
+"468
+[; ;tester.c: 468:     if (active) {
 [e $ ! != -> _active `i -> 0 `i 535  ]
 {
-"469
-[; ;tester.c: 469:         do { LATAbits.LATA5 = 1; } while(0);
+"470
+[; ;tester.c: 470:         do { LATAbits.LATA5 = 1; } while(0);
 [e :U 538 ]
 {
 [e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
 }
 [e :U 537 ]
-"470
-[; ;tester.c: 470:     } else {
+"471
+[; ;tester.c: 471:     } else {
 }
 [e $U 539  ]
 [e :U 535 ]
 {
-"471
-[; ;tester.c: 471:         do { LATAbits.LATA5 = 0; } while(0);
+"472
+[; ;tester.c: 472:         do { LATAbits.LATA5 = 0; } while(0);
 [e :U 542 ]
 {
 [e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
 }
 [e :U 541 ]
-"472
-[; ;tester.c: 472:     }
+"473
+[; ;tester.c: 473:     }
 }
 [e :U 539 ]
-"474
-[; ;tester.c: 474: }
+"475
+[; ;tester.c: 475: }
 [e :UE 534 ]
 }
-"476
-[; ;tester.c: 476: void initialConditions(_Bool *testAct, _Bool *testVoy, _Bool *autom, _Bool *prog) {
+"477
+[; ;tester.c: 477: void initialConditions(_Bool *testAct, _Bool *testVoy, _Bool *autom, _Bool *prog) {
 [v _initialConditions `(v ~T0 @X0 1 ef4`*a`*a`*a`*a ]
 {
 [e :U _initialConditions ]
@@ -1863,72 +1866,72 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _autom `*a ~T0 @X0 1 r3 ]
 [v _prog `*a ~T0 @X0 1 r4 ]
 [f ]
-"478
-[; ;tester.c: 478:     if (!*autom) {
+"479
+[; ;tester.c: 479:     if (!*autom) {
 [e $ ! ! != -> *U _autom `i -> 0 `i 544  ]
 {
-"480
-[; ;tester.c: 480:         printf("-> FIN TEST MANUEL\r\n");
-[e ( _printf :s 12C ]
 "481
-[; ;tester.c: 481:     }
+[; ;tester.c: 481:         printf("-> FIN TEST MANUEL\r\n");
+[e ( _printf :s 12C ]
+"482
+[; ;tester.c: 482:     }
 }
 [e :U 544 ]
-"482
-[; ;tester.c: 482:     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
 "483
-[; ;tester.c: 483:     *testVoy = 0;
-[e = *U _testVoy -> -> 0 `i `a ]
+[; ;tester.c: 483:     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
 "484
-[; ;tester.c: 484:     *autom = 0;
-[e = *U _autom -> -> 0 `i `a ]
+[; ;tester.c: 484:     *testVoy = 0;
+[e = *U _testVoy -> -> 0 `i `a ]
 "485
-[; ;tester.c: 485:     *prog = 1;
-[e = *U _prog -> -> 1 `i `a ]
+[; ;tester.c: 485:     *autom = 0;
+[e = *U _autom -> -> 0 `i `a ]
 "486
-[; ;tester.c: 486:     ledConforme(0);
-[e ( _ledConforme (1 -> -> 0 `i `a ]
+[; ;tester.c: 486:     *prog = 1;
+[e = *U _prog -> -> 1 `i `a ]
 "487
-[; ;tester.c: 487:     ledNonConforme(0);
-[e ( _ledNonConforme (1 -> -> 0 `i `a ]
+[; ;tester.c: 487:     ledConforme(0);
+[e ( _ledConforme (1 -> -> 0 `i `a ]
 "488
-[; ;tester.c: 488:     ledProgession(0);
-[e ( _ledProgession (1 -> -> 0 `i `a ]
+[; ;tester.c: 488:     ledNonConforme(0);
+[e ( _ledNonConforme (1 -> -> 0 `i `a ]
 "489
-[; ;tester.c: 489:     alimenter(0);
-[e ( _alimenter (1 -> -> 0 `i `a ]
+[; ;tester.c: 489:     ledProgession(0);
+[e ( _ledProgession (1 -> -> 0 `i `a ]
 "490
-[; ;tester.c: 490:     pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
+[; ;tester.c: 490:     alimenter(0);
+[e ( _alimenter (1 -> -> 0 `i `a ]
 "491
-[; ;tester.c: 491:     pressBP2(0);
-[e ( _pressBP2 (1 -> -> 0 `i `a ]
+[; ;tester.c: 491:     pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
 "492
-[; ;tester.c: 492:     setP1(0);
-[e ( _setP1 (1 -> -> 0 `i `a ]
+[; ;tester.c: 492:     pressBP2(0);
+[e ( _pressBP2 (1 -> -> 0 `i `a ]
 "493
-[; ;tester.c: 493:     setP2(0);
-[e ( _setP2 (1 -> -> 0 `i `a ]
+[; ;tester.c: 493:     setP1(0);
+[e ( _setP1 (1 -> -> 0 `i `a ]
 "494
-[; ;tester.c: 494:     do { LATAbits.LATA7 = 0; } while(0);
+[; ;tester.c: 494:     setP2(0);
+[e ( _setP2 (1 -> -> 0 `i `a ]
+"495
+[; ;tester.c: 495:     do { LATAbits.LATA7 = 0; } while(0);
 [e :U 547 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 546 ]
-"496
-[; ;tester.c: 496: }
+"497
+[; ;tester.c: 497: }
 [e :UE 543 ]
 }
-"498
-[; ;tester.c: 498: void activerBuzzer() {
+"499
+[; ;tester.c: 499: void activerBuzzer() {
 [v _activerBuzzer `(v ~T0 @X0 1 ef ]
 {
 [e :U _activerBuzzer ]
 [f ]
-"501
-[; ;tester.c: 501:     for (int i = 0; i < 50; i++) {
+"502
+[; ;tester.c: 502:     for (int i = 0; i < 50; i++) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -1936,75 +1939,75 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 550  ]
 [e :U 549 ]
 {
-"503
-[; ;tester.c: 503:         do { LATBbits.LATB4 = 1; } while(0);
+"504
+[; ;tester.c: 504:         do { LATBbits.LATB4 = 1; } while(0);
 [e :U 554 ]
 {
 [e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 553 ]
-"505
-[; ;tester.c: 505:         _delay((unsigned long)((1000)*(16000000/4000000.0)));
+"506
+[; ;tester.c: 506:         _delay((unsigned long)((1000)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"507
-[; ;tester.c: 507:         do { LATBbits.LATB4 = 0; } while(0);
+"508
+[; ;tester.c: 508:         do { LATBbits.LATB4 = 0; } while(0);
 [e :U 557 ]
 {
 [e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
 }
 [e :U 556 ]
-"509
-[; ;tester.c: 509:         _delay((unsigned long)((1000)*(16000000/4000000.0)));
+"510
+[; ;tester.c: 510:         _delay((unsigned long)((1000)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"511
-[; ;tester.c: 511:     }
+"512
+[; ;tester.c: 512:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 50 `i 549  ]
 [e :U 550 ]
 }
-"513
-[; ;tester.c: 513: }
+"514
+[; ;tester.c: 514: }
 [e :UE 548 ]
 }
-"515
-[; ;tester.c: 515: void activerTouche(void) {
+"516
+[; ;tester.c: 516: void activerTouche(void) {
 [v _activerTouche `(v ~T0 @X0 1 ef ]
 {
 [e :U _activerTouche ]
 [f ]
-"517
-[; ;tester.c: 517:     do { LATAbits.LATA6 = 1; } while(0);
+"518
+[; ;tester.c: 518:     do { LATAbits.LATA6 = 1; } while(0);
 [e :U 561 ]
 {
 [e = . . _LATAbits 0 6 -> -> 1 `i `uc ]
 }
 [e :U 560 ]
-"518
-[; ;tester.c: 518:     _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "519
-[; ;tester.c: 519:     do { LATAbits.LATA6 = 0; } while(0);
+[; ;tester.c: 519:     _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"520
+[; ;tester.c: 520:     do { LATAbits.LATA6 = 0; } while(0);
 [e :U 564 ]
 {
 [e = . . _LATAbits 0 6 -> -> 0 `i `uc ]
 }
 [e :U 563 ]
-"520
-[; ;tester.c: 520:     _delay((unsigned long)((250)*(16000000/4000.0)));
+"521
+[; ;tester.c: 521:     _delay((unsigned long)((250)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"522
-[; ;tester.c: 522: }
+"523
+[; ;tester.c: 523: }
 [e :UE 558 ]
 }
-"524
-[; ;tester.c: 524: void startAlert(void) {
+"525
+[; ;tester.c: 525: void startAlert(void) {
 [v _startAlert `(v ~T0 @X0 1 ef ]
 {
 [e :U _startAlert ]
 [f ]
-"526
-[; ;tester.c: 526:     for (int i = 0; i < 2; i++) {
+"527
+[; ;tester.c: 527:     for (int i = 0; i < 2; i++) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2012,31 +2015,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 567  ]
 [e :U 566 ]
 {
-"528
-[; ;tester.c: 528:         activerBuzzer();
-[e ( _activerBuzzer ..  ]
 "529
-[; ;tester.c: 529:         _delay((unsigned long)((500)*(16000000/4000.0)));
+[; ;tester.c: 529:         activerBuzzer();
+[e ( _activerBuzzer ..  ]
+"530
+[; ;tester.c: 530:         _delay((unsigned long)((500)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"531
-[; ;tester.c: 531:     }
+"532
+[; ;tester.c: 532:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 2 `i 566  ]
 [e :U 567 ]
 }
-"533
-[; ;tester.c: 533: }
+"534
+[; ;tester.c: 534: }
 [e :UE 565 ]
 }
-"535
-[; ;tester.c: 535: void errorAlert(void) {
+"536
+[; ;tester.c: 536: void errorAlert(void) {
 [v _errorAlert `(v ~T0 @X0 1 ef ]
 {
 [e :U _errorAlert ]
 [f ]
-"537
-[; ;tester.c: 537:     for (int j = 0; j < 4; j++) {
+"538
+[; ;tester.c: 538:     for (int j = 0; j < 4; j++) {
 {
 [v _j `i ~T0 @X0 1 a ]
 [e = _j -> 0 `i ]
@@ -2044,8 +2047,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 571  ]
 [e :U 570 ]
 {
-"539
-[; ;tester.c: 539:         for (int i = 0; i < 4; i++) {
+"540
+[; ;tester.c: 540:         for (int i = 0; i < 4; i++) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2053,44 +2056,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 574  ]
 [e :U 573 ]
 {
-"541
-[; ;tester.c: 541:             activerBuzzer();
-[e ( _activerBuzzer ..  ]
 "542
-[; ;tester.c: 542:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[; ;tester.c: 542:             activerBuzzer();
+[e ( _activerBuzzer ..  ]
+"543
+[; ;tester.c: 543:             _delay((unsigned long)((500)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"544
-[; ;tester.c: 544:         }
+"545
+[; ;tester.c: 545:         }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 4 `i 573  ]
 [e :U 574 ]
 }
-"545
-[; ;tester.c: 545:         _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "546
-[; ;tester.c: 546:     }
+[; ;tester.c: 546:         _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"547
+[; ;tester.c: 547:     }
 }
 [e ++ _j -> 1 `i ]
 [e $ < _j -> 4 `i 570  ]
 [e :U 571 ]
 }
-"549
-[; ;tester.c: 549: }
+"550
+[; ;tester.c: 550: }
 [e :UE 569 ]
 }
-"551
-[; ;tester.c: 551: void okAlert(void) {
+"552
+[; ;tester.c: 552: void okAlert(void) {
 [v _okAlert `(v ~T0 @X0 1 ef ]
 {
 [e :U _okAlert ]
 [f ]
-"554
-[; ;tester.c: 554:     printf("-> TEST CONFORME - ATTENTE ACQUITTEMENT\r\n");
-[e ( _printf :s 13C ]
 "555
-[; ;tester.c: 555:     for (int i = 0; i < 2; i++) {
+[; ;tester.c: 555:     printf("-> TEST CONFORME - ATTENTE ACQUITTEMENT\r\n");
+[e ( _printf :s 13C ]
+"556
+[; ;tester.c: 556:     for (int i = 0; i < 2; i++) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2098,151 +2101,151 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 578  ]
 [e :U 577 ]
 {
-"557
-[; ;tester.c: 557:         startAlert();
+"558
+[; ;tester.c: 558:         startAlert();
 [e ( _startAlert ..  ]
-"559
-[; ;tester.c: 559:     }
+"560
+[; ;tester.c: 560:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 2 `i 577  ]
 [e :U 578 ]
 }
-"562
-[; ;tester.c: 562: }
+"563
+[; ;tester.c: 563: }
 [e :UE 576 ]
 }
-"564
-[; ;tester.c: 564: void attenteDemarrage2(_Bool *autom, _Bool *testAct) {
+"565
+[; ;tester.c: 565: void attenteDemarrage2(_Bool *autom, _Bool *testAct) {
 [v _attenteDemarrage2 `(v ~T0 @X0 1 ef2`*a`*a ]
 {
 [e :U _attenteDemarrage2 ]
 [v _autom `*a ~T0 @X0 1 r1 ]
 [v _testAct `*a ~T0 @X0 1 r2 ]
 [f ]
-"566
-[; ;tester.c: 566:     unsigned char reception;
-[v _reception `uc ~T0 @X0 1 a ]
 "567
-[; ;tester.c: 567:     _Bool repOperateur = 0;
+[; ;tester.c: 567:     unsigned char reception;
+[v _reception `uc ~T0 @X0 1 a ]
+"568
+[; ;tester.c: 568:     _Bool repOperateur = 0;
 [v _repOperateur `a ~T0 @X0 1 a ]
 [e = _repOperateur -> -> 0 `i `a ]
-"569
-[; ;tester.c: 569:     while (!repOperateur) {
+"570
+[; ;tester.c: 570:     while (!repOperateur) {
 [e $U 581  ]
 [e :U 582 ]
 {
-"572
-[; ;tester.c: 572:         if (PORTDbits.RD2 == 0) {
+"573
+[; ;tester.c: 573:         if (PORTDbits.RD2 == 0) {
 [e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 584  ]
 {
-"574
-[; ;tester.c: 574:             printf("-> TEST MANUEL EN COURS\r\n");
-[e ( _printf :s 14C ]
 "575
-[; ;tester.c: 575:             repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 575:             printf("-> TEST MANUEL EN COURS\r\n");
+[e ( _printf :s 14C ]
 "576
-[; ;tester.c: 576:             *autom = 0;
-[e = *U _autom -> -> 0 `i `a ]
+[; ;tester.c: 576:             repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
 "577
-[; ;tester.c: 577:             *testAct = 1;
-[e = *U _testAct -> -> 1 `i `a ]
+[; ;tester.c: 577:             *autom = 0;
+[e = *U _autom -> -> 0 `i `a ]
 "578
-[; ;tester.c: 578:         }
+[; ;tester.c: 578:             *testAct = 1;
+[e = *U _testAct -> -> 1 `i `a ]
+"579
+[; ;tester.c: 579:         }
 }
 [e :U 584 ]
-"580
-[; ;tester.c: 580:         if (eusartRxCount != 0) {
+"581
+[; ;tester.c: 581:         if (eusartRxCount != 0) {
 [e $ ! != -> _eusartRxCount `i -> 0 `i 585  ]
 {
-"582
-[; ;tester.c: 582:             reception = EUSART_Read();
+"583
+[; ;tester.c: 583:             reception = EUSART_Read();
 [e = _reception ( _EUSART_Read ..  ]
-"584
-[; ;tester.c: 584:             switch (reception)
-[e $U 587  ]
 "585
-[; ;tester.c: 585:             {
+[; ;tester.c: 585:             switch (reception)
+[e $U 587  ]
+"586
+[; ;tester.c: 586:             {
 {
-"587
-[; ;tester.c: 587:                 case '0':
-[e :U 588 ]
 "588
-[; ;tester.c: 588:                 {
-{
+[; ;tester.c: 588:                 case '0':
+[e :U 588 ]
 "589
-[; ;tester.c: 589:                     __asm("reset");
+[; ;tester.c: 589:                 {
+{
+"590
+[; ;tester.c: 590:                     __asm("reset");
 [; <" reset ;# ">
-"591
-[; ;tester.c: 591:                 }
+"592
+[; ;tester.c: 592:                 }
 }
-"593
-[; ;tester.c: 593:                 case '1':
-[e :U 589 ]
 "594
-[; ;tester.c: 594:                 {
-{
+[; ;tester.c: 594:                 case '1':
+[e :U 589 ]
 "595
-[; ;tester.c: 595:                     printf("-> TEST ON\r\n");
-[e ( _printf :s 15C ]
-"596
-[; ;tester.c: 596:                     *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
-"597
-[; ;tester.c: 597:                     _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"598
-[; ;tester.c: 598:                     repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
-"599
-[; ;tester.c: 599:                     *testAct = 1;
-[e = *U _testAct -> -> 1 `i `a ]
-"600
-[; ;tester.c: 600:                     break;
-[e $U 586  ]
-"601
-[; ;tester.c: 601:                 }
-}
-"603
-[; ;tester.c: 603:                 case '9':
-[e :U 590 ]
-"604
-[; ;tester.c: 604:                 {
+[; ;tester.c: 595:                 {
 {
-"605
-[; ;tester.c: 605:                     printf("-> PROGRAMMATION TERMINEE\r\n");
-[e ( _printf :s 16C ]
-"606
-[; ;tester.c: 606:                     displayManager("TEST CARTE D925ED4", "", "FIN PROGRAMMATION", "");
-[e ( _displayManager (4 , , , :s 17C :s 18C :s 19C :s 20C ]
-"607
-[; ;tester.c: 607:                     *autom = 1;
+"596
+[; ;tester.c: 596:                     printf("-> TEST ON\r\n");
+[e ( _printf :s 15C ]
+"597
+[; ;tester.c: 597:                     *autom = 1;
 [e = *U _autom -> -> 1 `i `a ]
-"608
-[; ;tester.c: 608:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+"598
+[; ;tester.c: 598:                     _delay((unsigned long)((50)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"609
-[; ;tester.c: 609:                     repOperateur = 1;
+"599
+[; ;tester.c: 599:                     repOperateur = 1;
 [e = _repOperateur -> -> 1 `i `a ]
+"600
+[; ;tester.c: 600:                     *testAct = 1;
+[e = *U _testAct -> -> 1 `i `a ]
+"601
+[; ;tester.c: 601:                     break;
+[e $U 586  ]
+"602
+[; ;tester.c: 602:                 }
+}
+"604
+[; ;tester.c: 604:                 case '9':
+[e :U 590 ]
+"605
+[; ;tester.c: 605:                 {
+{
+"606
+[; ;tester.c: 606:                     printf("-> PROGRAMMATION TERMINEE\r\n");
+[e ( _printf :s 16C ]
+"607
+[; ;tester.c: 607:                     displayManager("TEST CARTE D925ED4", "", "FIN PROGRAMMATION", "");
+[e ( _displayManager (4 , , , :s 17C :s 18C :s 19C :s 20C ]
+"608
+[; ;tester.c: 608:                     *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
+"609
+[; ;tester.c: 609:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "610
-[; ;tester.c: 610:                     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
+[; ;tester.c: 610:                     repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
 "611
-[; ;tester.c: 611:                     do { LATAbits.LATA7 = 0; } while(0);
+[; ;tester.c: 611:                     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"612
+[; ;tester.c: 612:                     do { LATAbits.LATA7 = 0; } while(0);
 [e :U 593 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 592 ]
-"612
-[; ;tester.c: 612:                     break;
-[e $U 586  ]
 "613
-[; ;tester.c: 613:                 }
-}
+[; ;tester.c: 613:                     break;
+[e $U 586  ]
 "614
-[; ;tester.c: 614:             }
+[; ;tester.c: 614:                 }
+}
+"615
+[; ;tester.c: 615:             }
 }
 [e $U 586  ]
 [e :U 587 ]
@@ -2251,317 +2254,375 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 57 `ui `i 590
  586 ]
 [e :U 586 ]
-"615
-[; ;tester.c: 615:         }
+"616
+[; ;tester.c: 616:         }
 }
 [e :U 585 ]
-"616
-[; ;tester.c: 616:     }
+"617
+[; ;tester.c: 617:     }
 }
 [e :U 581 ]
-"569
-[; ;tester.c: 569:     while (!repOperateur) {
+"570
+[; ;tester.c: 570:     while (!repOperateur) {
 [e $ ! != -> _repOperateur `i -> 0 `i 582  ]
 [e :U 583 ]
-"618
-[; ;tester.c: 618: }
+"619
+[; ;tester.c: 619: }
 [e :UE 580 ]
 }
-"620
-[; ;tester.c: 620: void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog) {
-[v _attenteDemarrage3 `(v ~T0 @X0 1 ef3`*a`*a`*a ]
+"621
+[; ;tester.c: 621: void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive) {
+[v _attenteDemarrage3 `(v ~T0 @X0 1 ef4`*a`*a`*a`*a ]
 {
 [e :U _attenteDemarrage3 ]
 [v _autom `*a ~T0 @X0 1 r1 ]
 [v _testAct `*a ~T0 @X0 1 r2 ]
 [v _prog `*a ~T0 @X0 1 r3 ]
+[v _testSlaveActive `*a ~T0 @X0 1 r4 ]
 [f ]
-"622
-[; ;tester.c: 622:     unsigned char reception;
-[v _reception `uc ~T0 @X0 1 a ]
 "623
-[; ;tester.c: 623:     _Bool repOperateur = 0;
+[; ;tester.c: 623:     unsigned char reception;
+[v _reception `uc ~T0 @X0 1 a ]
+"624
+[; ;tester.c: 624:     _Bool repOperateur = 0;
 [v _repOperateur `a ~T0 @X0 1 a ]
 [e = _repOperateur -> -> 0 `i `a ]
-"625
-[; ;tester.c: 625:     while (!repOperateur) {
+"626
+[; ;tester.c: 626:     while (!repOperateur) {
 [e $U 595  ]
 [e :U 596 ]
 {
-"628
-[; ;tester.c: 628:         if (PORTDbits.RD2 == 0) {
+"629
+[; ;tester.c: 629:         if (PORTDbits.RD2 == 0) {
 [e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 598  ]
 {
-"630
-[; ;tester.c: 630:             printf("-> TEST MANUEL EN COURS\r\n");
-[e ( _printf :s 21C ]
 "631
-[; ;tester.c: 631:             repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 631:             printf("-> TEST MANUEL EN COURS\r\n");
+[e ( _printf :s 21C ]
 "632
-[; ;tester.c: 632:             *autom = 0;
-[e = *U _autom -> -> 0 `i `a ]
+[; ;tester.c: 632:             repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
 "633
-[; ;tester.c: 633:             *prog = 0;
-[e = *U _prog -> -> 0 `i `a ]
+[; ;tester.c: 633:             *autom = 0;
+[e = *U _autom -> -> 0 `i `a ]
 "634
-[; ;tester.c: 634:             *testAct = 1;
-[e = *U _testAct -> -> 1 `i `a ]
+[; ;tester.c: 634:             *prog = 0;
+[e = *U _prog -> -> 0 `i `a ]
 "635
-[; ;tester.c: 635:         }
+[; ;tester.c: 635:             *testAct = 1;
+[e = *U _testAct -> -> 1 `i `a ]
+"636
+[; ;tester.c: 636:         }
 }
 [e :U 598 ]
-"637
-[; ;tester.c: 637:         if (eusartRxCount != 0) {
+"638
+[; ;tester.c: 638:         if (eusartRxCount != 0) {
 [e $ ! != -> _eusartRxCount `i -> 0 `i 599  ]
 {
-"639
-[; ;tester.c: 639:             reception = EUSART_Read();
+"640
+[; ;tester.c: 640:             reception = EUSART_Read();
 [e = _reception ( _EUSART_Read ..  ]
-"641
-[; ;tester.c: 641:             switch (reception)
-[e $U 601  ]
 "642
-[; ;tester.c: 642:             {
+[; ;tester.c: 642:             switch (reception)
+[e $U 601  ]
+"643
+[; ;tester.c: 643:             {
 {
-"644
-[; ;tester.c: 644:                 case '0':
-[e :U 602 ]
 "645
-[; ;tester.c: 645:                 {
-{
+[; ;tester.c: 645:                 case '0':
+[e :U 602 ]
 "646
-[; ;tester.c: 646:                     __asm("reset");
+[; ;tester.c: 646:                 {
+{
+"647
+[; ;tester.c: 647:                     __asm("reset");
 [; <" reset ;# ">
-"648
-[; ;tester.c: 648:                 }
+"649
+[; ;tester.c: 649:                 }
 }
-"650
-[; ;tester.c: 650:                 case '1':
-[e :U 603 ]
 "651
-[; ;tester.c: 651:                 {
-{
+[; ;tester.c: 651:                 case '1':
+[e :U 603 ]
 "652
-[; ;tester.c: 652:                     printf("-> TEST ON\r\n");
-[e ( _printf :s 22C ]
-"653
-[; ;tester.c: 653:                     *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
-"654
-[; ;tester.c: 654:                     *testAct = 1;
-[e = *U _testAct -> -> 1 `i `a ]
-"655
-[; ;tester.c: 655:                     *prog = 0;
-[e = *U _prog -> -> 0 `i `a ]
-"656
-[; ;tester.c: 656:                     _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"657
-[; ;tester.c: 657:                     repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
-"658
-[; ;tester.c: 658:                     break;
-[e $U 600  ]
-"659
-[; ;tester.c: 659:                 }
-}
-"661
-[; ;tester.c: 661:                    case '6':
-[e :U 604 ]
-"662
-[; ;tester.c: 662:                 {
+[; ;tester.c: 652:                 {
 {
-"663
-[; ;tester.c: 663:                     printf("-> ERREUR PROGRAMMATION\r\n");
-[e ( _printf :s 23C ]
-"664
-[; ;tester.c: 664:                     displayManager("TEST CARTE D925ED4", "", "ERREUR PROGRAMMATION", "");
-[e ( _displayManager (4 , , , :s 24C :s 25C :s 26C :s 27C ]
-"665
-[; ;tester.c: 665:                     *autom = 1;
+"653
+[; ;tester.c: 653:                     printf("-> TEST ON\r\n");
+[e ( _printf :s 22C ]
+"654
+[; ;tester.c: 654:                     *autom = 1;
 [e = *U _autom -> -> 1 `i `a ]
-"666
-[; ;tester.c: 666:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+"655
+[; ;tester.c: 655:                     *testAct = 1;
+[e = *U _testAct -> -> 1 `i `a ]
+"656
+[; ;tester.c: 656:                     *prog = 0;
+[e = *U _prog -> -> 0 `i `a ]
+"657
+[; ;tester.c: 657:                     _delay((unsigned long)((50)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"667
-[; ;tester.c: 667:                     repOperateur = 1;
+"658
+[; ;tester.c: 658:                     repOperateur = 1;
 [e = _repOperateur -> -> 1 `i `a ]
+"659
+[; ;tester.c: 659:                     break;
+[e $U 600  ]
+"660
+[; ;tester.c: 660:                 }
+}
+"662
+[; ;tester.c: 662:                 case '6':
+[e :U 604 ]
+"663
+[; ;tester.c: 663:                 {
+{
+"664
+[; ;tester.c: 664:                     printf("-> ERREUR PROGRAMMATION\r\n");
+[e ( _printf :s 23C ]
+"665
+[; ;tester.c: 665:                     displayManager("TEST CARTE D925ED4", "", "ERREUR PROGRAMMATION", "");
+[e ( _displayManager (4 , , , :s 24C :s 25C :s 26C :s 27C ]
+"666
+[; ;tester.c: 666:                     *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
+"667
+[; ;tester.c: 667:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "668
-[; ;tester.c: 668:                     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
+[; ;tester.c: 668:                     repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
 "669
-[; ;tester.c: 669:                     do { LATAbits.LATA7 = 0; } while(0);
+[; ;tester.c: 669:                     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"670
+[; ;tester.c: 670:                     do { LATAbits.LATA7 = 0; } while(0);
 [e :U 607 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 606 ]
-"670
-[; ;tester.c: 670:                     break;
-[e $U 600  ]
 "671
-[; ;tester.c: 671:                 }
+[; ;tester.c: 671:                     break;
+[e $U 600  ]
+"672
+[; ;tester.c: 672:                 }
 }
-"673
-[; ;tester.c: 673:                 case '7':
-[e :U 608 ]
 "674
-[; ;tester.c: 674:                 {
-{
+[; ;tester.c: 674:                 case '7':
+[e :U 608 ]
 "675
-[; ;tester.c: 675:                     printf("-> PROGRAMMATION EN COURS\r\n");
-[e ( _printf :s 28C ]
+[; ;tester.c: 675:                 {
+{
 "676
-[; ;tester.c: 676:                     displayManager("TEST CARTE D925ED4", "", "PROGRAMMATION", "");
-[e ( _displayManager (4 , , , :s 29C :s 30C :s 31C :s 32C ]
+[; ;tester.c: 676:                     printf("-> PROGRAMMATION EN COURS\r\n");
+[e ( _printf :s 28C ]
 "677
-[; ;tester.c: 677:                     *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
+[; ;tester.c: 677:                     displayManager("TEST CARTE D925ED4", "", "PROGRAMMATION", "");
+[e ( _displayManager (4 , , , :s 29C :s 30C :s 31C :s 32C ]
 "678
-[; ;tester.c: 678:                     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
+[; ;tester.c: 678:                     *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
 "679
-[; ;tester.c: 679:                     *prog = 0;
-[e = *U _prog -> -> 0 `i `a ]
+[; ;tester.c: 679:                     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
 "680
-[; ;tester.c: 680:                     _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;tester.c: 680:                     *prog = 0;
+[e = *U _prog -> -> 0 `i `a ]
 "681
-[; ;tester.c: 681:                     repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 681:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "682
-[; ;tester.c: 682:                     do { LATAbits.LATA7 = 1; } while(0);
+[; ;tester.c: 682:                     repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"683
+[; ;tester.c: 683:                     do { LATAbits.LATA7 = 1; } while(0);
 [e :U 611 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
 [e :U 610 ]
-"683
-[; ;tester.c: 683:                     break;
-[e $U 600  ]
 "684
-[; ;tester.c: 684:                 }
+[; ;tester.c: 684:                     break;
+[e $U 600  ]
+"685
+[; ;tester.c: 685:                 }
 }
-"686
-[; ;tester.c: 686:                 case '9':
-[e :U 612 ]
 "687
-[; ;tester.c: 687:                 {
-{
+[; ;tester.c: 687:                 case '9':
+[e :U 612 ]
 "688
-[; ;tester.c: 688:                     printf("-> PROGRAMMATION TERMINEE\r\n");
-[e ( _printf :s 33C ]
+[; ;tester.c: 688:                 {
+{
 "689
-[; ;tester.c: 689:                     displayManager("TEST CARTE D925ED4", "", "FIN PROGRAMMATION", "");
-[e ( _displayManager (4 , , , :s 34C :s 35C :s 36C :s 37C ]
+[; ;tester.c: 689:                     printf("-> PROGRAMMATION TERMINEE\r\n");
+[e ( _printf :s 33C ]
 "690
-[; ;tester.c: 690:                     *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
+[; ;tester.c: 690:                     displayManager("TEST CARTE D925ED4", "", "FIN PROGRAMMATION", "");
+[e ( _displayManager (4 , , , :s 34C :s 35C :s 36C :s 37C ]
 "691
-[; ;tester.c: 691:                     _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;tester.c: 691:                     *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
 "692
-[; ;tester.c: 692:                     repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 692:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "693
-[; ;tester.c: 693:                     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
+[; ;tester.c: 693:                     repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
 "694
-[; ;tester.c: 694:                     do { LATAbits.LATA7 = 0; } while(0);
+[; ;tester.c: 694:                     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"695
+[; ;tester.c: 695:                     do { LATAbits.LATA7 = 0; } while(0);
 [e :U 615 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 614 ]
-"695
-[; ;tester.c: 695:                     break;
-[e $U 600  ]
 "696
-[; ;tester.c: 696:                 }
+[; ;tester.c: 696:                     break;
+[e $U 600  ]
+"697
+[; ;tester.c: 697:                 }
 }
-"698
-[; ;tester.c: 698:                 case '8':
-[e :U 616 ]
 "699
-[; ;tester.c: 699:                 {
-{
+[; ;tester.c: 699:                 case '8':
+[e :U 616 ]
 "700
-[; ;tester.c: 700:                     printf("-> EFFACEMENT EN COURS\r\n");
-[e ( _printf :s 38C ]
+[; ;tester.c: 700:                 {
+{
 "701
-[; ;tester.c: 701:                     displayManager("TEST CARTE D925ED4", "", "EFFACEMENT", "");
-[e ( _displayManager (4 , , , :s 39C :s 40C :s 41C :s 42C ]
+[; ;tester.c: 701:                     printf("-> EFFACEMENT EN COURS\r\n");
+[e ( _printf :s 38C ]
 "702
-[; ;tester.c: 702:                     *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
+[; ;tester.c: 702:                     displayManager("TEST CARTE D925ED4", "", "EFFACEMENT", "");
+[e ( _displayManager (4 , , , :s 39C :s 40C :s 41C :s 42C ]
 "703
-[; ;tester.c: 703:                     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
+[; ;tester.c: 703:                     *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
 "704
-[; ;tester.c: 704:                     *prog = 1;
-[e = *U _prog -> -> 1 `i `a ]
+[; ;tester.c: 704:                     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
 "705
-[; ;tester.c: 705:                     _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;tester.c: 705:                     *prog = 1;
+[e = *U _prog -> -> 1 `i `a ]
 "706
-[; ;tester.c: 706:                     repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 706:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "707
-[; ;tester.c: 707:                     do { LATAbits.LATA7 = 1; } while(0);
+[; ;tester.c: 707:                     repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"708
+[; ;tester.c: 708:                     do { LATAbits.LATA7 = 1; } while(0);
 [e :U 619 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
 [e :U 618 ]
-"708
-[; ;tester.c: 708:                     break;
-[e $U 600  ]
 "709
-[; ;tester.c: 709:                 }
+[; ;tester.c: 709:                     break;
+[e $U 600  ]
+"710
+[; ;tester.c: 710:                 }
 }
-"711
-[; ;tester.c: 711:                 case '5':
-[e :U 620 ]
 "712
-[; ;tester.c: 712:                 {
-{
+[; ;tester.c: 712:                 case '5':
+[e :U 620 ]
 "713
-[; ;tester.c: 713:                     printf("-> EFFACEMENT TERMINE\r\n");
-[e ( _printf :s 43C ]
+[; ;tester.c: 713:                 {
+{
 "714
-[; ;tester.c: 714:                     displayManager("TEST CARTE D925ED4", "", "FIN EFFACEMENT", "");
-[e ( _displayManager (4 , , , :s 44C :s 45C :s 46C :s 47C ]
+[; ;tester.c: 714:                     printf("-> EFFACEMENT TERMINE\r\n");
+[e ( _printf :s 43C ]
 "715
-[; ;tester.c: 715:                     *autom = 1;
-[e = *U _autom -> -> 1 `i `a ]
+[; ;tester.c: 715:                     displayManager("TEST CARTE D925ED4", "", "FIN EFFACEMENT", "");
+[e ( _displayManager (4 , , , :s 44C :s 45C :s 46C :s 47C ]
 "716
-[; ;tester.c: 716:                     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
+[; ;tester.c: 716:                     *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
 "717
-[; ;tester.c: 717:                     *prog = 1;
-[e = *U _prog -> -> 1 `i `a ]
+[; ;tester.c: 717:                     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
 "718
-[; ;tester.c: 718:                     _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;tester.c: 718:                     *prog = 1;
+[e = *U _prog -> -> 1 `i `a ]
 "719
-[; ;tester.c: 719:                     repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
+[; ;tester.c: 719:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "720
-[; ;tester.c: 720:                     do { LATAbits.LATA7 = 0; } while(0);
+[; ;tester.c: 720:                     repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"721
+[; ;tester.c: 721:                     do { LATAbits.LATA7 = 0; } while(0);
 [e :U 623 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 622 ]
-"721
-[; ;tester.c: 721:                     break;
-[e $U 600  ]
 "722
-[; ;tester.c: 722:                 }
+[; ;tester.c: 722:                     break;
+[e $U 600  ]
+"723
+[; ;tester.c: 723:                 }
 }
-"724
-[; ;tester.c: 724:             }
+"725
+[; ;tester.c: 725:                 case 'a':
+[e :U 624 ]
+"726
+[; ;tester.c: 726:                 {
+{
+"727
+[; ;tester.c: 727:                     char responseSlave = startTestSlave();
+[v _responseSlave `uc ~T0 @X0 1 a ]
+[e = _responseSlave ( _startTestSlave ..  ]
+"728
+[; ;tester.c: 728:                     if (responseSlave == 'a') {
+[e $ ! == -> _responseSlave `ui -> 97 `ui 625  ]
+{
+"730
+[; ;tester.c: 730:                         printf("-> SLAVE_TEST ON\r\n");
+[e ( _printf :s 48C ]
+"731
+[; ;tester.c: 731:                         *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
+"732
+[; ;tester.c: 732:                         *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"733
+[; ;tester.c: 733:                         *testSlaveActive = 1;
+[e = *U _testSlaveActive -> -> 1 `i `a ]
+"734
+[; ;tester.c: 734:                         *prog = 0;
+[e = *U _prog -> -> 0 `i `a ]
+"735
+[; ;tester.c: 735:                         _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"736
+[; ;tester.c: 736:                         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"738
+[; ;tester.c: 738:                     } else {
+}
+[e $U 626  ]
+[e :U 625 ]
+{
+"740
+[; ;tester.c: 740:                         printf("-> SLAVE RESPONSE NULL\r\n");
+[e ( _printf :s 49C ]
+"741
+[; ;tester.c: 741:                         repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"743
+[; ;tester.c: 743:                     }
+}
+[e :U 626 ]
+"748
+[; ;tester.c: 748:                     break;
+[e $U 600  ]
+"749
+[; ;tester.c: 749:                 }
+}
+"751
+[; ;tester.c: 751:             }
 }
 [e $U 600  ]
 [e :U 601 ]
@@ -2572,143 +2633,144 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 57 `ui `i 612
  , $ -> -> 56 `ui `i 616
  , $ -> -> 53 `ui `i 620
+ , $ -> -> 97 `ui `i 624
  600 ]
 [e :U 600 ]
-"725
-[; ;tester.c: 725:         }
+"752
+[; ;tester.c: 752:         }
 }
 [e :U 599 ]
-"726
-[; ;tester.c: 726:     }
+"753
+[; ;tester.c: 753:     }
 }
 [e :U 595 ]
-"625
-[; ;tester.c: 625:     while (!repOperateur) {
+"626
+[; ;tester.c: 626:     while (!repOperateur) {
 [e $ ! != -> _repOperateur `i -> 0 `i 596  ]
 [e :U 597 ]
-"728
-[; ;tester.c: 728: }
+"755
+[; ;tester.c: 755: }
 [e :UE 594 ]
 }
-"730
-[; ;tester.c: 730: void attenteAquittement(_Bool *autom, _Bool *testAct) {
+"757
+[; ;tester.c: 757: void attenteAquittement(_Bool *autom, _Bool *testAct) {
 [v _attenteAquittement `(v ~T0 @X0 1 ef2`*a`*a ]
 {
 [e :U _attenteAquittement ]
 [v _autom `*a ~T0 @X0 1 r1 ]
 [v _testAct `*a ~T0 @X0 1 r2 ]
 [f ]
-"732
-[; ;tester.c: 732:     unsigned char reception;
+"759
+[; ;tester.c: 759:     unsigned char reception;
 [v _reception `uc ~T0 @X0 1 a ]
-"733
-[; ;tester.c: 733:     _Bool repOperateur = 0;
+"760
+[; ;tester.c: 760:     _Bool repOperateur = 0;
 [v _repOperateur `a ~T0 @X0 1 a ]
 [e = _repOperateur -> -> 0 `i `a ]
-"735
-[; ;tester.c: 735:     while (!repOperateur) {
-[e $U 625  ]
-[e :U 626 ]
+"762
+[; ;tester.c: 762:     while (!repOperateur) {
+[e $U 628  ]
+[e :U 629 ]
 {
-"738
-[; ;tester.c: 738:         if (PORTDbits.RD2 == 0) {
-[e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 628  ]
+"765
+[; ;tester.c: 765:         if (PORTDbits.RD2 == 0) {
+[e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 631  ]
 {
-"740
-[; ;tester.c: 740:             printf("-> FIN TEST MANUEL\r\n");
-[e ( _printf :s 48C ]
-"741
-[; ;tester.c: 741:             repOperateur = 1;
+"767
+[; ;tester.c: 767:             printf("-> FIN TEST MANUEL\r\n");
+[e ( _printf :s 50C ]
+"768
+[; ;tester.c: 768:             repOperateur = 1;
 [e = _repOperateur -> -> 1 `i `a ]
-"742
-[; ;tester.c: 742:             *autom = 0;
+"769
+[; ;tester.c: 769:             *autom = 0;
 [e = *U _autom -> -> 0 `i `a ]
-"743
-[; ;tester.c: 743:             *testAct = 0;
+"770
+[; ;tester.c: 770:             *testAct = 0;
 [e = *U _testAct -> -> 0 `i `a ]
-"744
-[; ;tester.c: 744:         }
+"771
+[; ;tester.c: 771:         }
+}
+[e :U 631 ]
+"773
+[; ;tester.c: 773:         if (eusartRxCount != 0) {
+[e $ ! != -> _eusartRxCount `i -> 0 `i 632  ]
+{
+"775
+[; ;tester.c: 775:             reception = EUSART_Read();
+[e = _reception ( _EUSART_Read ..  ]
+"777
+[; ;tester.c: 777:             switch (reception)
+[e $U 634  ]
+"778
+[; ;tester.c: 778:             {
+{
+"780
+[; ;tester.c: 780:                 case '0':
+[e :U 635 ]
+"781
+[; ;tester.c: 781:                 {
+{
+"782
+[; ;tester.c: 782:                     __asm("reset");
+[; <" reset ;# ">
+"784
+[; ;tester.c: 784:                 }
+}
+"786
+[; ;tester.c: 786:                 case '4':
+[e :U 636 ]
+"787
+[; ;tester.c: 787:                 {
+{
+"788
+[; ;tester.c: 788:                     printf("-> TEST ACQUITTE\r\n");
+[e ( _printf :s 51C ]
+"789
+[; ;tester.c: 789:                     *autom = 0;
+[e = *U _autom -> -> 0 `i `a ]
+"790
+[; ;tester.c: 790:                     *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"791
+[; ;tester.c: 791:                     _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"792
+[; ;tester.c: 792:                     repOperateur = 1;
+[e = _repOperateur -> -> 1 `i `a ]
+"793
+[; ;tester.c: 793:                     break;
+[e $U 633  ]
+"794
+[; ;tester.c: 794:                 }
+}
+"795
+[; ;tester.c: 795:             }
+}
+[e $U 633  ]
+[e :U 634 ]
+[e [\ -> _reception `i , $ -> -> 48 `ui `i 635
+ , $ -> -> 52 `ui `i 636
+ 633 ]
+[e :U 633 ]
+"796
+[; ;tester.c: 796:         }
+}
+[e :U 632 ]
+"797
+[; ;tester.c: 797:     }
 }
 [e :U 628 ]
-"746
-[; ;tester.c: 746:         if (eusartRxCount != 0) {
-[e $ ! != -> _eusartRxCount `i -> 0 `i 629  ]
-{
-"748
-[; ;tester.c: 748:             reception = EUSART_Read();
-[e = _reception ( _EUSART_Read ..  ]
-"750
-[; ;tester.c: 750:             switch (reception)
-[e $U 631  ]
-"751
-[; ;tester.c: 751:             {
-{
-"753
-[; ;tester.c: 753:                 case '0':
-[e :U 632 ]
-"754
-[; ;tester.c: 754:                 {
-{
-"755
-[; ;tester.c: 755:                     __asm("reset");
-[; <" reset ;# ">
-"757
-[; ;tester.c: 757:                 }
-}
-"759
-[; ;tester.c: 759:                 case '4':
-[e :U 633 ]
-"760
-[; ;tester.c: 760:                 {
-{
-"761
-[; ;tester.c: 761:                     printf("-> TEST ACQUITTE\r\n");
-[e ( _printf :s 49C ]
 "762
-[; ;tester.c: 762:                     *autom = 0;
-[e = *U _autom -> -> 0 `i `a ]
-"763
-[; ;tester.c: 763:                     *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
-"764
-[; ;tester.c: 764:                     _delay((unsigned long)((50)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"765
-[; ;tester.c: 765:                     repOperateur = 1;
-[e = _repOperateur -> -> 1 `i `a ]
-"766
-[; ;tester.c: 766:                     break;
-[e $U 630  ]
-"767
-[; ;tester.c: 767:                 }
-}
-"768
-[; ;tester.c: 768:             }
-}
-[e $U 630  ]
-[e :U 631 ]
-[e [\ -> _reception `i , $ -> -> 48 `ui `i 632
- , $ -> -> 52 `ui `i 633
- 630 ]
+[; ;tester.c: 762:     while (!repOperateur) {
+[e $ ! != -> _repOperateur `i -> 0 `i 629  ]
 [e :U 630 ]
-"769
-[; ;tester.c: 769:         }
+"799
+[; ;tester.c: 799: }
+[e :UE 627 ]
 }
-[e :U 629 ]
-"770
-[; ;tester.c: 770:     }
-}
-[e :U 625 ]
-"735
-[; ;tester.c: 735:     while (!repOperateur) {
-[e $ ! != -> _repOperateur `i -> 0 `i 626  ]
-[e :U 627 ]
-"772
-[; ;tester.c: 772: }
-[e :UE 624 ]
-}
-"774
-[; ;tester.c: 774: void sortieErreur(_Bool *autom, _Bool *testAct, _Bool *testVoy, _Bool *prog) {
+"801
+[; ;tester.c: 801: void sortieErreur(_Bool *autom, _Bool *testAct, _Bool *testVoy, _Bool *prog) {
 [v _sortieErreur `(v ~T0 @X0 1 ef4`*a`*a`*a`*a ]
 {
 [e :U _sortieErreur ]
@@ -2717,21 +2779,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _testVoy `*a ~T0 @X0 1 r3 ]
 [v _prog `*a ~T0 @X0 1 r4 ]
 [f ]
-"776
-[; ;tester.c: 776:     attenteAquittement(*autom, *testAct);
+"803
+[; ;tester.c: 803:     attenteAquittement(*autom, *testAct);
 [e ( _attenteAquittement (2 , -> *U _autom `*a -> *U _testAct `*a ]
-"777
-[; ;tester.c: 777:     initialConditions(*testAct, *testVoy, *autom, *prog);
+"804
+[; ;tester.c: 804:     initialConditions(*testAct, *testVoy, *autom, *prog);
 [e ( _initialConditions (4 , , , -> *U _testAct `*a -> *U _testVoy `*a -> *U _autom `*a -> *U _prog `*a ]
-"778
-[; ;tester.c: 778:     _delay((unsigned long)((2000)*(16000000/4000.0)));
+"805
+[; ;tester.c: 805:     _delay((unsigned long)((2000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"780
-[; ;tester.c: 780: }
-[e :UE 634 ]
+"807
+[; ;tester.c: 807: }
+[e :UE 637 ]
 }
-"782
-[; ;tester.c: 782: void alerteDefautEtape16(char etape[], _Bool *testAct, _Bool *testVoy, _Bool *autom, _Bool *prog) {
+"809
+[; ;tester.c: 809: void alerteDefautEtape16(char etape[], _Bool *testAct, _Bool *testVoy, _Bool *autom, _Bool *prog) {
 [v _alerteDefautEtape16 `(v ~T0 @X0 1 ef5`*uc`*a`*a`*a`*a ]
 {
 [e :U _alerteDefautEtape16 ]
@@ -2741,11 +2803,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _autom `*a ~T0 @X0 1 r4 ]
 [v _prog `*a ~T0 @X0 1 r5 ]
 [f ]
-[v F3809 `uc ~T0 @X0 -> 20 `i s ]
-[i F3809
+[v F3817 `uc ~T0 @X0 -> 20 `i s ]
+[i F3817
 :U ..
-"784
-[; ;tester.c: 784:     char error[20] = "-> ERREUR: ";
+"811
+[; ;tester.c: 811:     char error[20] = "-> ERREUR: ";
 -> 45 `c
 -> 62 `c
 -> 32 `c
@@ -2761,194 +2823,194 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _error `uc ~T0 @X0 -> 20 `i a ]
-[e = _error F3809 ]
-[v F3811 `uc ~T0 @X0 -> 10 `i s ]
-[i F3811
+[e = _error F3817 ]
+[v F3819 `uc ~T0 @X0 -> 10 `i s ]
+[i F3819
 :U ..
-"785
-[; ;tester.c: 785:     char eol[10] = "\r\n";
+"812
+[; ;tester.c: 812:     char eol[10] = "\r\n";
 -> 13 `c
 -> 10 `c
 -> 0 `c
 ..
 ]
 [v _eol `uc ~T0 @X0 -> 10 `i a ]
-[e = _eol F3811 ]
-"786
-[; ;tester.c: 786:     ledNonConforme(1);
+[e = _eol F3819 ]
+"813
+[; ;tester.c: 813:     ledNonConforme(1);
 [e ( _ledNonConforme (1 -> -> 1 `i `a ]
-"787
-[; ;tester.c: 787:     ledProgession(1);
+"814
+[; ;tester.c: 814:     ledProgession(1);
 [e ( _ledProgession (1 -> -> 1 `i `a ]
-"788
-[; ;tester.c: 788:     ledConforme(0);
+"815
+[; ;tester.c: 815:     ledConforme(0);
 [e ( _ledConforme (1 -> -> 0 `i `a ]
-"790
-[; ;tester.c: 790:     displayManager(etape, "TEST NON CONFORME", "VERIFIER P1 ET P2", "PRESSER OK OU ERREUR");
-[e ( _displayManager (4 , , , _etape :s 50C :s 51C :s 52C ]
-"791
-[; ;tester.c: 791:     printf(strcat(strcat(error, etape), eol));
+"817
+[; ;tester.c: 817:     displayManager(etape, "TEST NON CONFORME", "VERIFIER P1 ET P2", "PRESSER OK OU ERREUR");
+[e ( _displayManager (4 , , , _etape :s 52C :s 53C :s 54C ]
+"818
+[; ;tester.c: 818:     printf(strcat(strcat(error, etape), eol));
 [e ( _printf -> ( _strcat (2 , ( _strcat (2 , &U _error -> _etape `*Cuc -> &U _eol `*Cuc `*Cuc ]
-"792
-[; ;tester.c: 792:     errorAlert();
+"819
+[; ;tester.c: 819:     errorAlert();
 [e ( _errorAlert ..  ]
-"794
-[; ;tester.c: 794:     _Bool reponse = reponseOperateur(*autom);
+"821
+[; ;tester.c: 821:     _Bool reponse = reponseOperateur(*autom);
 [v _reponse `a ~T0 @X0 1 a ]
 [e = _reponse ( _reponseOperateur (1 *U _autom ]
-"795
-[; ;tester.c: 795:     _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"796
-[; ;tester.c: 796:     if (reponse) {
-[e $ ! != -> _reponse `i -> 0 `i 636  ]
-{
-"799
-[; ;tester.c: 799:         *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
-"800
-[; ;tester.c: 800:         *testVoy = 0;
-[e = *U _testVoy -> -> 0 `i `a ]
-"802
-[; ;tester.c: 802:         displayManager("ETAPE 16", "NON CONFORME", "RESULTAT CONFIRME", "ATTENTE ACQUITTEMENT");
-[e ( _displayManager (4 , , , :s 53C :s 54C :s 55C :s 56C ]
-"803
-[; ;tester.c: 803:         sortieErreur(&autom, &testAct, &testVoy, &prog);
-[e ( _sortieErreur (4 , , , -> &U _autom `*a -> &U _testAct `*a -> &U _testVoy `*a -> &U _prog `*a ]
-"805
-[; ;tester.c: 805:     } else {
-}
-[e $U 637  ]
-[e :U 636 ]
-{
-"807
-[; ;tester.c: 807:         displayManager("ETAPE 16", "TEST P1", "", "");
-[e ( _displayManager (4 , , , :s 57C :s 58C :s 59C :s 60C ]
-"808
-[; ;tester.c: 808:         ledNonConforme(0);
-[e ( _ledNonConforme (1 -> -> 0 `i `a ]
-"809
-[; ;tester.c: 809:         ledProgession(1);
-[e ( _ledProgession (1 -> -> 1 `i `a ]
-"810
-[; ;tester.c: 810:         ledConforme(0);
-[e ( _ledConforme (1 -> -> 0 `i `a ]
-"811
-[; ;tester.c: 811:         setP1(1);
-[e ( _setP1 (1 -> -> 1 `i `a ]
-"812
-[; ;tester.c: 812:         _delay((unsigned long)((1200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"813
-[; ;tester.c: 813:         setP1(0);
-[e ( _setP1 (1 -> -> 0 `i `a ]
-"814
-[; ;tester.c: 814:         _delay((unsigned long)((1000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"815
-[; ;tester.c: 815:         if (testR1(1) && testR2(1) && testR3(1)) {
-[e $ ! && && != -> ( _testR1 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 1 `i `a `i -> 0 `i 638  ]
-{
-"817
-[; ;tester.c: 817:             displayManager("ETAPE 16", "TEST P1", "ERREUR VALIDEE", "TEST OK");
-[e ( _displayManager (4 , , , :s 61C :s 62C :s 63C :s 64C ]
-"819
-[; ;tester.c: 819:         } else {
-}
-[e $U 639  ]
-[e :U 638 ]
-{
-"821
-[; ;tester.c: 821:             *testAct = 0;
-[e = *U _testAct -> -> 0 `i `a ]
 "822
-[; ;tester.c: 822:             alerteDefaut("ETAPE 16", &testAct, &testVoy);
-[e ( _alerteDefaut (3 , , :s 65C -> &U _testAct `*a -> &U _testVoy `*a ]
+[; ;tester.c: 822:     _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "823
-[; ;tester.c: 823:             sortieErreur(&autom, &testAct, &testVoy, &prog);
-[e ( _sortieErreur (4 , , , -> &U _autom `*a -> &U _testAct `*a -> &U _testVoy `*a -> &U _prog `*a ]
-"824
-[; ;tester.c: 824:         }
-}
-[e :U 639 ]
+[; ;tester.c: 823:     if (reponse) {
+[e $ ! != -> _reponse `i -> 0 `i 639  ]
+{
 "826
-[; ;tester.c: 826:     }
-}
-[e :U 637 ]
+[; ;tester.c: 826:         *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"827
+[; ;tester.c: 827:         *testVoy = 0;
+[e = *U _testVoy -> -> 0 `i `a ]
 "829
-[; ;tester.c: 829: }
-[e :UE 635 ]
+[; ;tester.c: 829:         displayManager("ETAPE 16", "NON CONFORME", "RESULTAT CONFIRME", "ATTENTE ACQUITTEMENT");
+[e ( _displayManager (4 , , , :s 55C :s 56C :s 57C :s 58C ]
+"830
+[; ;tester.c: 830:         sortieErreur(&autom, &testAct, &testVoy, &prog);
+[e ( _sortieErreur (4 , , , -> &U _autom `*a -> &U _testAct `*a -> &U _testVoy `*a -> &U _prog `*a ]
+"832
+[; ;tester.c: 832:     } else {
 }
-"831
-[; ;tester.c: 831: void marchePAP() {
+[e $U 640  ]
+[e :U 639 ]
+{
+"834
+[; ;tester.c: 834:         displayManager("ETAPE 16", "TEST P1", "", "");
+[e ( _displayManager (4 , , , :s 59C :s 60C :s 61C :s 62C ]
+"835
+[; ;tester.c: 835:         ledNonConforme(0);
+[e ( _ledNonConforme (1 -> -> 0 `i `a ]
+"836
+[; ;tester.c: 836:         ledProgession(1);
+[e ( _ledProgession (1 -> -> 1 `i `a ]
+"837
+[; ;tester.c: 837:         ledConforme(0);
+[e ( _ledConforme (1 -> -> 0 `i `a ]
+"838
+[; ;tester.c: 838:         setP1(1);
+[e ( _setP1 (1 -> -> 1 `i `a ]
+"839
+[; ;tester.c: 839:         _delay((unsigned long)((1200)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"840
+[; ;tester.c: 840:         setP1(0);
+[e ( _setP1 (1 -> -> 0 `i `a ]
+"841
+[; ;tester.c: 841:         _delay((unsigned long)((1000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"842
+[; ;tester.c: 842:         if (testR1(1) && testR2(1) && testR3(1)) {
+[e $ ! && && != -> ( _testR1 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 1 `i `a `i -> 0 `i 641  ]
+{
+"844
+[; ;tester.c: 844:             displayManager("ETAPE 16", "TEST P1", "ERREUR VALIDEE", "TEST OK");
+[e ( _displayManager (4 , , , :s 63C :s 64C :s 65C :s 66C ]
+"846
+[; ;tester.c: 846:         } else {
+}
+[e $U 642  ]
+[e :U 641 ]
+{
+"848
+[; ;tester.c: 848:             *testAct = 0;
+[e = *U _testAct -> -> 0 `i `a ]
+"849
+[; ;tester.c: 849:             alerteDefaut("ETAPE 16", &testAct, &testVoy);
+[e ( _alerteDefaut (3 , , :s 67C -> &U _testAct `*a -> &U _testVoy `*a ]
+"850
+[; ;tester.c: 850:             sortieErreur(&autom, &testAct, &testVoy, &prog);
+[e ( _sortieErreur (4 , , , -> &U _autom `*a -> &U _testAct `*a -> &U _testVoy `*a -> &U _prog `*a ]
+"851
+[; ;tester.c: 851:         }
+}
+[e :U 642 ]
+"853
+[; ;tester.c: 853:     }
+}
+[e :U 640 ]
+"856
+[; ;tester.c: 856: }
+[e :UE 638 ]
+}
+"858
+[; ;tester.c: 858: void marchePAP() {
 [v _marchePAP `(v ~T0 @X0 1 ef ]
 {
 [e :U _marchePAP ]
 [f ]
-"833
-[; ;tester.c: 833:     _Bool repOperateur = 0;
+"860
+[; ;tester.c: 860:     _Bool repOperateur = 0;
 [v _repOperateur `a ~T0 @X0 1 a ]
 [e = _repOperateur -> -> 0 `i `a ]
-"834
-[; ;tester.c: 834:     printf("-> Appuyer sur OK\r\n");
-[e ( _printf :s 66C ]
-"835
-[; ;tester.c: 835:     while (!repOperateur) {
-[e $U 641  ]
-[e :U 642 ]
+"861
+[; ;tester.c: 861:     printf("-> Appuyer sur OK\r\n");
+[e ( _printf :s 68C ]
+"862
+[; ;tester.c: 862:     while (!repOperateur) {
+[e $U 644  ]
+[e :U 645 ]
 {
-"838
-[; ;tester.c: 838:         if (PORTDbits.RD2 == 0) {
-[e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 644  ]
+"865
+[; ;tester.c: 865:         if (PORTDbits.RD2 == 0) {
+[e $ ! == -> . . _PORTDbits 0 2 `i -> 0 `i 647  ]
 {
-"840
-[; ;tester.c: 840:             repOperateur = 1;
+"867
+[; ;tester.c: 867:             repOperateur = 1;
 [e = _repOperateur -> -> 1 `i `a ]
-"841
-[; ;tester.c: 841:         }
+"868
+[; ;tester.c: 868:         }
+}
+[e :U 647 ]
+"869
+[; ;tester.c: 869:     }
 }
 [e :U 644 ]
-"842
-[; ;tester.c: 842:     }
-}
-[e :U 641 ]
-"835
-[; ;tester.c: 835:     while (!repOperateur) {
-[e $ ! != -> _repOperateur `i -> 0 `i 642  ]
-[e :U 643 ]
-"843
-[; ;tester.c: 843: }
-[e :UE 640 ]
+"862
+[; ;tester.c: 862:     while (!repOperateur) {
+[e $ ! != -> _repOperateur `i -> 0 `i 645  ]
+[e :U 646 ]
+"870
+[; ;tester.c: 870: }
+[e :UE 643 ]
 }
 [p f _printf 9437696 ]
 [a 10C 65 84 84 69 78 84 69 32 65 67 81 85 73 84 84 69 77 69 78 84 0 ]
-[a 56C 65 84 84 69 78 84 69 32 65 67 81 85 73 84 84 69 77 69 78 84 0 ]
+[a 58C 65 84 84 69 78 84 69 32 65 67 81 85 73 84 84 69 77 69 78 84 0 ]
 [a 46C 70 73 78 32 69 70 70 65 67 69 77 69 78 84 0 ]
 [a 41C 69 70 70 65 67 69 77 69 78 84 0 ]
-[a 52C 80 82 69 83 83 69 82 32 79 75 32 79 85 32 69 82 82 69 85 82 0 ]
+[a 54C 80 82 69 83 83 69 82 32 79 75 32 79 85 32 69 82 82 69 85 82 0 ]
 [a 26C 69 82 82 69 85 82 32 80 82 79 71 82 65 77 77 65 84 73 79 78 0 ]
 [a 19C 70 73 78 32 80 82 79 71 82 65 77 77 65 84 73 79 78 0 ]
 [a 36C 70 73 78 32 80 82 79 71 82 65 77 77 65 84 73 79 78 0 ]
 [a 31C 80 82 79 71 82 65 77 77 65 84 73 79 78 0 ]
-[a 64C 84 69 83 84 32 79 75 0 ]
+[a 66C 84 69 83 84 32 79 75 0 ]
 [a 9C 84 69 83 84 32 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
-[a 50C 84 69 83 84 32 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
-[a 54C 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
-[a 55C 82 69 83 85 76 84 65 84 32 67 79 78 70 73 82 77 69 0 ]
-[a 63C 69 82 82 69 85 82 32 86 65 76 73 68 69 69 0 ]
-[a 53C 69 84 65 80 69 32 49 54 0 ]
-[a 57C 69 84 65 80 69 32 49 54 0 ]
-[a 61C 69 84 65 80 69 32 49 54 0 ]
-[a 65C 69 84 65 80 69 32 49 54 0 ]
+[a 52C 84 69 83 84 32 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
+[a 56C 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
+[a 57C 82 69 83 85 76 84 65 84 32 67 79 78 70 73 82 77 69 0 ]
+[a 65C 69 82 82 69 85 82 32 86 65 76 73 68 69 69 0 ]
+[a 55C 69 84 65 80 69 32 49 54 0 ]
+[a 59C 69 84 65 80 69 32 49 54 0 ]
+[a 63C 69 84 65 80 69 32 49 54 0 ]
+[a 67C 69 84 65 80 69 32 49 54 0 ]
 [a 17C 84 69 83 84 32 67 65 82 84 69 32 68 57 50 53 69 68 52 0 ]
 [a 24C 84 69 83 84 32 67 65 82 84 69 32 68 57 50 53 69 68 52 0 ]
 [a 29C 84 69 83 84 32 67 65 82 84 69 32 68 57 50 53 69 68 52 0 ]
 [a 34C 84 69 83 84 32 67 65 82 84 69 32 68 57 50 53 69 68 52 0 ]
 [a 39C 84 69 83 84 32 67 65 82 84 69 32 68 57 50 53 69 68 52 0 ]
 [a 44C 84 69 83 84 32 67 65 82 84 69 32 68 57 50 53 69 68 52 0 ]
-[a 51C 86 69 82 73 70 73 69 82 32 80 49 32 69 84 32 80 50 0 ]
-[a 58C 84 69 83 84 32 80 49 0 ]
-[a 62C 84 69 83 84 32 80 49 0 ]
+[a 53C 86 69 82 73 70 73 69 82 32 80 49 32 69 84 32 80 50 0 ]
+[a 60C 84 69 83 84 32 80 49 0 ]
+[a 64C 84 69 83 84 32 80 49 0 ]
 [a 13C 45 62 32 84 69 83 84 32 67 79 78 70 79 82 77 69 32 45 32 65 84 84 69 78 84 69 32 65 67 81 85 73 84 84 69 77 69 78 84 13 10 0 ]
 [a 38C 45 62 32 69 70 70 65 67 69 77 69 78 84 32 69 78 32 67 79 85 82 83 13 10 0 ]
 [a 28C 45 62 32 80 82 79 71 82 65 77 77 65 84 73 79 78 32 69 78 32 67 79 85 82 83 13 10 0 ]
@@ -2956,19 +3018,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 14C 45 62 32 84 69 83 84 32 77 65 78 85 69 76 32 69 78 32 67 79 85 82 83 13 10 0 ]
 [a 21C 45 62 32 84 69 83 84 32 77 65 78 85 69 76 32 69 78 32 67 79 85 82 83 13 10 0 ]
 [a 23C 45 62 32 69 82 82 69 85 82 32 80 82 79 71 82 65 77 77 65 84 73 79 78 13 10 0 ]
+[a 48C 45 62 32 83 76 65 86 69 95 84 69 83 84 32 79 78 13 10 0 ]
 [a 3C 45 62 32 84 69 83 84 32 79 78 13 10 0 ]
 [a 6C 45 62 32 84 69 83 84 32 79 78 13 10 0 ]
 [a 15C 45 62 32 84 69 83 84 32 79 78 13 10 0 ]
 [a 22C 45 62 32 84 69 83 84 32 79 78 13 10 0 ]
+[a 49C 45 62 32 83 76 65 86 69 32 82 69 83 80 79 78 83 69 32 78 85 76 76 13 10 0 ]
 [a 2C 45 62 32 70 73 78 32 84 69 83 84 32 77 65 78 85 69 76 13 10 0 ]
 [a 12C 45 62 32 70 73 78 32 84 69 83 84 32 77 65 78 85 69 76 13 10 0 ]
-[a 48C 45 62 32 70 73 78 32 84 69 83 84 32 77 65 78 85 69 76 13 10 0 ]
-[a 66C 45 62 32 65 112 112 117 121 101 114 32 115 117 114 32 79 75 13 10 0 ]
+[a 50C 45 62 32 70 73 78 32 84 69 83 84 32 77 65 78 85 69 76 13 10 0 ]
+[a 68C 45 62 32 65 112 112 117 121 101 114 32 115 117 114 32 79 75 13 10 0 ]
 [a 4C 45 62 32 84 69 83 84 32 79 70 70 13 10 0 ]
 [a 7C 45 62 32 84 69 83 84 32 79 70 70 13 10 0 ]
 [a 5C 45 62 32 84 69 83 84 32 65 67 81 85 73 84 84 69 13 10 0 ]
 [a 8C 45 62 32 84 69 83 84 32 65 67 81 85 73 84 84 69 13 10 0 ]
-[a 49C 45 62 32 84 69 83 84 32 65 67 81 85 73 84 84 69 13 10 0 ]
+[a 51C 45 62 32 84 69 83 84 32 65 67 81 85 73 84 84 69 13 10 0 ]
 [a 43C 45 62 32 69 70 70 65 67 69 77 69 78 84 32 84 69 82 77 73 78 69 13 10 0 ]
 [a 16C 45 62 32 80 82 79 71 82 65 77 77 65 84 73 79 78 32 84 69 82 77 73 78 69 69 13 10 0 ]
 [a 33C 45 62 32 80 82 79 71 82 65 77 77 65 84 73 79 78 32 84 69 82 77 73 78 69 69 13 10 0 ]
@@ -2985,5 +3049,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 42C 0 ]
 [a 45C 0 ]
 [a 47C 0 ]
-[a 59C 0 ]
-[a 60C 0 ]
+[a 61C 0 ]
+[a 62C 0 ]

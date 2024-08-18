@@ -2,5 +2,6 @@
 
 char getSlaveStatus(char code);
 void writeSlave(char code);
+char startTestSlave();
 
 

@@ -10,4 +10,5 @@ mcc_generated_files/adc.h  \
 mcc_generated_files/eusart.h  \
 I2C_LCD.h  \
 tester.h  \
-display.h 
+display.h  \
+I2C-tester.h 
