@@ -31,6 +31,8 @@ void attenteDemarrage3(bool *, bool *, bool *, bool *);
 void attenteAquittement(bool *, bool *);
 void sortieErreur(bool *, bool *, bool *, bool *);
 void marchePAP();
+void  processSlaveResponse(char repSlave);
+//void getSlaveSummary();
 
 
 

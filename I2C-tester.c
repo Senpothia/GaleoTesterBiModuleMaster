@@ -47,10 +47,15 @@ void writeSlave(char code) {
 
 }
 
+char startTestSlave() {
 
-char startTestSlave(){
-    
     return getSlaveStatus('a');
+
+}
+
+char getSlaveSummary() {
+
+    return getSlaveStatus('?');
 
 }
 

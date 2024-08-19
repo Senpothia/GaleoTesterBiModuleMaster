@@ -94,43 +94,43 @@ void main(void) {
     bool pap = false;
     bool programmation = true;
     bool master = true;
-    char slaveStatus;
     bool slaveInTest = false;
+    char slaveSummary;
 
     // Détermination mode de fonctionnement: master/slave
     // Affichage message d'accueil
-    
+
     __delay_ms(1000);
-    
+
     if (GPIO4_GetValue() == 0) {
 
         // Entrée IO4 à 0V: mode esclave activé
         master = false;
         I2C_Slave_Init();
-       
+
 
     } else {
 
         // Entrée IO4 à 5V: mode maitre activé
         I2C_Master_Init();
-      
+
     }
 
     if (GPIO1_GetValue() == 1) {
 
         testLeds = true;
-       
-        
+
+
     } else {
 
         testLeds = false;
-      
-        
+
+
 
     }
-    
-   
-    
+
+
+
     if (GPIO2_GetValue() == 0) {
 
         pap = true;
@@ -140,7 +140,7 @@ void main(void) {
         pap = false;
     }
 
- 
+
 
 
     while (1) {
@@ -158,7 +158,7 @@ void main(void) {
 
 
         REL8_SetLow();
-       
+
         // Attente de démarrage
 
 
@@ -186,115 +186,14 @@ void main(void) {
         LCD_Init(0x4E);
         displayManager("ETAPE 1", "TEST 3 RELAIS ON", LIGNE_VIDE, LIGNE_VIDE);
 
-        // Méthode 1
-        /*
-         
-        I2C_Master_Start(); // Condition Start
-        I2C_Master_Write(50); // Adresse de l'esclave (par exemple 0x50)
-        I2C_Master_Write(88); // Envoyer des données (par exemple 0x00)
-        I2C_Master_Stop(); // Condition Stop
-         
-         */
-
-        // Méthode 2
-
-        // Trame d'écriture
-
-        /*
-        SSPCON2bits.SEN = 1; // Génération START
-        while (SSPCON2bits.SEN); // Attente fin de START
-        SSPBUF = 50; // Adresse du périphérique en mode écriture 
-        while (SSPSTATbits.BF); // Attente fin de transmission
-        while (SSPSTATbits.R_nW); // Attente ACK
-        SSPBUF = 88;
-        while (SSPSTATbits.BF); // Attente fin de transmission
-        while (SSPSTATbits.R_nW); // Attente ACK
-        SSPCON2bits.PEN = 1; //Génération STOP
-        while (SSPCON2bits.PEN); //Attente fin de STOP
-         */
-
-        // Trame de lecture
-
-        /*
-        SSPCON2bits.SEN = 1; // Génération START
-        while (SSPCON2bits.SEN); // Attente fin de START
-        SSPBUF = 50; // Adresse du périphérique en mode écriture 
-        while (SSPSTATbits.BF); // Attente fin de transmission
-        while (SSPSTATbits.R_nW); // Attente ACK
-        SSPBUF = 25; // Adresse du périphérique en mode écriture 
-        while (SSPSTATbits.BF); // Attente fin de transmission
-        while (SSPSTATbits.R_nW); // Attente ACK
-        SSPCON2bits.RSEN = 1; // Génération RESTART
-        while (SSPCON2bits.RSEN); // Attente fin de RESTART
-        SSPBUF = 51; // Adresse du périphérique en mode lecture
-        while (SSPSTATbits.BF); // Attente fin de transmission
-        while (SSPSTATbits.R_nW); // Attente ACK
-        SSPCON2bits.RCEN = 1; // Maitre en mode de réception
-        while (!SSPSTATbits.BF); // Attente fin de réception
-        slaveBUF = SSPBUF; // sauvegarde réception
-        SSPCON2bits.ACKDT = 1; // Configuration génération NACK
-        SSPCON2bits.ACKEN = 1; // Génération NACK
-        while (SSPCON2bits.ACKEN); // Attente fin génération NACK
-        SSPCON2bits.PEN = 1; //Génération STOP
-        while (SSPCON2bits.PEN); //Attente fin de STOP
-        
-         */
-       
-        //slaveStatus = getSlaveStatus(25);  // lancement test sur esclave
-        //  Résultat de reception
-
-        /*
-        if (slaveStatus == 0x55) {
-
-            
-             * Premier test
-             * 
-             //C4_SetHigh();
-             //C2_SetHigh();
-             //C3_SetHigh();
-             startAlert();
-             startAlert();
-             startAlert();
-             startAlert();
-             startAlert();
-             startAlert();
-             startAlert();
-             startAlert();
-             startAlert();
-       
-
-        }
-
-        __delay_ms(100);
-              */
-        
-
-        /*
-        __delay_ms(10000);
-        startAlert();
-        RESET();
-         * /
-        // Fin test I2C vers esclave
-        // entrée dans la séquence de test
-        
         // DEMARRAGE SEQUENCE DE TEST
-         * 
-        // ETAPE 1
 
-        /*
-        if (pap) {
-
-            marchePAP();
-        }
-         * */
 
         pressBP1(true);
         pressBP2(true);
         __delay_ms(1000);
         alimenter(true);
         __delay_ms(2000); // 2000 pour D925ED4; 10000 pour D850
-
-
 
         if (testR1(true) && testR2(true) && testR3(true)) {
 
@@ -310,15 +209,15 @@ void main(void) {
 
         }
 
-        __delay_ms(1000);
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
+        __delay_ms(1000);
 
         pressBP1(false);
         pressBP2(false);
 
         // ETAPE 2
-
-
 
         if (testActif) {
 
@@ -338,6 +237,9 @@ void main(void) {
 
             }
         }
+
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
         // ETAPE 3
 
@@ -368,6 +270,8 @@ void main(void) {
 
         }
 
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 4
 
 
@@ -395,6 +299,9 @@ void main(void) {
 
 
         }
+
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
         // ETAPE 5
 
@@ -424,7 +331,8 @@ void main(void) {
         }
 
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 6
 
 
@@ -451,7 +359,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 7
 
 
@@ -477,7 +386,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 8
 
 
@@ -503,6 +413,8 @@ void main(void) {
 
         }
 
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 9
 
 
@@ -537,7 +449,8 @@ void main(void) {
             __delay_ms(2000);
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 10
 
 
@@ -574,7 +487,8 @@ void main(void) {
 
         }
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 12
 
 
@@ -614,6 +528,8 @@ void main(void) {
             pressBP2(false);
 
         }
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
         // ETAPE 13
 
@@ -639,7 +555,8 @@ void main(void) {
                 printf("-> TEST:13:1");
             }
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 14
 
 
@@ -664,7 +581,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 15
 
 
@@ -690,7 +608,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 16
 
 
@@ -713,7 +632,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 17
 
 
@@ -740,7 +660,8 @@ void main(void) {
 
         }
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE 18
 
 
@@ -764,7 +685,8 @@ void main(void) {
             }
         }
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
         // ETAPE: SORTIE
 
         if (testActif) {
@@ -775,6 +697,7 @@ void main(void) {
             okAlert();
             attenteAquittement(&automatique, &testActif);
             initialConditions(&testActif, &testVoyants, &automatique, &programmation);
+           
             __delay_ms(2000);
 
         }

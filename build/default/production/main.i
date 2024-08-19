@@ -5820,6 +5820,7 @@ void attenteDemarrage3(_Bool *, _Bool *, _Bool *, _Bool *);
 void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
+void processSlaveResponse(char repSlave);
 # 58 "main.c" 2
 
 # 1 "./display.h" 1
@@ -5835,9 +5836,11 @@ void displayManager(char s1[], char s2[], char s3[], char s4[]);
 # 1 "./I2C-tester.h" 1
 
 
+
 char getSlaveStatus(char code);
 void writeSlave(char code);
 char startTestSlave();
+char getSlaveSummary();
 # 63 "main.c" 2
 
 
@@ -5866,8 +5869,8 @@ void main(void) {
     _Bool pap = 0;
     _Bool programmation = 1;
     _Bool master = 1;
-    char slaveStatus;
     _Bool slaveInTest = 0;
+    char slaveSummary;
 
 
 
@@ -5957,14 +5960,15 @@ void main(void) {
         _delay((unsigned long)((100)*(16000000/4000.0)));
         LCD_Init(0x4E);
         displayManager("ETAPE 1", "TEST 3 RELAIS ON", "", "");
-# 291 "main.c"
+
+
+
+
         pressBP1(1);
         pressBP2(1);
         _delay((unsigned long)((1000)*(16000000/4000.0)));
         alimenter(1);
         _delay((unsigned long)((2000)*(16000000/4000.0)));
-
-
 
         if (testR1(1) && testR2(1) && testR3(1)) {
 
@@ -5980,13 +5984,13 @@ void main(void) {
 
         }
 
-        _delay((unsigned long)((1000)*(16000000/4000.0)));
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
+        _delay((unsigned long)((1000)*(16000000/4000.0)));
 
         pressBP1(0);
         pressBP2(0);
-
-
 
 
 
@@ -6008,6 +6012,9 @@ void main(void) {
 
             }
         }
+
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6038,6 +6045,8 @@ void main(void) {
 
         }
 
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6065,6 +6074,9 @@ void main(void) {
 
 
         }
+
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6094,7 +6106,8 @@ void main(void) {
         }
 
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6121,7 +6134,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6147,7 +6161,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6173,6 +6188,8 @@ void main(void) {
 
         }
 
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6207,7 +6224,8 @@ void main(void) {
             _delay((unsigned long)((2000)*(16000000/4000.0)));
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6244,7 +6262,8 @@ void main(void) {
 
         }
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6284,6 +6303,8 @@ void main(void) {
             pressBP2(0);
 
         }
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6309,7 +6330,8 @@ void main(void) {
                 printf("-> TEST:13:1");
             }
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6334,7 +6356,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6360,7 +6383,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6383,7 +6407,8 @@ void main(void) {
             }
 
         }
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6410,7 +6435,8 @@ void main(void) {
 
         }
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
 
@@ -6434,7 +6460,8 @@ void main(void) {
             }
         }
 
-
+        slaveSummary = getSlaveSummary();
+        processSlaveResponse(slaveSummary);
 
 
         if (testActif) {
@@ -6445,6 +6472,7 @@ void main(void) {
             okAlert();
             attenteAquittement(&automatique, &testActif);
             initialConditions(&testActif, &testVoyants, &automatique, &programmation);
+
             _delay((unsigned long)((2000)*(16000000/4000.0)));
 
         }

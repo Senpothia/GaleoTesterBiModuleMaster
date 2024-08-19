@@ -739,17 +739,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;I2C-tester.c: 48: }
 [e :UE 413 ]
 }
-"51
-[; ;I2C-tester.c: 51: char startTestSlave(){
+"50
+[; ;I2C-tester.c: 50: char startTestSlave() {
 [v _startTestSlave `(uc ~T0 @X0 1 ef ]
 {
 [e :U _startTestSlave ]
 [f ]
-"53
-[; ;I2C-tester.c: 53:     return getSlaveStatus('a');
+"52
+[; ;I2C-tester.c: 52:     return getSlaveStatus('a');
 [e ) ( _getSlaveStatus (1 -> -> 97 `ui `uc ]
 [e $UE 432  ]
-"55
-[; ;I2C-tester.c: 55: }
+"54
+[; ;I2C-tester.c: 54: }
 [e :UE 432 ]
+}
+"56
+[; ;I2C-tester.c: 56: char getSlaveSummary() {
+[v _getSlaveSummary `(uc ~T0 @X0 1 ef ]
+{
+[e :U _getSlaveSummary ]
+[f ]
+"58
+[; ;I2C-tester.c: 58:     return getSlaveStatus('?');
+[e ) ( _getSlaveStatus (1 -> -> 63 `ui `uc ]
+[e $UE 433  ]
+"60
+[; ;I2C-tester.c: 60: }
+[e :UE 433 ]
 }

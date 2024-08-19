@@ -5827,6 +5827,7 @@ void attenteDemarrage3(_Bool *, _Bool *, _Bool *, _Bool *);
 void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
+void processSlaveResponse(char repSlave);
 # 12 "tester.c" 2
 
 # 1 "./display.h" 1
@@ -5895,9 +5896,11 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 1 "./I2C-tester.h" 1
 
 
+
 char getSlaveStatus(char code);
 void writeSlave(char code);
 char startTestSlave();
+char getSlaveSummary();
 # 16 "tester.c" 2
 
 
@@ -6105,121 +6108,6 @@ void ledProgession(_Bool active) {
     }
 }
 
-void attenteDemarrage(_Bool *autom, _Bool *testAct) {
-
-
-    unsigned char reception;
-    _Bool repOperateur = 0;
-
-    if (!*autom) {
-
-        while (PORTDbits.RD2 == 1 && !*autom) {
-
-            if (PORTDbits.RD2 == 0) {
-
-                if (!*testAct) {
-
-                    printf("-> TEST MANUEL EN COURS\r\n");
-
-                } else {
-
-                    printf("-> FIN TEST MANUEL\r\n");
-                }
-
-            }
-
-            if (eusartRxCount != 0) {
-
-                *autom = 1;
-                reception = EUSART_Read();
-
-                switch (reception)
-                {
-
-
-
-                    case '1':
-                    {
-                        printf("-> TEST ON\r\n");
-                        *autom = 1;
-                        _delay((unsigned long)((50)*(16000000/4000.0)));
-                        repOperateur = 1;
-                        break;
-                    }
-
-                    case '0':
-                    {
-                        printf("-> TEST OFF\r\n");
-                        _delay((unsigned long)((50)*(16000000/4000.0)));
-                        repOperateur = 1;
-                        *autom = 0;
-                        break;
-                    }
-
-                    case '4':
-                    {
-                        printf("-> TEST ACQUITTE\r\n");
-                        _delay((unsigned long)((50)*(16000000/4000.0)));
-                        repOperateur = 0;
-                        *autom = 0;
-                        break;
-                    }
-                }
-            }
-
-        }
-        repOperateur = 1;
-    }
-
-    if (*autom) {
-
-        while (!repOperateur) {
-
-
-
-
-
-            if (eusartRxCount != 0) {
-                *autom = 1;
-                reception = EUSART_Read();
-
-                switch (reception)
-                {
-                    case '1':
-                    {
-                        printf("-> TEST ON\r\n");
-                        _delay((unsigned long)((50)*(16000000/4000.0)));
-                        repOperateur = 1;
-                        *autom = 1;
-                        break;
-                    }
-
-                    case '0':
-                    {
-                        printf("-> TEST OFF\r\n");
-                        _delay((unsigned long)((50)*(16000000/4000.0)));
-                        repOperateur = 1;
-                        *autom = 0;
-                        break;
-                    }
-
-                    case '4':
-                    {
-                        printf("-> TEST ACQUITTE\r\n");
-                        _delay((unsigned long)((50)*(16000000/4000.0)));
-                        repOperateur = 1;
-                        *autom = 0;
-                        break;
-                    }
-                }
-
-            }
-        }
-
-    }
-
-}
-
 void alerteDefaut(char etape[], _Bool *testAct, _Bool *testVoy) {
 
     char error[20] = "-> ERREUR: ";
@@ -6283,7 +6171,7 @@ _Bool reponseOperateur(_Bool automatique) {
                         repOperateur = 1;
                         break;
                     }
-# 418 "tester.c"
+
                     case '9':
                     {
 
@@ -6431,62 +6319,6 @@ void okAlert(void) {
 
 }
 
-void attenteDemarrage2(_Bool *autom, _Bool *testAct) {
-
-    unsigned char reception;
-    _Bool repOperateur = 0;
-
-    while (!repOperateur) {
-
-
-        if (PORTDbits.RD2 == 0) {
-
-            printf("-> TEST MANUEL EN COURS\r\n");
-            repOperateur = 1;
-            *autom = 0;
-            *testAct = 1;
-        }
-
-        if (eusartRxCount != 0) {
-
-            reception = EUSART_Read();
-
-            switch (reception)
-            {
-
-                case '0':
-                {
-                    __asm("reset");
-
-                }
-
-                case '1':
-                {
-                    printf("-> TEST ON\r\n");
-                    *autom = 1;
-                    _delay((unsigned long)((50)*(16000000/4000.0)));
-                    repOperateur = 1;
-                    *testAct = 1;
-                    break;
-                }
-
-                case '9':
-                {
-                    printf("-> PROGRAMMATION TERMINEE\r\n");
-                    displayManager("TEST CARTE D925ED4", "", "FIN PROGRAMMATION", "");
-                    *autom = 1;
-                    _delay((unsigned long)((50)*(16000000/4000.0)));
-                    repOperateur = 1;
-                    *testAct = 0;
-                    do { LATAbits.LATA7 = 0; } while(0);
-                    break;
-                }
-            }
-        }
-    }
-
-}
-
 void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive) {
 
     unsigned char reception;
@@ -6611,14 +6443,23 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
 
                     }
 
-
-
-
                     break;
                 }
 
             }
         }
+
+
+
+        if (*testSlaveActive) {
+
+            char repSlave = getSlaveStatus('?');
+            processSlaveResponse(repSlave);
+            _delay((unsigned long)((200)*(16000000/4000.0)));
+
+        }
+
+
     }
 
 }
@@ -6649,6 +6490,7 @@ void attenteAquittement(_Bool *autom, _Bool *testAct) {
                 case '0':
                 {
                     __asm("reset");
+                    break;
 
                 }
 
@@ -6736,4 +6578,262 @@ void marchePAP() {
             repOperateur = 1;
         }
     }
+}
+
+void processSlaveResponse(char repSlave) {
+
+
+    switch (repSlave)
+    {
+
+        case 'z':
+        {
+            printf("-> SLAVE EN ATTENTE:");
+            break;
+        }
+
+        case 'A':
+        {
+            printf("-> SLAVETEST:1:1");
+            break;
+
+        }
+
+        case 'a':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+
+
+        case 'B':
+        {
+            printf("-> SLAVETEST:2:1");
+            break;
+
+        }
+
+        case 'b':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'C':
+        {
+            printf("-> SLAVETEST:3:1");
+            break;
+
+        }
+
+        case 'c':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'D':
+        {
+            printf("-> SLAVETEST:4:1");
+            break;
+
+        }
+
+        case 'd':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'E':
+        {
+            printf("-> SLAVETEST:5:1");
+            break;
+
+        }
+
+        case 'e':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'F':
+        {
+            printf("-> SLAVETEST:6:1");
+            break;
+
+        }
+
+        case 'f':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'G':
+        {
+            printf("-> SLAVETEST:7:1");
+            break;
+
+        }
+
+        case 'g':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'H':
+        {
+            printf("-> SLAVETEST:8:1");
+            break;
+
+        }
+
+        case 'h':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'I':
+        {
+            printf("-> SLAVETEST:9:1");
+            break;
+
+        }
+
+        case 'i':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'J':
+        {
+            printf("-> SLAVETEST:10:1");
+            break;
+
+        }
+
+        case 'j':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'K':
+        {
+            printf("-> SLAVETEST:11:1");
+            break;
+
+        }
+
+        case 'k':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'L':
+        {
+            printf("-> SLAVETEST:12:1");
+            break;
+
+        }
+
+        case 'l':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'M':
+        {
+            printf("-> SLAVETEST:13:1");
+            break;
+
+        }
+
+        case 'm':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'N':
+        {
+            printf("-> SLAVETEST:14:1");
+            break;
+
+        }
+
+        case 'n':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'O':
+        {
+            printf("-> SLAVETEST:15:1");
+            break;
+
+        }
+
+        case 'o':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'P':
+        {
+            printf("-> SLAVETEST:16:1");
+            break;
+
+        }
+
+        case 'p':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'Q':
+        {
+            printf("-> SLAVETEST:17:1");
+            break;
+
+        }
+
+        case 'q':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        case 'R':
+        {
+            printf("-> SLAVETEST:18:1");
+            break;
+
+        }
+
+        case 'r':
+        {
+            printf("-> SLAVE ERREUR:");
+            break;
+        }
+
+        default:
+            break;
+
+
+    }
+
+
+
 }

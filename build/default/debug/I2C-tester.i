@@ -5378,9 +5378,11 @@ extern __bank0 __bit __timeout;
 # 1 "./I2C-tester.h" 1
 
 
+
 char getSlaveStatus(char code);
 void writeSlave(char code);
-void startTestSlave();
+char startTestSlave();
+char getSlaveSummary();
 # 3 "I2C-tester.c" 2
 
 
@@ -5429,9 +5431,14 @@ void writeSlave(char code) {
 
 }
 
+char startTestSlave() {
 
-void startTestSlave(){
+    return getSlaveStatus('a');
 
+}
 
+char getSlaveSummary() {
+
+    return getSlaveStatus('?');
 
 }
