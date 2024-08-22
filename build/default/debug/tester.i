@@ -5823,11 +5823,12 @@ void startAlert(void);
 void errorAlert(void);
 void okAlert(void);
 void attenteDemarrage2(_Bool *, _Bool *);
-void attenteDemarrage3(_Bool *, _Bool *, _Bool *, _Bool *);
+void attenteDemarrage3(_Bool *, _Bool *, _Bool *, _Bool *, _Bool *);
 void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
-void processSlaveResponse(char repSlave);
+void processSlaveResponse(char repSlave, _Bool *);
+_Bool checkResponseForSlave(_Bool *);
 # 12 "tester.c" 2
 
 # 1 "./display.h" 1
@@ -5901,6 +5902,9 @@ char getSlaveStatus(char code);
 void writeSlave(char code);
 char startTestSlave();
 char getSlaveSummary();
+char sendOKToSlave();
+char sendNOKToSlave();
+char sendACQToSlave();
 # 16 "tester.c" 2
 
 
@@ -6181,6 +6185,7 @@ _Bool reponseOperateur(_Bool automatique) {
                         do { LATAbits.LATA7 = 0; } while(0);
                         break;
                     }
+
                 }
 
             }
@@ -6319,7 +6324,7 @@ void okAlert(void) {
 
 }
 
-void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive) {
+void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive, _Bool *slaveIsWaiting) {
 
     unsigned char reception;
     _Bool repOperateur = 0;
@@ -6446,6 +6451,76 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                     break;
                 }
 
+
+                  case 'u':
+                {
+                    char responseSlave = sendOKToSlave();
+                    if (responseSlave == 'u') {
+
+                        printf("-> SLAVE_TEST GET OK\r\n");
+                        *autom = 1;
+                        *testAct = 0;
+                        *testSlaveActive = 1;
+                        *prog = 0;
+                        _delay((unsigned long)((50)*(16000000/4000.0)));
+                        repOperateur = 1;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = 1;
+
+                    }
+
+                    break;
+                }
+
+                    case 'v':
+                {
+                    char responseSlave = sendNOKToSlave();
+                    if (responseSlave == 'v') {
+
+                        printf("-> SLAVE_TEST GET KO\r\n");
+                        *autom = 1;
+                        *testAct = 0;
+                        *testSlaveActive = 1;
+                        *prog = 0;
+                        _delay((unsigned long)((50)*(16000000/4000.0)));
+                        repOperateur = 1;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = 1;
+
+                    }
+
+                    break;
+                }
+
+                      case 'w':
+                {
+                    char responseSlave = sendACQToSlave();
+                    if (responseSlave == 'w') {
+
+                        printf("-> SLAVE_TEST GET ACQ\r\n");
+                        *autom = 1;
+                        *testAct = 0;
+                        *testSlaveActive = 1;
+                        *prog = 0;
+                        _delay((unsigned long)((50)*(16000000/4000.0)));
+                        repOperateur = 1;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = 1;
+
+                    }
+
+                    break;
+                }
+
             }
         }
 
@@ -6454,7 +6529,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
         if (*testSlaveActive) {
 
             char repSlave = getSlaveStatus('?');
-            processSlaveResponse(repSlave);
+            processSlaveResponse(repSlave, slaveIsWaiting);
             _delay((unsigned long)((200)*(16000000/4000.0)));
 
         }
@@ -6580,7 +6655,7 @@ void marchePAP() {
     }
 }
 
-void processSlaveResponse(char repSlave) {
+void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
 
 
     switch (repSlave)
@@ -6740,6 +6815,7 @@ void processSlaveResponse(char repSlave) {
         case 'L':
         {
             printf("-> SLAVETEST:12:1");
+
             break;
 
         }
@@ -6828,12 +6904,70 @@ void processSlaveResponse(char repSlave) {
             break;
         }
 
+
+        case 'u':
+        {
+            printf("-> SLAVE TEST CONFORME");
+            break;
+        }
+
+
+        case 'v':
+        {
+            printf("-> SLAVE TEST NON CONFORME");
+            break;
+        }
+
+
+        case 'w':
+        {
+            printf("-> SLAVE TEST ACQUITTE");
+            ;
+            break;
+        }
+
         default:
             break;
-
-
     }
 
 
+}
 
+_Bool checkResponseForSlave(_Bool *slaveWaitingFlag) {
+
+    unsigned char reception;
+    if (eusartRxCount != 0) {
+
+        reception = EUSART_Read();
+
+        switch (reception)
+        {
+
+
+            case 'u':
+            {
+                char echo = getSlaveStatus('u');
+                break;
+
+            }
+
+            case 'v':
+            {
+                char echo = getSlaveStatus('v');
+                break;
+            }
+
+
+            case 'w':
+            {
+                char echo = getSlaveStatus('w');
+                break;
+
+            }
+
+            default:
+                break;
+        }
+    }
+    return 0;
 }

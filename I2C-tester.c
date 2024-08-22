@@ -11,7 +11,7 @@ char getSlaveStatus(char code) {
     SSPBUF = SLAVE_ADD; // Adresse du périphérique en mode écriture 
     while (SSPSTATbits.BF); // Attente fin de transmission
     while (SSPSTATbits.R_nW); // Attente ACK
-    SSPBUF = code; // Adresse du périphérique en mode écriture 
+    SSPBUF = code; // Adresse du périphérique en mode écriture (ordre transmis à l'esclave))
     while (SSPSTATbits.BF); // Attente fin de transmission
     while (SSPSTATbits.R_nW); // Attente ACK
     SSPCON2bits.RSEN = 1; // Génération RESTART
@@ -21,7 +21,7 @@ char getSlaveStatus(char code) {
     while (SSPSTATbits.R_nW); // Attente ACK
     SSPCON2bits.RCEN = 1; // Maitre en mode de réception
     while (!SSPSTATbits.BF); // Attente fin de réception
-    slaveResponse = SSPBUF; // sauvegarde réception
+    slaveResponse = SSPBUF; // sauvegarde réception  / reponse de l'esclave (écho))
     SSPCON2bits.ACKDT = 1; // Configuration génération NACK
     SSPCON2bits.ACKEN = 1; // Génération NACK
     while (SSPCON2bits.ACKEN); // Attente fin génération NACK
@@ -59,4 +59,17 @@ char getSlaveSummary() {
 
 }
 
+char sendOKToSlave() {
 
+    return getSlaveStatus('u');
+}
+
+char sendNOKToSlave() {
+
+    return getSlaveStatus('v');
+}
+
+char sendACQToSlave() {
+
+    return getSlaveStatus('w');
+}

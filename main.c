@@ -96,6 +96,8 @@ void main(void) {
     bool master = true;
     bool slaveInTest = false;
     char slaveSummary;
+    bool slaveWaiting = false;
+    char orderFormWin;
 
     // Détermination mode de fonctionnement: master/slave
     // Affichage message d'accueil
@@ -164,7 +166,7 @@ void main(void) {
 
         while (!testActif) {
 
-            attenteDemarrage3(&automatique, &testActif, &programmation, &slaveInTest);
+            attenteDemarrage3(&automatique, &testActif, &programmation, &slaveInTest, &slaveWaiting);
         }
 
 
@@ -208,9 +210,17 @@ void main(void) {
             sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 
         }
-
+        
+        // Interrogtaion de l'esclave sur son statut
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        // Transmission statut de l'esclave pour mise à jour IHM
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        // scrutation ordre en provenance de l'IHM à destination de l'esclave
+        orderFormWin = getRS232();
+        // Traitement ordres reçus de l'IHM à destination du l'esclave
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
+
 
         __delay_ms(1000);
 
@@ -239,7 +249,9 @@ void main(void) {
         }
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
         // ETAPE 3
 
@@ -271,7 +283,9 @@ void main(void) {
         }
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
         // ETAPE 4
 
 
@@ -301,7 +315,9 @@ void main(void) {
         }
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
         // ETAPE 5
 
@@ -332,7 +348,10 @@ void main(void) {
 
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 6
 
 
@@ -360,7 +379,10 @@ void main(void) {
 
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 7
 
 
@@ -387,7 +409,10 @@ void main(void) {
 
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 8
 
 
@@ -414,7 +439,10 @@ void main(void) {
         }
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 9
 
 
@@ -450,7 +478,10 @@ void main(void) {
 
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 10
 
 
@@ -488,7 +519,10 @@ void main(void) {
         }
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 12
 
 
@@ -529,9 +563,11 @@ void main(void) {
 
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
-        // ETAPE 13
+        // ETAPE 13:TEST DES 3 LEDS ALLUMEES SIMULTANEMENT
 
 
 
@@ -556,7 +592,9 @@ void main(void) {
             }
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
         // ETAPE 14
 
 
@@ -582,7 +620,9 @@ void main(void) {
 
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
         // ETAPE 15
 
 
@@ -609,7 +649,10 @@ void main(void) {
 
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 16
 
 
@@ -633,7 +676,10 @@ void main(void) {
 
         }
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 17
 
 
@@ -661,7 +707,10 @@ void main(void) {
         }
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE 18
 
 
@@ -686,7 +735,10 @@ void main(void) {
         }
 
         slaveSummary = getSlaveSummary();
-        processSlaveResponse(slaveSummary);
+        processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
         // ETAPE: SORTIE
 
         if (testActif) {
@@ -697,7 +749,7 @@ void main(void) {
             okAlert();
             attenteAquittement(&automatique, &testActif);
             initialConditions(&testActif, &testVoyants, &automatique, &programmation);
-           
+
             __delay_ms(2000);
 
         }

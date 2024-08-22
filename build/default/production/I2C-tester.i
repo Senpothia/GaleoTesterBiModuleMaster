@@ -5383,6 +5383,9 @@ char getSlaveStatus(char code);
 void writeSlave(char code);
 char startTestSlave();
 char getSlaveSummary();
+char sendOKToSlave();
+char sendNOKToSlave();
+char sendACQToSlave();
 # 3 "I2C-tester.c" 2
 
 
@@ -5441,4 +5444,19 @@ char getSlaveSummary() {
 
     return getSlaveStatus('?');
 
+}
+
+char sendOKToSlave() {
+
+    return getSlaveStatus('u');
+}
+
+char sendNOKToSlave() {
+
+    return getSlaveStatus('v');
+}
+
+char sendACQToSlave() {
+
+    return getSlaveStatus('w');
 }

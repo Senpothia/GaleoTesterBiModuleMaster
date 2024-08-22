@@ -27,12 +27,14 @@ void startAlert(void);
 void errorAlert(void);
 void okAlert(void);
 void attenteDemarrage2(bool *, bool *);
-void attenteDemarrage3(bool *, bool *, bool *, bool *);
+void attenteDemarrage3(bool *, bool *, bool *, bool *, bool *);
 void attenteAquittement(bool *, bool *);
 void sortieErreur(bool *, bool *, bool *, bool *);
 void marchePAP();
-void  processSlaveResponse(char repSlave);
-//void getSlaveSummary();
+void processSlaveResponse(char repSlave, bool *);
+void processActionForSlave(bool *autom, bool *testAct, bool *prog, bool *testSlaveActive, unsigned char orderFromWin);
+unsigned char getRS232();
+
 
 
 

@@ -767,3 +767,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;I2C-tester.c: 60: }
 [e :UE 433 ]
 }
+"62
+[; ;I2C-tester.c: 62: char sendOKToSlave() {
+[v _sendOKToSlave `(uc ~T0 @X0 1 ef ]
+{
+[e :U _sendOKToSlave ]
+[f ]
+"64
+[; ;I2C-tester.c: 64:     return getSlaveStatus('u');
+[e ) ( _getSlaveStatus (1 -> -> 117 `ui `uc ]
+[e $UE 434  ]
+"65
+[; ;I2C-tester.c: 65: }
+[e :UE 434 ]
+}
+"67
+[; ;I2C-tester.c: 67: char sendNOKToSlave() {
+[v _sendNOKToSlave `(uc ~T0 @X0 1 ef ]
+{
+[e :U _sendNOKToSlave ]
+[f ]
+"69
+[; ;I2C-tester.c: 69:     return getSlaveStatus('v');
+[e ) ( _getSlaveStatus (1 -> -> 118 `ui `uc ]
+[e $UE 435  ]
+"70
+[; ;I2C-tester.c: 70: }
+[e :UE 435 ]
+}
+"72
+[; ;I2C-tester.c: 72: char sendACQToSlave() {
+[v _sendACQToSlave `(uc ~T0 @X0 1 ef ]
+{
+[e :U _sendACQToSlave ]
+[f ]
+"74
+[; ;I2C-tester.c: 74:     return getSlaveStatus('w');
+[e ) ( _getSlaveStatus (1 -> -> 119 `ui `uc ]
+[e $UE 436  ]
+"75
+[; ;I2C-tester.c: 75: }
+[e :UE 436 ]
+}

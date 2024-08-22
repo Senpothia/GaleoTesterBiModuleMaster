@@ -292,6 +292,7 @@ bool reponseOperateur(bool automatique) {
                         REL8_SetLow();
                         break;
                     }
+
                 }
 
             }
@@ -430,7 +431,7 @@ void okAlert(void) {
 
 }
 
-void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveActive) {
+void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveActive, bool *slaveIsWaiting) {
 
     unsigned char reception;
     bool repOperateur = false;
@@ -557,6 +558,76 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveAc
                     break;
                 }
 
+
+                case 'u':
+                {
+                    char responseSlave = sendOKToSlave();
+                    if (responseSlave == 'u') {
+
+                        printf("-> SLAVE_TEST GET OK\r\n");
+                        *autom = true;
+                        *testAct = false;
+                        *testSlaveActive = true;
+                        *prog = false;
+                        __delay_ms(50);
+                        repOperateur = true;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = true;
+
+                    }
+
+                    break;
+                }
+
+                case 'v':
+                {
+                    char responseSlave = sendNOKToSlave();
+                    if (responseSlave == 'v') {
+
+                        printf("-> SLAVE_TEST GET KO\r\n");
+                        *autom = true;
+                        *testAct = false;
+                        *testSlaveActive = true;
+                        *prog = false;
+                        __delay_ms(50);
+                        repOperateur = true;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = true;
+
+                    }
+
+                    break;
+                }
+
+                case 'w':
+                {
+                    char responseSlave = sendACQToSlave();
+                    if (responseSlave == 'w') {
+
+                        printf("-> SLAVE_TEST GET ACQ\r\n");
+                        *autom = true;
+                        *testAct = false;
+                        *testSlaveActive = true;
+                        *prog = false;
+                        __delay_ms(50);
+                        repOperateur = true;
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = true;
+
+                    }
+
+                    break;
+                }
+
             }
         }
 
@@ -565,7 +636,7 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveAc
         if (*testSlaveActive) {
 
             char repSlave = getSlaveStatus(INTERROG_SLAVE);
-            processSlaveResponse(repSlave);
+            processSlaveResponse(repSlave, slaveIsWaiting);
             __delay_ms(200);
 
         }
@@ -691,8 +762,9 @@ void marchePAP() {
     }
 }
 
-void processSlaveResponse(char repSlave) {
+void processSlaveResponse(char repSlave, bool *slaveIsWaiting) {
 
+    unsigned char reception;
 
     switch (repSlave) // check command  
     {
@@ -851,6 +923,7 @@ void processSlaveResponse(char repSlave) {
         case 'L':
         {
             printf("-> SLAVETEST:12:1");
+            *slaveIsWaiting = true;
             break;
 
         }
@@ -864,6 +937,7 @@ void processSlaveResponse(char repSlave) {
         case 'M':
         {
             printf("-> SLAVETEST:13:1");
+            *slaveIsWaiting = false;
             break;
 
         }
@@ -916,6 +990,7 @@ void processSlaveResponse(char repSlave) {
         case 'Q':
         {
             printf("-> SLAVETEST:17:1");
+            *slaveIsWaiting = true;
             break;
 
         }
@@ -929,6 +1004,7 @@ void processSlaveResponse(char repSlave) {
         case 'R':
         {
             printf("-> SLAVETEST:18:1");
+            *slaveIsWaiting = false;
             break;
 
         }
@@ -939,18 +1015,103 @@ void processSlaveResponse(char repSlave) {
             break;
         }
 
+
+        case 'u':
+        {
+            printf("-> SLAVE TEST CONFORME");
+            break;
+        }
+
+
+        case 'v':
+        {
+            printf("-> SLAVE TEST NON CONFORME");
+            break;
+        }
+
+
+        case 'w':
+        {
+            printf("-> SLAVE TEST ACQUITTE");
+            ;
+            break;
+        }
+
         default:
             break;
-
-
     }
 
-    //__delay_ms(200);
 
 }
 
+ unsigned char getRS232() {
+
+    unsigned char reception;
 
 
+    if (eusartRxCount != 0) {
+
+        reception = EUSART_Read(); // read a byte for RX
+        
+    } else {
+
+    }
+    return reception;
+
+}
+
+void processActionForSlave(bool *autom, bool *testAct, bool *prog, bool *testSlaveActive,  unsigned char ordreFromWin) {
+
+    switch (ordreFromWin) // check command  
+    {
+
+            // Ordre de lancement du test
+        case 'a':
+        {
+            char responseSlave = startTestSlave();
+            if (responseSlave == 'a') {
+
+                printf("-> SLAVE_TEST ON\r\n");
+                *autom = true;
+                *testAct = true;
+                *testSlaveActive = true;
+                *prog = false;
+                __delay_ms(50);
 
 
+            } else {
+
+                printf("-> SLAVE RESPONSE NULL\r\n");
+
+            }
+
+            break;
+        }
+
+            // Reception OK_SLAVE
+        case 'u':
+        {
+            char echo = getSlaveStatus('u');
+            break;
+
+        }
+            // Reception KO_SLAVE
+        case 'v':
+        {
+            char echo = getSlaveStatus('v');
+            break;
+        }
+
+            // Reception AQC_SLAVE
+        case 'w':
+        {
+            char echo = getSlaveStatus('w');
+            break;
+
+        }
+
+        default:
+            break;
+    }
+}
 

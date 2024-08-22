@@ -5,6 +5,11 @@ char getSlaveStatus(char code);
 void writeSlave(char code);
 char startTestSlave();
 char getSlaveSummary();
+char sendOKToSlave();
+char sendNOKToSlave();
+char sendACQToSlave();
+
+
 
 
 
