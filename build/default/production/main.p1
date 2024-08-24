@@ -113,8 +113,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19
 [; ;./tester.h: 19: _Bool reponseOperateur(_Bool automatique);
 [v _reponseOperateur `(a ~T0 @X0 0 ef1`a ]
-"459 main.c
-[; ;main.c: 459:             lectureAN1 = ADC_GetConversion(VIN1);
+"460 main.c
+[; ;main.c: 460:             lectureAN1 = ADC_GetConversion(VIN1);
 [c E3374 8 9 10 12 29 30 31 .. ]
 [n E3374 . AN3 AN4 AN2 VIN1 channel_Temp channel_DAC channel_FVR  ]
 "291 ./mcc_generated_files/adc.h
@@ -941,1127 +941,1127 @@ Version 4.0 HI-TECH Software Intermediate Code
 "219
 [; ;main.c: 219:         orderFormWin = getRS232();
 [e = _orderFormWin -> ( _getRS232 ..  `uc ]
-"220
-[; ;main.c: 220:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+"221
+[; ;main.c: 221:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"224
-[; ;main.c: 224:         _delay((unsigned long)((1000)*(16000000/4000.0)));
+"225
+[; ;main.c: 225:         _delay((unsigned long)((1000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"226
-[; ;main.c: 226:         pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
 "227
-[; ;main.c: 227:         pressBP2(0);
+[; ;main.c: 227:         pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"228
+[; ;main.c: 228:         pressBP2(0);
 [e ( _pressBP2 (1 -> -> 0 `i `a ]
-"231
-[; ;main.c: 231:         if (testActif) {
+"232
+[; ;main.c: 232:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 402  ]
 {
-"233
-[; ;main.c: 233:             displayManager("ETAPE 2", "TEST 3 RELAIS OFF", "", "");
-[e ( _displayManager (4 , , , :s 19C :s 20C :s 21C :s 22C ]
 "234
-[; ;main.c: 234:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
+[; ;main.c: 234:             displayManager("ETAPE 2", "TEST 3 RELAIS OFF", "", "");
+[e ( _displayManager (4 , , , :s 19C :s 20C :s 21C :s 22C ]
 "235
-[; ;main.c: 235:             pressBP2(0);
-[e ( _pressBP2 (1 -> -> 0 `i `a ]
+[; ;main.c: 235:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
 "236
-[; ;main.c: 236:             _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 236:             pressBP2(0);
+[e ( _pressBP2 (1 -> -> 0 `i `a ]
 "237
-[; ;main.c: 237:             if (!testR1(1) && !testR2(1) && !testR3(1)) {
+[; ;main.c: 237:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"238
+[; ;main.c: 238:             if (!testR1(1) && !testR2(1) && !testR3(1)) {
 [e $ ! && && ! != -> ( _testR1 (1 -> -> 1 `i `a `i -> 0 `i ! != -> ( _testR2 (1 -> -> 1 `i `a `i -> 0 `i ! != -> ( _testR3 (1 -> -> 1 `i `a `i -> 0 `i 403  ]
 {
-"239
-[; ;main.c: 239:                 printf("-> TEST:2:1");
+"240
+[; ;main.c: 240:                 printf("-> TEST:2:1");
 [e ( _printf :s 23C ]
-"241
-[; ;main.c: 241:             } else {
+"242
+[; ;main.c: 242:             } else {
 }
 [e $U 404  ]
 [e :U 403 ]
 {
-"243
-[; ;main.c: 243:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "244
-[; ;main.c: 244:                 alerteDefaut("ETAPE 2", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 24C &U _testActif &U _testVoyants ]
+[; ;main.c: 244:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "245
-[; ;main.c: 245:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 245:                 alerteDefaut("ETAPE 2", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 24C &U _testActif &U _testVoyants ]
+"246
+[; ;main.c: 246:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"247
-[; ;main.c: 247:             }
+"248
+[; ;main.c: 248:             }
 }
 [e :U 404 ]
-"248
-[; ;main.c: 248:         }
+"249
+[; ;main.c: 249:         }
 }
 [e :U 402 ]
-"250
-[; ;main.c: 250:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "251
-[; ;main.c: 251:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 251:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "252
-[; ;main.c: 252:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 252:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "253
-[; ;main.c: 253:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 253:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"254
+[; ;main.c: 254:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"259
-[; ;main.c: 259:         if (testActif) {
+"260
+[; ;main.c: 260:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 405  ]
 {
-"261
-[; ;main.c: 261:             displayManager("ETAPE 3", "TEST LED ROUGE", "", "");
-[e ( _displayManager (4 , , , :s 25C :s 26C :s 27C :s 28C ]
 "262
-[; ;main.c: 262:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 262:             displayManager("ETAPE 3", "TEST LED ROUGE", "", "");
+[e ( _displayManager (4 , , , :s 25C :s 26C :s 27C :s 28C ]
 "263
-[; ;main.c: 263:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 263:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "264
-[; ;main.c: 264:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
+[; ;main.c: 264:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "265
-[; ;main.c: 265:             if (testLeds) {
+[; ;main.c: 265:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"266
+[; ;main.c: 266:             if (testLeds) {
 [e $ ! != -> _testLeds `i -> 0 `i 406  ]
 {
-"267
-[; ;main.c: 267:                 printf("Attente validation led rouge\r\n");
-[e ( _printf :s 29C ]
 "268
-[; ;main.c: 268:                 testVoyants = reponseOperateur(automatique);
-[e = _testVoyants ( _reponseOperateur (1 _automatique ]
+[; ;main.c: 268:                 printf("Attente validation led rouge\r\n");
+[e ( _printf :s 29C ]
 "269
-[; ;main.c: 269:                 if (!testVoyants) {
+[; ;main.c: 269:                 testVoyants = reponseOperateur(automatique);
+[e = _testVoyants ( _reponseOperateur (1 _automatique ]
+"270
+[; ;main.c: 270:                 if (!testVoyants) {
 [e $ ! ! != -> _testVoyants `i -> 0 `i 407  ]
 {
-"271
-[; ;main.c: 271:                     testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "272
-[; ;main.c: 272:                     alerteDefaut("ETAPE 3", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 30C &U _testActif &U _testVoyants ]
+[; ;main.c: 272:                     testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "273
-[; ;main.c: 273:                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 273:                     alerteDefaut("ETAPE 3", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 30C &U _testActif &U _testVoyants ]
+"274
+[; ;main.c: 274:                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"275
-[; ;main.c: 275:                 } else {
+"276
+[; ;main.c: 276:                 } else {
 }
 [e $U 408  ]
 [e :U 407 ]
 {
-"277
-[; ;main.c: 277:                     printf("-> TEST:3:1");
-[e ( _printf :s 31C ]
 "278
-[; ;main.c: 278:                 }
+[; ;main.c: 278:                     printf("-> TEST:3:1");
+[e ( _printf :s 31C ]
+"279
+[; ;main.c: 279:                 }
 }
 [e :U 408 ]
-"279
-[; ;main.c: 279:             }
+"280
+[; ;main.c: 280:             }
 }
 [e :U 406 ]
-"282
-[; ;main.c: 282:         }
+"283
+[; ;main.c: 283:         }
 }
 [e :U 405 ]
-"284
-[; ;main.c: 284:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "285
-[; ;main.c: 285:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 285:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "286
-[; ;main.c: 286:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 286:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "287
-[; ;main.c: 287:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 287:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"288
+[; ;main.c: 288:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"292
-[; ;main.c: 292:         if (testActif) {
+"293
+[; ;main.c: 293:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 409  ]
 {
-"294
-[; ;main.c: 294:             displayManager("ETAPE 4", "TEST LED BLEUE", "", "");
-[e ( _displayManager (4 , , , :s 32C :s 33C :s 34C :s 35C ]
 "295
-[; ;main.c: 295:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 295:             displayManager("ETAPE 4", "TEST LED BLEUE", "", "");
+[e ( _displayManager (4 , , , :s 32C :s 33C :s 34C :s 35C ]
 "296
-[; ;main.c: 296:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 296:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "297
-[; ;main.c: 297:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
+[; ;main.c: 297:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "298
-[; ;main.c: 298:             if (testLeds) {
+[; ;main.c: 298:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"299
+[; ;main.c: 299:             if (testLeds) {
 [e $ ! != -> _testLeds `i -> 0 `i 410  ]
 {
-"300
-[; ;main.c: 300:                 testVoyants = reponseOperateur(automatique);
-[e = _testVoyants ( _reponseOperateur (1 _automatique ]
 "301
-[; ;main.c: 301:                 if (!testVoyants) {
+[; ;main.c: 301:                 testVoyants = reponseOperateur(automatique);
+[e = _testVoyants ( _reponseOperateur (1 _automatique ]
+"302
+[; ;main.c: 302:                 if (!testVoyants) {
 [e $ ! ! != -> _testVoyants `i -> 0 `i 411  ]
 {
-"303
-[; ;main.c: 303:                     testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "304
-[; ;main.c: 304:                     alerteDefaut("ETAPE 4", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 36C &U _testActif &U _testVoyants ]
+[; ;main.c: 304:                     testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "305
-[; ;main.c: 305:                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 305:                     alerteDefaut("ETAPE 4", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 36C &U _testActif &U _testVoyants ]
+"306
+[; ;main.c: 306:                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"307
-[; ;main.c: 307:                 } else {
+"308
+[; ;main.c: 308:                 } else {
 }
 [e $U 412  ]
 [e :U 411 ]
 {
-"309
-[; ;main.c: 309:                     printf("-> TEST:4:1");
-[e ( _printf :s 37C ]
 "310
-[; ;main.c: 310:                 }
+[; ;main.c: 310:                     printf("-> TEST:4:1");
+[e ( _printf :s 37C ]
+"311
+[; ;main.c: 311:                 }
 }
 [e :U 412 ]
-"311
-[; ;main.c: 311:             }
+"312
+[; ;main.c: 312:             }
 }
 [e :U 410 ]
-"314
-[; ;main.c: 314:         }
+"315
+[; ;main.c: 315:         }
 }
 [e :U 409 ]
-"316
-[; ;main.c: 316:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "317
-[; ;main.c: 317:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 317:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "318
-[; ;main.c: 318:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 318:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "319
-[; ;main.c: 319:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 319:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"320
+[; ;main.c: 320:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"325
-[; ;main.c: 325:         if (testActif) {
+"326
+[; ;main.c: 326:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 413  ]
 {
-"327
-[; ;main.c: 327:             displayManager("ETAPE 5", "TEST LED VERTE", "", "");
-[e ( _displayManager (4 , , , :s 38C :s 39C :s 40C :s 41C ]
 "328
-[; ;main.c: 328:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 328:             displayManager("ETAPE 5", "TEST LED VERTE", "", "");
+[e ( _displayManager (4 , , , :s 38C :s 39C :s 40C :s 41C ]
 "329
-[; ;main.c: 329:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 329:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "330
-[; ;main.c: 330:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
+[; ;main.c: 330:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "331
-[; ;main.c: 331:             if (testLeds) {
+[; ;main.c: 331:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"332
+[; ;main.c: 332:             if (testLeds) {
 [e $ ! != -> _testLeds `i -> 0 `i 414  ]
 {
-"333
-[; ;main.c: 333:                 testVoyants = reponseOperateur(automatique);
-[e = _testVoyants ( _reponseOperateur (1 _automatique ]
 "334
-[; ;main.c: 334:                 if (!testVoyants) {
+[; ;main.c: 334:                 testVoyants = reponseOperateur(automatique);
+[e = _testVoyants ( _reponseOperateur (1 _automatique ]
+"335
+[; ;main.c: 335:                 if (!testVoyants) {
 [e $ ! ! != -> _testVoyants `i -> 0 `i 415  ]
 {
-"336
-[; ;main.c: 336:                     testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "337
-[; ;main.c: 337:                     alerteDefaut("ETAPE 5", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 42C &U _testActif &U _testVoyants ]
+[; ;main.c: 337:                     testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "338
-[; ;main.c: 338:                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 338:                     alerteDefaut("ETAPE 5", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 42C &U _testActif &U _testVoyants ]
+"339
+[; ;main.c: 339:                     sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"340
-[; ;main.c: 340:                 } else {
+"341
+[; ;main.c: 341:                 } else {
 }
 [e $U 416  ]
 [e :U 415 ]
 {
-"342
-[; ;main.c: 342:                     printf("-> TEST:5:1");
-[e ( _printf :s 43C ]
 "343
-[; ;main.c: 343:                 }
+[; ;main.c: 343:                     printf("-> TEST:5:1");
+[e ( _printf :s 43C ]
+"344
+[; ;main.c: 344:                 }
 }
 [e :U 416 ]
-"344
-[; ;main.c: 344:             }
+"345
+[; ;main.c: 345:             }
 }
 [e :U 414 ]
-"346
-[; ;main.c: 346:         }
+"347
+[; ;main.c: 347:         }
 }
 [e :U 413 ]
-"349
-[; ;main.c: 349:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "350
-[; ;main.c: 350:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 350:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "351
-[; ;main.c: 351:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 351:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "352
-[; ;main.c: 352:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 352:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"353
+[; ;main.c: 353:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"358
-[; ;main.c: 358:         if (testActif) {
+"359
+[; ;main.c: 359:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 417  ]
 {
-"360
-[; ;main.c: 360:             displayManager("ETAPE 6", "TEST R1 ON", "", "");
-[e ( _displayManager (4 , , , :s 44C :s 45C :s 46C :s 47C ]
 "361
-[; ;main.c: 361:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 361:             displayManager("ETAPE 6", "TEST R1 ON", "", "");
+[e ( _displayManager (4 , , , :s 44C :s 45C :s 46C :s 47C ]
 "362
-[; ;main.c: 362:             _delay((unsigned long)((1000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 362:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "363
-[; ;main.c: 363:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
-"365
-[; ;main.c: 365:             _delay((unsigned long)((1000)*(16000000/4000.0)));
+[; ;main.c: 363:             _delay((unsigned long)((1000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"367
-[; ;main.c: 367:             if (testR1(1)) {
+"364
+[; ;main.c: 364:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"366
+[; ;main.c: 366:             _delay((unsigned long)((1000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"368
+[; ;main.c: 368:             if (testR1(1)) {
 [e $ ! != -> ( _testR1 (1 -> -> 1 `i `a `i -> 0 `i 418  ]
 {
-"369
-[; ;main.c: 369:                 printf("-> TEST:6:1");
+"370
+[; ;main.c: 370:                 printf("-> TEST:6:1");
 [e ( _printf :s 48C ]
-"371
-[; ;main.c: 371:             } else {
+"372
+[; ;main.c: 372:             } else {
 }
 [e $U 419  ]
 [e :U 418 ]
 {
-"373
-[; ;main.c: 373:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "374
-[; ;main.c: 374:                 alerteDefaut("ETAPE 6", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 49C &U _testActif &U _testVoyants ]
+[; ;main.c: 374:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "375
-[; ;main.c: 375:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 375:                 alerteDefaut("ETAPE 6", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 49C &U _testActif &U _testVoyants ]
+"376
+[; ;main.c: 376:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"377
-[; ;main.c: 377:             }
+"378
+[; ;main.c: 378:             }
 }
 [e :U 419 ]
-"379
-[; ;main.c: 379:         }
+"380
+[; ;main.c: 380:         }
 }
 [e :U 417 ]
-"380
-[; ;main.c: 380:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "381
-[; ;main.c: 381:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 381:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "382
-[; ;main.c: 382:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 382:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "383
-[; ;main.c: 383:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 383:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"384
+[; ;main.c: 384:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"389
-[; ;main.c: 389:         if (testActif) {
+"390
+[; ;main.c: 390:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 420  ]
 {
-"391
-[; ;main.c: 391:             displayManager("ETAPE 7", "TEST R1 OFF - R2 ON", "", "");
-[e ( _displayManager (4 , , , :s 50C :s 51C :s 52C :s 53C ]
 "392
-[; ;main.c: 392:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 392:             displayManager("ETAPE 7", "TEST R1 OFF - R2 ON", "", "");
+[e ( _displayManager (4 , , , :s 50C :s 51C :s 52C :s 53C ]
 "393
-[; ;main.c: 393:             _delay((unsigned long)((1000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 393:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "394
-[; ;main.c: 394:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
-"396
-[; ;main.c: 396:             _delay((unsigned long)((1000)*(16000000/4000.0)));
+[; ;main.c: 394:             _delay((unsigned long)((1000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"398
-[; ;main.c: 398:             if (testR1(0) && testR2(1)) {
+"395
+[; ;main.c: 395:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"397
+[; ;main.c: 397:             _delay((unsigned long)((1000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"399
+[; ;main.c: 399:             if (testR1(0) && testR2(1)) {
 [e $ ! && != -> ( _testR1 (1 -> -> 0 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 1 `i `a `i -> 0 `i 421  ]
 {
-"400
-[; ;main.c: 400:                 printf("-> TEST:7:1");
+"401
+[; ;main.c: 401:                 printf("-> TEST:7:1");
 [e ( _printf :s 54C ]
-"402
-[; ;main.c: 402:             } else {
+"403
+[; ;main.c: 403:             } else {
 }
 [e $U 422  ]
 [e :U 421 ]
 {
-"404
-[; ;main.c: 404:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "405
-[; ;main.c: 405:                 alerteDefaut("ETAPE 7", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 55C &U _testActif &U _testVoyants ]
+[; ;main.c: 405:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "406
-[; ;main.c: 406:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-[e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
+[; ;main.c: 406:                 alerteDefaut("ETAPE 7", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 55C &U _testActif &U _testVoyants ]
 "407
-[; ;main.c: 407:             }
+[; ;main.c: 407:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
+"408
+[; ;main.c: 408:             }
 }
 [e :U 422 ]
-"409
-[; ;main.c: 409:         }
+"410
+[; ;main.c: 410:         }
 }
 [e :U 420 ]
-"410
-[; ;main.c: 410:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "411
-[; ;main.c: 411:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 411:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "412
-[; ;main.c: 412:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 412:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "413
-[; ;main.c: 413:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 413:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"414
+[; ;main.c: 414:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"418
-[; ;main.c: 418:         if (testActif) {
+"419
+[; ;main.c: 419:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 423  ]
 {
-"420
-[; ;main.c: 420:             displayManager("ETAPE 8", "TEST R2 OFF - R3 ON", "", "");
-[e ( _displayManager (4 , , , :s 56C :s 57C :s 58C :s 59C ]
 "421
-[; ;main.c: 421:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 421:             displayManager("ETAPE 8", "TEST R2 OFF - R3 ON", "", "");
+[e ( _displayManager (4 , , , :s 56C :s 57C :s 58C :s 59C ]
 "422
-[; ;main.c: 422:             _delay((unsigned long)((1000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 422:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "423
-[; ;main.c: 423:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
-"425
-[; ;main.c: 425:             _delay((unsigned long)((1000)*(16000000/4000.0)));
+[; ;main.c: 423:             _delay((unsigned long)((1000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"427
-[; ;main.c: 427:             if (testR2(0) && testR3(1)) {
+"424
+[; ;main.c: 424:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"426
+[; ;main.c: 426:             _delay((unsigned long)((1000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"428
+[; ;main.c: 428:             if (testR2(0) && testR3(1)) {
 [e $ ! && != -> ( _testR2 (1 -> -> 0 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 1 `i `a `i -> 0 `i 424  ]
 {
-"429
-[; ;main.c: 429:                 printf("-> TEST:8:1");
+"430
+[; ;main.c: 430:                 printf("-> TEST:8:1");
 [e ( _printf :s 60C ]
-"431
-[; ;main.c: 431:             } else {
+"432
+[; ;main.c: 432:             } else {
 }
 [e $U 425  ]
 [e :U 424 ]
 {
-"433
-[; ;main.c: 433:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "434
-[; ;main.c: 434:                 alerteDefaut("ETAPE 8", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 61C &U _testActif &U _testVoyants ]
+[; ;main.c: 434:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "435
-[; ;main.c: 435:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
-[e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
+[; ;main.c: 435:                 alerteDefaut("ETAPE 8", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 61C &U _testActif &U _testVoyants ]
 "436
-[; ;main.c: 436:             }
+[; ;main.c: 436:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
+"437
+[; ;main.c: 437:             }
 }
 [e :U 425 ]
-"438
-[; ;main.c: 438:         }
+"439
+[; ;main.c: 439:         }
 }
 [e :U 423 ]
-"440
-[; ;main.c: 440:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "441
-[; ;main.c: 441:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 441:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "442
-[; ;main.c: 442:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 442:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "443
-[; ;main.c: 443:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 443:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"444
+[; ;main.c: 444:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"448
-[; ;main.c: 448:         if (testActif) {
+"449
+[; ;main.c: 449:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 426  ]
 {
-"450
-[; ;main.c: 450:             displayManager("ETAPE 9", "TEST LED CLAVIER", "CLAVIER ECLAIRE?", "");
-[e ( _displayManager (4 , , , :s 62C :s 63C :s 64C :s 65C ]
 "451
-[; ;main.c: 451:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 451:             displayManager("ETAPE 9", "TEST LED CLAVIER", "CLAVIER ECLAIRE?", "");
+[e ( _displayManager (4 , , , :s 62C :s 63C :s 64C :s 65C ]
 "452
-[; ;main.c: 452:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 452:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "453
-[; ;main.c: 453:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
+[; ;main.c: 453:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "454
-[; ;main.c: 454:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[; ;main.c: 454:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"455
+[; ;main.c: 455:             _delay((unsigned long)((500)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"459
-[; ;main.c: 459:             lectureAN1 = ADC_GetConversion(VIN1);
-[e = _lectureAN1 -> ( _ADC_GetConversion (1 . `E3374 3 `i ]
 "460
-[; ;main.c: 460:             int buffer = sprintf(slectureAN1, "%d", lectureAN1);
+[; ;main.c: 460:             lectureAN1 = ADC_GetConversion(VIN1);
+[e = _lectureAN1 -> ( _ADC_GetConversion (1 . `E3374 3 `i ]
+"461
+[; ;main.c: 461:             int buffer = sprintf(slectureAN1, "%d", lectureAN1);
 [v _buffer `i ~T0 @X0 1 a ]
 [e = _buffer ( _sprintf (1 , (. , &U _slectureAN1 :s 66C _lectureAN1 ]
-"461
-[; ;main.c: 461:             if (lectureAN1 < 800) {
+"462
+[; ;main.c: 462:             if (lectureAN1 < 800) {
 [e $ ! < _lectureAN1 -> 800 `i 427  ]
 {
-"464
-[; ;main.c: 464:                 do { LATAbits.LATA7 = 1; } while(0);
+"465
+[; ;main.c: 465:                 do { LATAbits.LATA7 = 1; } while(0);
 [e :U 430 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
 [e :U 429 ]
-"465
-[; ;main.c: 465:                 printf("-> TEST:9:1");
+"466
+[; ;main.c: 466:                 printf("-> TEST:9:1");
 [e ( _printf :s 67C ]
-"467
-[; ;main.c: 467:             } else {
+"468
+[; ;main.c: 468:             } else {
 }
 [e $U 431  ]
 [e :U 427 ]
 {
-"469
-[; ;main.c: 469:                 alerteDefaut("ETAPE 9", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 68C &U _testActif &U _testVoyants ]
 "470
-[; ;main.c: 470:                 displayManager("ETAPE 9", "TEST LED CLAVIER", slectureAN1, "");
-[e ( _displayManager (4 , , , :s 69C :s 70C &U _slectureAN1 :s 71C ]
+[; ;main.c: 470:                 alerteDefaut("ETAPE 9", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 68C &U _testActif &U _testVoyants ]
 "471
-[; ;main.c: 471:                 do { LATAbits.LATA7 = 0; } while(0);
+[; ;main.c: 471:                 displayManager("ETAPE 9", "TEST LED CLAVIER", slectureAN1, "");
+[e ( _displayManager (4 , , , :s 69C :s 70C &U _slectureAN1 :s 71C ]
+"472
+[; ;main.c: 472:                 do { LATAbits.LATA7 = 0; } while(0);
 [e :U 434 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 433 ]
-"472
-[; ;main.c: 472:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+"473
+[; ;main.c: 473:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"474
-[; ;main.c: 474:             }
+"475
+[; ;main.c: 475:             }
 }
 [e :U 431 ]
-"476
-[; ;main.c: 476:             _delay((unsigned long)((2000)*(16000000/4000.0)));
+"477
+[; ;main.c: 477:             _delay((unsigned long)((2000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"478
-[; ;main.c: 478:         }
+"479
+[; ;main.c: 479:         }
 }
 [e :U 426 ]
-"479
-[; ;main.c: 479:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "480
-[; ;main.c: 480:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 480:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "481
-[; ;main.c: 481:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 481:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "482
-[; ;main.c: 482:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 482:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"483
+[; ;main.c: 483:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"488
-[; ;main.c: 488:         if (testActif) {
+"489
+[; ;main.c: 489:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 435  ]
 {
-"490
-[; ;main.c: 490:             displayManager("ETAPE 10", "TEST LED CLAVIER", "CLAVIER ETEINT?", "");
-[e ( _displayManager (4 , , , :s 72C :s 73C :s 74C :s 75C ]
 "491
-[; ;main.c: 491:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 491:             displayManager("ETAPE 10", "TEST LED CLAVIER", "CLAVIER ETEINT?", "");
+[e ( _displayManager (4 , , , :s 72C :s 73C :s 74C :s 75C ]
 "492
-[; ;main.c: 492:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 492:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "493
-[; ;main.c: 493:             pressBP1(0);
+[; ;main.c: 493:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"494
+[; ;main.c: 494:             pressBP1(0);
 [e ( _pressBP1 (1 -> -> 0 `i `a ]
-"498
-[; ;main.c: 498:             _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "499
-[; ;main.c: 499:             lectureAN1 = ADC_GetConversion(VIN1);
-[e = _lectureAN1 -> ( _ADC_GetConversion (1 . `E3374 3 `i ]
+[; ;main.c: 499:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "500
-[; ;main.c: 500:             int buffer = sprintf(slectureAN1, "%d", lectureAN1);
+[; ;main.c: 500:             lectureAN1 = ADC_GetConversion(VIN1);
+[e = _lectureAN1 -> ( _ADC_GetConversion (1 . `E3374 3 `i ]
+"501
+[; ;main.c: 501:             int buffer = sprintf(slectureAN1, "%d", lectureAN1);
 [v _buffer `i ~T0 @X0 1 a ]
 [e = _buffer ( _sprintf (1 , (. , &U _slectureAN1 :s 76C _lectureAN1 ]
-"502
-[; ;main.c: 502:             if (lectureAN1 < 700) {
+"503
+[; ;main.c: 503:             if (lectureAN1 < 700) {
 [e $ ! < _lectureAN1 -> 700 `i 436  ]
 {
-"505
-[; ;main.c: 505:                 do { LATAbits.LATA7 = 0; } while(0);
+"506
+[; ;main.c: 506:                 do { LATAbits.LATA7 = 0; } while(0);
 [e :U 439 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
 [e :U 438 ]
-"506
-[; ;main.c: 506:                 printf("-> TEST:10:1");
+"507
+[; ;main.c: 507:                 printf("-> TEST:10:1");
 [e ( _printf :s 77C ]
-"508
-[; ;main.c: 508:             } else {
+"509
+[; ;main.c: 509:             } else {
 }
 [e $U 440  ]
 [e :U 436 ]
 {
-"510
-[; ;main.c: 510:                 alerteDefaut("ETAPE 10", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 78C &U _testActif &U _testVoyants ]
 "511
-[; ;main.c: 511:                 displayManager("ETAPE 10", "TEST LED CLAVIER", slectureAN1, "");
-[e ( _displayManager (4 , , , :s 79C :s 80C &U _slectureAN1 :s 81C ]
+[; ;main.c: 511:                 alerteDefaut("ETAPE 10", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 78C &U _testActif &U _testVoyants ]
 "512
-[; ;main.c: 512:                 do { LATAbits.LATA7 = 1; } while(0);
+[; ;main.c: 512:                 displayManager("ETAPE 10", "TEST LED CLAVIER", slectureAN1, "");
+[e ( _displayManager (4 , , , :s 79C :s 80C &U _slectureAN1 :s 81C ]
+"513
+[; ;main.c: 513:                 do { LATAbits.LATA7 = 1; } while(0);
 [e :U 443 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
 [e :U 442 ]
-"513
-[; ;main.c: 513:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+"514
+[; ;main.c: 514:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"515
-[; ;main.c: 515:             }
+"516
+[; ;main.c: 516:             }
 }
 [e :U 440 ]
-"516
-[; ;main.c: 516:             _delay((unsigned long)((2000)*(16000000/4000.0)));
+"517
+[; ;main.c: 517:             _delay((unsigned long)((2000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"518
-[; ;main.c: 518:         }
+"519
+[; ;main.c: 519:         }
 }
 [e :U 435 ]
-"520
-[; ;main.c: 520:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "521
-[; ;main.c: 521:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 521:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "522
-[; ;main.c: 522:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 522:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "523
-[; ;main.c: 523:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 523:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"524
+[; ;main.c: 524:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"529
-[; ;main.c: 529:         if (testActif) {
+"530
+[; ;main.c: 530:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 444  ]
 {
-"531
-[; ;main.c: 531:             displayManager("ETAPE 12", "TEST SFLASH", "", "");
-[e ( _displayManager (4 , , , :s 82C :s 83C :s 84C :s 85C ]
 "532
-[; ;main.c: 532:             _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 532:             displayManager("ETAPE 12", "TEST SFLASH", "", "");
+[e ( _displayManager (4 , , , :s 82C :s 83C :s 84C :s 85C ]
 "533
-[; ;main.c: 533:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 533:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "534
-[; ;main.c: 534:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"535
-[; ;main.c: 535:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
-"537
-[; ;main.c: 537:             _delay((unsigned long)((3000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"539
-[; ;main.c: 539:             pressBP1(1);
+[; ;main.c: 534:             pressBP1(1);
 [e ( _pressBP1 (1 -> -> 1 `i `a ]
-"540
-[; ;main.c: 540:             _delay((unsigned long)((250)*(16000000/4000.0)));
+"535
+[; ;main.c: 535:             _delay((unsigned long)((250)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"541
-[; ;main.c: 541:             pressBP1(0);
+"536
+[; ;main.c: 536:             pressBP1(0);
 [e ( _pressBP1 (1 -> -> 0 `i `a ]
+"538
+[; ;main.c: 538:             _delay((unsigned long)((3000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"540
+[; ;main.c: 540:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
+"541
+[; ;main.c: 541:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "542
-[; ;main.c: 542:             _delay((unsigned long)((750)*(16000000/4000.0)));
+[; ;main.c: 542:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"543
+[; ;main.c: 543:             _delay((unsigned long)((750)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 750 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"544
-[; ;main.c: 544:             if (testR1(1) && testR2(1) && testR3(0)) {
+"545
+[; ;main.c: 545:             if (testR1(1) && testR2(1) && testR3(0)) {
 [e $ ! && && != -> ( _testR1 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 0 `i `a `i -> 0 `i 445  ]
 {
-"546
-[; ;main.c: 546:                 printf("-> TEST:12:1");
+"547
+[; ;main.c: 547:                 printf("-> TEST:12:1");
 [e ( _printf :s 86C ]
-"548
-[; ;main.c: 548:             } else {
+"549
+[; ;main.c: 549:             } else {
 }
 [e $U 446  ]
 [e :U 445 ]
 {
-"550
-[; ;main.c: 550:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "551
-[; ;main.c: 551:                 pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
+[; ;main.c: 551:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "552
-[; ;main.c: 552:                 pressBP2(0);
-[e ( _pressBP2 (1 -> -> 0 `i `a ]
+[; ;main.c: 552:                 pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
 "553
-[; ;main.c: 553:                 alerteDefaut("ETAPE 12", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 87C &U _testActif &U _testVoyants ]
+[; ;main.c: 553:                 pressBP2(0);
+[e ( _pressBP2 (1 -> -> 0 `i `a ]
 "554
-[; ;main.c: 554:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 554:                 alerteDefaut("ETAPE 12", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 87C &U _testActif &U _testVoyants ]
+"555
+[; ;main.c: 555:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"556
-[; ;main.c: 556:             }
+"557
+[; ;main.c: 557:             }
 }
 [e :U 446 ]
-"558
-[; ;main.c: 558:             _delay((unsigned long)((1000)*(16000000/4000.0)));
+"559
+[; ;main.c: 559:             _delay((unsigned long)((1000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"560
-[; ;main.c: 560:             pressBP1(0);
-[e ( _pressBP1 (1 -> -> 0 `i `a ]
 "561
-[; ;main.c: 561:             pressBP2(0);
+[; ;main.c: 561:             pressBP1(0);
+[e ( _pressBP1 (1 -> -> 0 `i `a ]
+"562
+[; ;main.c: 562:             pressBP2(0);
 [e ( _pressBP2 (1 -> -> 0 `i `a ]
-"563
-[; ;main.c: 563:         }
+"564
+[; ;main.c: 564:         }
 }
 [e :U 444 ]
-"564
-[; ;main.c: 564:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "565
-[; ;main.c: 565:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 565:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "566
-[; ;main.c: 566:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 566:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "567
-[; ;main.c: 567:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 567:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"568
+[; ;main.c: 568:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"573
-[; ;main.c: 573:         if (testActif) {
+"574
+[; ;main.c: 574:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 447  ]
 {
-"575
-[; ;main.c: 575:             displayManager("ETAPE 13", "TEST LEDS CARTE", "LEDS ALLUMEES", "PRESSER OK / NOK");
-[e ( _displayManager (4 , , , :s 88C :s 89C :s 90C :s 91C ]
 "576
-[; ;main.c: 576:             pressBP1(1);
-[e ( _pressBP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 576:             displayManager("ETAPE 13", "TEST LEDS CARTE", "LEDS ALLUMEES", "PRESSER OK / NOK");
+[e ( _displayManager (4 , , , :s 88C :s 89C :s 90C :s 91C ]
 "577
-[; ;main.c: 577:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 577:             pressBP1(1);
+[e ( _pressBP1 (1 -> -> 1 `i `a ]
 "578
-[; ;main.c: 578:             pressBP1(0);
+[; ;main.c: 578:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"579
+[; ;main.c: 579:             pressBP1(0);
 [e ( _pressBP1 (1 -> -> 0 `i `a ]
-"580
-[; ;main.c: 580:             printf("ATTENTE VALIDATION LEDS\r\n");
-[e ( _printf :s 92C ]
 "581
-[; ;main.c: 581:             testVoyants = reponseOperateur(automatique);
-[e = _testVoyants ( _reponseOperateur (1 _automatique ]
+[; ;main.c: 581:             printf("ATTENTE VALIDATION LEDS\r\n");
+[e ( _printf :s 92C ]
 "582
-[; ;main.c: 582:             if (!testVoyants) {
+[; ;main.c: 582:             testVoyants = reponseOperateur(automatique);
+[e = _testVoyants ( _reponseOperateur (1 _automatique ]
+"583
+[; ;main.c: 583:             if (!testVoyants) {
 [e $ ! ! != -> _testVoyants `i -> 0 `i 448  ]
 {
-"584
-[; ;main.c: 584:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "585
-[; ;main.c: 585:                 alerteDefaut("ETAPE 13", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 93C &U _testActif &U _testVoyants ]
+[; ;main.c: 585:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "586
-[; ;main.c: 586:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 586:                 alerteDefaut("ETAPE 13", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 93C &U _testActif &U _testVoyants ]
+"587
+[; ;main.c: 587:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"588
-[; ;main.c: 588:             } else {
+"589
+[; ;main.c: 589:             } else {
 }
 [e $U 449  ]
 [e :U 448 ]
 {
-"590
-[; ;main.c: 590:                 printf("-> TEST:13:1");
-[e ( _printf :s 94C ]
 "591
-[; ;main.c: 591:             }
+[; ;main.c: 591:                 printf("-> TEST:13:1");
+[e ( _printf :s 94C ]
+"592
+[; ;main.c: 592:             }
 }
 [e :U 449 ]
-"592
-[; ;main.c: 592:         }
+"593
+[; ;main.c: 593:         }
 }
 [e :U 447 ]
-"593
-[; ;main.c: 593:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "594
-[; ;main.c: 594:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 594:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "595
-[; ;main.c: 595:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 595:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "596
-[; ;main.c: 596:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 596:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"597
+[; ;main.c: 597:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"600
-[; ;main.c: 600:         if (testActif) {
+"601
+[; ;main.c: 601:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 450  ]
 {
-"602
-[; ;main.c: 602:             displayManager("ETAPE 14", "TEST BP2", "", "");
-[e ( _displayManager (4 , , , :s 95C :s 96C :s 97C :s 98C ]
 "603
-[; ;main.c: 603:             pressBP2(1);
-[e ( _pressBP2 (1 -> -> 1 `i `a ]
+[; ;main.c: 603:             displayManager("ETAPE 14", "TEST BP2", "", "");
+[e ( _displayManager (4 , , , :s 95C :s 96C :s 97C :s 98C ]
 "604
-[; ;main.c: 604:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 604:             pressBP2(1);
+[e ( _pressBP2 (1 -> -> 1 `i `a ]
 "605
-[; ;main.c: 605:             pressBP2(0);
-[e ( _pressBP2 (1 -> -> 0 `i `a ]
+[; ;main.c: 605:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "606
-[; ;main.c: 606:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[; ;main.c: 606:             pressBP2(0);
+[e ( _pressBP2 (1 -> -> 0 `i `a ]
+"607
+[; ;main.c: 607:             _delay((unsigned long)((500)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"608
-[; ;main.c: 608:             if (testR1(1) && testR2(1) && testR3(1)) {
+"609
+[; ;main.c: 609:             if (testR1(1) && testR2(1) && testR3(1)) {
 [e $ ! && && != -> ( _testR1 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 1 `i `a `i -> 0 `i 451  ]
 {
-"610
-[; ;main.c: 610:                 printf("-> TEST:14:1");
+"611
+[; ;main.c: 611:                 printf("-> TEST:14:1");
 [e ( _printf :s 99C ]
-"612
-[; ;main.c: 612:             } else {
+"613
+[; ;main.c: 613:             } else {
 }
 [e $U 452  ]
 [e :U 451 ]
 {
-"614
-[; ;main.c: 614:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "615
-[; ;main.c: 615:                 alerteDefaut("ETAPE 14", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 100C &U _testActif &U _testVoyants ]
+[; ;main.c: 615:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "616
-[; ;main.c: 616:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 616:                 alerteDefaut("ETAPE 14", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 100C &U _testActif &U _testVoyants ]
+"617
+[; ;main.c: 617:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"618
-[; ;main.c: 618:             }
+"619
+[; ;main.c: 619:             }
 }
 [e :U 452 ]
-"620
-[; ;main.c: 620:         }
+"621
+[; ;main.c: 621:         }
 }
 [e :U 450 ]
-"621
-[; ;main.c: 621:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "622
-[; ;main.c: 622:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 622:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "623
-[; ;main.c: 623:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 623:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "624
-[; ;main.c: 624:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 624:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"625
+[; ;main.c: 625:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"629
-[; ;main.c: 629:         if (testActif) {
+"630
+[; ;main.c: 630:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 453  ]
 {
-"631
-[; ;main.c: 631:             displayManager("ETAPE 15", "TEST HORLOGE", "", "");
-[e ( _displayManager (4 , , , :s 101C :s 102C :s 103C :s 104C ]
 "632
-[; ;main.c: 632:             setHorloge(1);
-[e ( _setHorloge (1 -> -> 1 `i `a ]
+[; ;main.c: 632:             displayManager("ETAPE 15", "TEST HORLOGE", "", "");
+[e ( _displayManager (4 , , , :s 101C :s 102C :s 103C :s 104C ]
 "633
-[; ;main.c: 633:             _delay((unsigned long)((250)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 633:             setHorloge(1);
+[e ( _setHorloge (1 -> -> 1 `i `a ]
 "634
-[; ;main.c: 634:             setHorloge(0);
-[e ( _setHorloge (1 -> -> 0 `i `a ]
+[; ;main.c: 634:             _delay((unsigned long)((250)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "635
-[; ;main.c: 635:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[; ;main.c: 635:             setHorloge(0);
+[e ( _setHorloge (1 -> -> 0 `i `a ]
+"636
+[; ;main.c: 636:             _delay((unsigned long)((500)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"637
-[; ;main.c: 637:             if (testR1(0) && testR2(0) && testR3(0)) {
+"638
+[; ;main.c: 638:             if (testR1(0) && testR2(0) && testR3(0)) {
 [e $ ! && && != -> ( _testR1 (1 -> -> 0 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 0 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 0 `i `a `i -> 0 `i 454  ]
 {
-"639
-[; ;main.c: 639:                 printf("-> TEST:15:1");
+"640
+[; ;main.c: 640:                 printf("-> TEST:15:1");
 [e ( _printf :s 105C ]
-"641
-[; ;main.c: 641:             } else {
+"642
+[; ;main.c: 642:             } else {
 }
 [e $U 455  ]
 [e :U 454 ]
 {
-"643
-[; ;main.c: 643:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "644
-[; ;main.c: 644:                 alerteDefaut("ETAPE 15", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 106C &U _testActif &U _testVoyants ]
+[; ;main.c: 644:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "645
-[; ;main.c: 645:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 645:                 alerteDefaut("ETAPE 15", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 106C &U _testActif &U _testVoyants ]
+"646
+[; ;main.c: 646:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"647
-[; ;main.c: 647:             }
+"648
+[; ;main.c: 648:             }
 }
 [e :U 455 ]
-"649
-[; ;main.c: 649:         }
+"650
+[; ;main.c: 650:         }
 }
 [e :U 453 ]
-"650
-[; ;main.c: 650:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "651
-[; ;main.c: 651:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 651:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "652
-[; ;main.c: 652:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 652:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "653
-[; ;main.c: 653:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 653:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"654
+[; ;main.c: 654:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"658
-[; ;main.c: 658:         if (testActif) {
+"659
+[; ;main.c: 659:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 456  ]
 {
-"660
-[; ;main.c: 660:             displayManager("ETAPE 16", "TEST P1", "", "");
-[e ( _displayManager (4 , , , :s 107C :s 108C :s 109C :s 110C ]
 "661
-[; ;main.c: 661:             setP1(1);
-[e ( _setP1 (1 -> -> 1 `i `a ]
+[; ;main.c: 661:             displayManager("ETAPE 16", "TEST P1", "", "");
+[e ( _displayManager (4 , , , :s 107C :s 108C :s 109C :s 110C ]
 "662
-[; ;main.c: 662:             _delay((unsigned long)((1200)*(16000000/4000.0)));
+[; ;main.c: 662:             setP1(1);
+[e ( _setP1 (1 -> -> 1 `i `a ]
+"663
+[; ;main.c: 663:             _delay((unsigned long)((1200)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"664
-[; ;main.c: 664:             setP1(0);
-[e ( _setP1 (1 -> -> 0 `i `a ]
 "665
-[; ;main.c: 665:             _delay((unsigned long)((500)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 665:             setP1(0);
+[e ( _setP1 (1 -> -> 0 `i `a ]
 "666
-[; ;main.c: 666:             if (testR1(1) && testR2(1) && testR3(1)) {
+[; ;main.c: 666:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"667
+[; ;main.c: 667:             if (testR1(1) && testR2(1) && testR3(1)) {
 [e $ ! && && != -> ( _testR1 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 1 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 1 `i `a `i -> 0 `i 457  ]
 {
-"668
-[; ;main.c: 668:                 printf("-> TEST:16:1");
+"669
+[; ;main.c: 669:                 printf("-> TEST:16:1");
 [e ( _printf :s 111C ]
-"670
-[; ;main.c: 670:             } else {
+"671
+[; ;main.c: 671:             } else {
 }
 [e $U 458  ]
 [e :U 457 ]
 {
-"672
-[; ;main.c: 672:                 alerteDefautEtape16("ETAPE 16", &testActif, &testVoyants, &automatique, &programmation);
+"673
+[; ;main.c: 673:                 alerteDefautEtape16("ETAPE 16", &testActif, &testVoyants, &automatique, &programmation);
 [e ( _alerteDefautEtape16 (4 , , , , :s 112C &U _testActif &U _testVoyants &U _automatique &U _programmation ]
-"674
-[; ;main.c: 674:             }
+"675
+[; ;main.c: 675:             }
 }
 [e :U 458 ]
-"676
-[; ;main.c: 676:         }
+"677
+[; ;main.c: 677:         }
 }
 [e :U 456 ]
-"677
-[; ;main.c: 677:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "678
-[; ;main.c: 678:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 678:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "679
-[; ;main.c: 679:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 679:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "680
-[; ;main.c: 680:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 680:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"681
+[; ;main.c: 681:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"686
-[; ;main.c: 686:         if (testActif) {
+"687
+[; ;main.c: 687:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 459  ]
 {
-"688
-[; ;main.c: 688:             displayManager("ETAPE 17", "TEST P2", "", "");
-[e ( _displayManager (4 , , , :s 113C :s 114C :s 115C :s 116C ]
 "689
-[; ;main.c: 689:             setP2(1);
-[e ( _setP2 (1 -> -> 1 `i `a ]
+[; ;main.c: 689:             displayManager("ETAPE 17", "TEST P2", "", "");
+[e ( _displayManager (4 , , , :s 113C :s 114C :s 115C :s 116C ]
 "690
-[; ;main.c: 690:             _delay((unsigned long)((1200)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 690:             setP2(1);
+[e ( _setP2 (1 -> -> 1 `i `a ]
 "691
-[; ;main.c: 691:             setP2(0);
-[e ( _setP2 (1 -> -> 0 `i `a ]
+[; ;main.c: 691:             _delay((unsigned long)((1200)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1200 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "692
-[; ;main.c: 692:             _delay((unsigned long)((500)*(16000000/4000.0)));
+[; ;main.c: 692:             setP2(0);
+[e ( _setP2 (1 -> -> 0 `i `a ]
+"693
+[; ;main.c: 693:             _delay((unsigned long)((500)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"694
-[; ;main.c: 694:             if (testR1(0) && testR2(0) && testR3(0)) {
+"695
+[; ;main.c: 695:             if (testR1(0) && testR2(0) && testR3(0)) {
 [e $ ! && && != -> ( _testR1 (1 -> -> 0 `i `a `i -> 0 `i != -> ( _testR2 (1 -> -> 0 `i `a `i -> 0 `i != -> ( _testR3 (1 -> -> 0 `i `a `i -> 0 `i 460  ]
 {
-"696
-[; ;main.c: 696:                 printf("-> TEST:17:1");
+"697
+[; ;main.c: 697:                 printf("-> TEST:17:1");
 [e ( _printf :s 117C ]
-"698
-[; ;main.c: 698:             } else {
+"699
+[; ;main.c: 699:             } else {
 }
 [e $U 461  ]
 [e :U 460 ]
 {
-"700
-[; ;main.c: 700:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "701
-[; ;main.c: 701:                 alerteDefaut("ETAPE 17", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 118C &U _testActif &U _testVoyants ]
+[; ;main.c: 701:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "702
-[; ;main.c: 702:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 702:                 alerteDefaut("ETAPE 17", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 118C &U _testActif &U _testVoyants ]
+"703
+[; ;main.c: 703:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"704
-[; ;main.c: 704:             }
+"705
+[; ;main.c: 705:             }
 }
 [e :U 461 ]
-"706
-[; ;main.c: 706:         }
+"707
+[; ;main.c: 707:         }
 }
 [e :U 459 ]
-"708
-[; ;main.c: 708:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "709
-[; ;main.c: 709:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 709:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "710
-[; ;main.c: 710:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 710:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "711
-[; ;main.c: 711:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 711:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"712
+[; ;main.c: 712:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"717
-[; ;main.c: 717:         if (testActif) {
+"718
+[; ;main.c: 718:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 462  ]
 {
-"719
-[; ;main.c: 719:             displayManager("ETAPE 18", "TEST BLUETOOTH", "VOIR APPLI", "PRESSER OK / NOK");
-[e ( _displayManager (4 , , , :s 119C :s 120C :s 121C :s 122C ]
 "720
-[; ;main.c: 720:             activerTouche();
+[; ;main.c: 720:             displayManager("ETAPE 18", "TEST BLUETOOTH", "VOIR APPLI", "PRESSER OK / NOK");
+[e ( _displayManager (4 , , , :s 119C :s 120C :s 121C :s 122C ]
+"721
+[; ;main.c: 721:             activerTouche();
 [e ( _activerTouche ..  ]
-"722
-[; ;main.c: 722:             testVoyants = reponseOperateur(automatique);
-[e = _testVoyants ( _reponseOperateur (1 _automatique ]
 "723
-[; ;main.c: 723:             if (!testVoyants) {
+[; ;main.c: 723:             testVoyants = reponseOperateur(automatique);
+[e = _testVoyants ( _reponseOperateur (1 _automatique ]
+"724
+[; ;main.c: 724:             if (!testVoyants) {
 [e $ ! ! != -> _testVoyants `i -> 0 `i 463  ]
 {
-"725
-[; ;main.c: 725:                 testActif = 0;
-[e = _testActif -> -> 0 `i `a ]
 "726
-[; ;main.c: 726:                 alerteDefaut("ETAPE 18", &testActif, &testVoyants);
-[e ( _alerteDefaut (3 , , :s 123C &U _testActif &U _testVoyants ]
+[; ;main.c: 726:                 testActif = 0;
+[e = _testActif -> -> 0 `i `a ]
 "727
-[; ;main.c: 727:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
+[; ;main.c: 727:                 alerteDefaut("ETAPE 18", &testActif, &testVoyants);
+[e ( _alerteDefaut (3 , , :s 123C &U _testActif &U _testVoyants ]
+"728
+[; ;main.c: 728:                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 [e ( _sortieErreur (4 , , , &U _automatique &U _testActif &U _testVoyants &U _programmation ]
-"729
-[; ;main.c: 729:                 _delay((unsigned long)((2000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "730
-[; ;main.c: 730:             } else {
+[; ;main.c: 730:                 _delay((unsigned long)((2000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"731
+[; ;main.c: 731:             } else {
 }
 [e $U 464  ]
 [e :U 463 ]
 {
-"732
-[; ;main.c: 732:                 printf("-> TEST:18:1");
-[e ( _printf :s 124C ]
 "733
-[; ;main.c: 733:             }
+[; ;main.c: 733:                 printf("-> TEST:18:1");
+[e ( _printf :s 124C ]
+"734
+[; ;main.c: 734:             }
 }
 [e :U 464 ]
-"734
-[; ;main.c: 734:         }
+"735
+[; ;main.c: 735:         }
 }
 [e :U 462 ]
-"736
-[; ;main.c: 736:         slaveSummary = getSlaveSummary();
-[e = _slaveSummary ( _getSlaveSummary ..  ]
 "737
-[; ;main.c: 737:         processSlaveResponse(slaveSummary, slaveWaiting);
-[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
+[; ;main.c: 737:         slaveSummary = getSlaveSummary();
+[e = _slaveSummary ( _getSlaveSummary ..  ]
 "738
-[; ;main.c: 738:         orderFormWin = getRS232();
-[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+[; ;main.c: 738:         processSlaveResponse(slaveSummary, slaveWaiting);
+[e ( _processSlaveResponse (2 , _slaveSummary -> _slaveWaiting `*a ]
 "739
-[; ;main.c: 739:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+[; ;main.c: 739:         orderFormWin = getRS232();
+[e = _orderFormWin -> ( _getRS232 ..  `uc ]
+"740
+[; ;main.c: 740:         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 [e ( _processActionForSlave (4 , , , , &U _automatique &U _testActif &U _programmation &U _slaveInTest -> _orderFormWin `uc ]
-"743
-[; ;main.c: 743:         if (testActif) {
+"744
+[; ;main.c: 744:         if (testActif) {
 [e $ ! != -> _testActif `i -> 0 `i 465  ]
 {
-"745
-[; ;main.c: 745:             displayManager("FIN DE TEST", "CONFORME", "RETIRER CARTE", "ATTENTE ACQUITTEMENT");
-[e ( _displayManager (4 , , , :s 125C :s 126C :s 127C :s 128C ]
 "746
-[; ;main.c: 746:             ledConforme(1);
-[e ( _ledConforme (1 -> -> 1 `i `a ]
+[; ;main.c: 746:             displayManager("FIN DE TEST", "CONFORME", "RETIRER CARTE", "ATTENTE ACQUITTEMENT");
+[e ( _displayManager (4 , , , :s 125C :s 126C :s 127C :s 128C ]
 "747
-[; ;main.c: 747:             alimenter(0);
-[e ( _alimenter (1 -> -> 0 `i `a ]
+[; ;main.c: 747:             ledConforme(1);
+[e ( _ledConforme (1 -> -> 1 `i `a ]
 "748
-[; ;main.c: 748:             okAlert();
-[e ( _okAlert ..  ]
+[; ;main.c: 748:             alimenter(0);
+[e ( _alimenter (1 -> -> 0 `i `a ]
 "749
-[; ;main.c: 749:             attenteAquittement(&automatique, &testActif);
-[e ( _attenteAquittement (2 , &U _automatique &U _testActif ]
+[; ;main.c: 749:             okAlert();
+[e ( _okAlert ..  ]
 "750
-[; ;main.c: 750:             initialConditions(&testActif, &testVoyants, &automatique, &programmation);
+[; ;main.c: 750:             attenteAquittement(&automatique, &testActif);
+[e ( _attenteAquittement (2 , &U _automatique &U _testActif ]
+"751
+[; ;main.c: 751:             initialConditions(&testActif, &testVoyants, &automatique, &programmation);
 [e ( _initialConditions (4 , , , &U _testActif &U _testVoyants &U _automatique &U _programmation ]
-"752
-[; ;main.c: 752:             _delay((unsigned long)((2000)*(16000000/4000.0)));
+"753
+[; ;main.c: 753:             _delay((unsigned long)((2000)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"754
-[; ;main.c: 754:         }
+"755
+[; ;main.c: 755:         }
 }
 [e :U 465 ]
-"756
-[; ;main.c: 756:     }
+"757
+[; ;main.c: 757:     }
 }
 [e :U 391 ]
 [e $U 392  ]
 [e :U 393 ]
-"760
-[; ;main.c: 760: }
+"761
+[; ;main.c: 761: }
 [e :UE 384 ]
 }
 [p f _printf 8388608 ]

@@ -613,7 +613,7 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveAc
                         printf("-> SLAVE_TEST GET ACQ\r\n");
                         *autom = true;
                         *testAct = false;
-                        *testSlaveActive = true;
+                        *testSlaveActive = false;
                         *prog = false;
                         __delay_ms(50);
                         repOperateur = true;
@@ -1014,18 +1014,23 @@ void processSlaveResponse(char repSlave, bool *slaveIsWaiting) {
             printf("-> SLAVE ERREUR:");
             break;
         }
-
+        
+           case 'S':
+        {
+            printf("-> SLAVE TEST CONFORME");
+            break;
+        }
 
         case 'u':
         {
-            printf("-> SLAVE TEST CONFORME");
+            printf("-> SLAVE TEST OK");
             break;
         }
 
 
         case 'v':
         {
-            printf("-> SLAVE TEST NON CONFORME");
+            printf("-> SLAVE TEST KO");
             break;
         }
 
@@ -1106,6 +1111,10 @@ void processActionForSlave(bool *autom, bool *testAct, bool *prog, bool *testSla
         case 'w':
         {
             char echo = getSlaveStatus('w');
+            if(echo == 'w'){
+            
+               printf("-> SLAVE_TEST GET OK");
+            }
             break;
 
         }

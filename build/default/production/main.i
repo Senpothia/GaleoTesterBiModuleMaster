@@ -5997,6 +5997,7 @@ void main(void) {
         processSlaveResponse(slaveSummary, slaveWaiting);
 
         orderFormWin = getRS232();
+
         processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
 

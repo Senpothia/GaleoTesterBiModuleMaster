@@ -6507,7 +6507,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                         printf("-> SLAVE_TEST GET ACQ\r\n");
                         *autom = 1;
                         *testAct = 0;
-                        *testSlaveActive = 1;
+                        *testSlaveActive = 0;
                         *prog = 0;
                         _delay((unsigned long)((50)*(16000000/4000.0)));
                         repOperateur = 1;
@@ -6909,17 +6909,22 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
             break;
         }
 
+           case 'S':
+        {
+            printf("-> SLAVE TEST CONFORME");
+            break;
+        }
 
         case 'u':
         {
-            printf("-> SLAVE TEST CONFORME");
+            printf("-> SLAVE TEST OK");
             break;
         }
 
 
         case 'v':
         {
-            printf("-> SLAVE TEST NON CONFORME");
+            printf("-> SLAVE TEST KO");
             break;
         }
 
@@ -6946,7 +6951,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
     if (eusartRxCount != 0) {
 
         reception = EUSART_Read();
-# 1092 "tester.c"
+
     } else {
 
     }
@@ -7000,6 +7005,10 @@ void processActionForSlave(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *tes
         case 'w':
         {
             char echo = getSlaveStatus('w');
+            if(echo == 'w'){
+
+               printf("-> SLAVE_TEST GET OK");
+            }
             break;
 
         }
