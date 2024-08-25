@@ -5828,12 +5828,15 @@ void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
 void processSlaveResponse(char repSlave, _Bool *);
-_Bool checkResponseForSlave(_Bool *);
+void processActionForSlave(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive, unsigned char orderFromWin);
+unsigned char getRS232();
 # 12 "tester.c" 2
 
 # 1 "./display.h" 1
 # 23 "./display.h"
 void displayManager(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerMaster(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerSlave(char s1[], char s2[], char s3[], char s4[]);
 # 13 "tester.c" 2
 
 
@@ -6452,7 +6455,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                 }
 
 
-                  case 'u':
+                case 'u':
                 {
                     char responseSlave = sendOKToSlave();
                     if (responseSlave == 'u') {
@@ -6475,7 +6478,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                     break;
                 }
 
-                    case 'v':
+                case 'v':
                 {
                     char responseSlave = sendNOKToSlave();
                     if (responseSlave == 'v') {
@@ -6498,7 +6501,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                     break;
                 }
 
-                      case 'w':
+                case 'w':
                 {
                     char responseSlave = sendACQToSlave();
                     if (responseSlave == 'w') {
@@ -6506,7 +6509,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                         printf("-> SLAVE_TEST GET ACQ\r\n");
                         *autom = 1;
                         *testAct = 0;
-                        *testSlaveActive = 1;
+                        *testSlaveActive = 0;
                         *prog = 0;
                         _delay((unsigned long)((50)*(16000000/4000.0)));
                         repOperateur = 1;
@@ -6657,6 +6660,7 @@ void marchePAP() {
 
 void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
 
+    unsigned char reception;
 
     switch (repSlave)
     {
@@ -6815,7 +6819,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'L':
         {
             printf("-> SLAVETEST:12:1");
-
+            *slaveIsWaiting = 1;
             break;
 
         }
@@ -6829,6 +6833,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'M':
         {
             printf("-> SLAVETEST:13:1");
+            *slaveIsWaiting = 0;
             break;
 
         }
@@ -6881,6 +6886,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'Q':
         {
             printf("-> SLAVETEST:17:1");
+            *slaveIsWaiting = 1;
             break;
 
         }
@@ -6894,6 +6900,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'R':
         {
             printf("-> SLAVETEST:18:1");
+            *slaveIsWaiting = 0;
             break;
 
         }
@@ -6904,17 +6911,22 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
             break;
         }
 
+           case 'S':
+        {
+            printf("-> SLAVE TEST CONFORME");
+            break;
+        }
 
         case 'u':
         {
-            printf("-> SLAVE TEST CONFORME");
+            printf("-> SLAVE TEST OK");
             break;
         }
 
 
         case 'v':
         {
-            printf("-> SLAVE TEST NON CONFORME");
+            printf("-> SLAVE TEST KO");
             break;
         }
 
@@ -6933,41 +6945,77 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
 
 }
 
-_Bool checkResponseForSlave(_Bool *slaveWaitingFlag) {
+ unsigned char getRS232() {
 
     unsigned char reception;
+
+
     if (eusartRxCount != 0) {
 
         reception = EUSART_Read();
 
-        switch (reception)
-        {
+    } else {
 
-
-            case 'u':
-            {
-                char echo = getSlaveStatus('u');
-                break;
-
-            }
-
-            case 'v':
-            {
-                char echo = getSlaveStatus('v');
-                break;
-            }
-
-
-            case 'w':
-            {
-                char echo = getSlaveStatus('w');
-                break;
-
-            }
-
-            default:
-                break;
-        }
     }
-    return 0;
+    return reception;
+
+}
+
+void processActionForSlave(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive, unsigned char ordreFromWin) {
+
+    switch (ordreFromWin)
+    {
+
+
+        case 'a':
+        {
+            char responseSlave = startTestSlave();
+            if (responseSlave == 'a') {
+
+                printf("-> SLAVE_TEST ON\r\n");
+                *autom = 1;
+                *testAct = 1;
+                *testSlaveActive = 1;
+                *prog = 0;
+                _delay((unsigned long)((50)*(16000000/4000.0)));
+
+
+            } else {
+
+                printf("-> SLAVE RESPONSE NULL\r\n");
+
+            }
+
+            break;
+        }
+
+
+        case 'u':
+        {
+            char echo = getSlaveStatus('u');
+            break;
+
+        }
+
+        case 'v':
+        {
+            char echo = getSlaveStatus('v');
+            break;
+        }
+
+
+        case 'w':
+        {
+            char echo = getSlaveStatus('w');
+            if(echo == 'w'){
+
+               printf("-> SLAVE_TEST GET OK");
+            }
+            break;
+
+        }
+
+        default:
+            break;
+    }
 }

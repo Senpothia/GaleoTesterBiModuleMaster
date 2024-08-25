@@ -21,3 +21,5 @@
 
 
 void displayManager(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerMaster(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerSlave(char s1[], char s2[], char s3[], char s4[]);

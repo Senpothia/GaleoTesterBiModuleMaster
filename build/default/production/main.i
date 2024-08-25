@@ -5828,6 +5828,8 @@ unsigned char getRS232();
 # 1 "./display.h" 1
 # 23 "./display.h"
 void displayManager(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerMaster(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerSlave(char s1[], char s2[], char s3[], char s4[]);
 # 59 "main.c" 2
 
 # 1 "./I2C_tester.h" 1
@@ -5927,12 +5929,14 @@ void main(void) {
 
     while (1) {
 
-        LCD_Init(0x4E);
-        displayManager("TEST CARTE D925ED4", "MODULE MAITRE", "POSITIONNER CARTE", "APPUYER SUR OK");
+
+
+        displayManagerMaster("TEST CARTE D925ED4", "MODULE MAITRE", "POSITIONNER CARTE", "APPUYER SUR OK");
         _delay((unsigned long)((100)*(16000000/4000.0)));
 
-        LCD_Init(0x46);
-        displayManager("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
+
+
+        displayManagerSlave("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
         _delay((unsigned long)((100)*(16000000/4000.0)));
 
 
@@ -5962,11 +5966,11 @@ void main(void) {
 
         _delay((unsigned long)((100)*(16000000/4000.0)));
 
-        LCD_Init(0x46);
-        displayManager("TEST CARTE D925ED4", "Master en test", "POSITIONNER CARTE", "APPUYER SUR OK");
+
+        displayManagerSlave("TEST CARTE D925ED4", "Master en test", "POSITIONNER CARTE", "APPUYER SUR OK");
         _delay((unsigned long)((100)*(16000000/4000.0)));
-        LCD_Init(0x4E);
-        displayManager("ETAPE 1", "TEST 3 RELAIS ON", "", "");
+
+        displayManagerMaster("ETAPE 1", "TEST 3 RELAIS ON", "", "");
 
 
 
@@ -6011,7 +6015,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 2", "TEST 3 RELAIS OFF", "", "");
+            displayManagerMaster("ETAPE 2", "TEST 3 RELAIS OFF", "", "");
             pressBP1(0);
             pressBP2(0);
             _delay((unsigned long)((500)*(16000000/4000.0)));
@@ -6039,7 +6043,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 3", "TEST LED ROUGE", "", "");
+            displayManagerMaster("ETAPE 3", "TEST LED ROUGE", "", "");
             pressBP1(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             pressBP1(0);
@@ -6072,7 +6076,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 4", "TEST LED BLEUE", "", "");
+            displayManagerMaster("ETAPE 4", "TEST LED BLEUE", "", "");
             pressBP1(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             pressBP1(0);
@@ -6105,7 +6109,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 5", "TEST LED VERTE", "", "");
+            displayManagerMaster("ETAPE 5", "TEST LED VERTE", "", "");
             pressBP1(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             pressBP1(0);
@@ -6138,7 +6142,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 6", "TEST R1 ON", "", "");
+            displayManagerMaster("ETAPE 6", "TEST R1 ON", "", "");
             pressBP1(1);
             _delay((unsigned long)((1000)*(16000000/4000.0)));
             pressBP1(0);
@@ -6169,7 +6173,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 7", "TEST R1 OFF - R2 ON", "", "");
+            displayManagerMaster("ETAPE 7", "TEST R1 OFF - R2 ON", "", "");
             pressBP1(1);
             _delay((unsigned long)((1000)*(16000000/4000.0)));
             pressBP1(0);
@@ -6198,7 +6202,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 8", "TEST R2 OFF - R3 ON", "", "");
+            displayManagerMaster("ETAPE 8", "TEST R2 OFF - R3 ON", "", "");
             pressBP1(1);
             _delay((unsigned long)((1000)*(16000000/4000.0)));
             pressBP1(0);
@@ -6228,7 +6232,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 9", "TEST LED CLAVIER", "CLAVIER ECLAIRE?", "");
+            displayManagerMaster("ETAPE 9", "TEST LED CLAVIER", "CLAVIER ECLAIRE?", "");
             pressBP1(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             pressBP1(0);
@@ -6268,7 +6272,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 10", "TEST LED CLAVIER", "CLAVIER ETEINT?", "");
+            displayManagerMaster("ETAPE 10", "TEST LED CLAVIER", "CLAVIER ETEINT?", "");
             pressBP1(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             pressBP1(0);
@@ -6289,7 +6293,7 @@ void main(void) {
             } else {
 
                 alerteDefaut("ETAPE 10", &testActif, &testVoyants);
-                displayManager("ETAPE 10", "TEST LED CLAVIER", slectureAN1, "");
+                displayManagerMaster("ETAPE 10", "TEST LED CLAVIER", slectureAN1, "");
                 do { LATAbits.LATA7 = 1; } while(0);
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 
@@ -6309,7 +6313,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 12", "TEST SFLASH", "", "");
+            displayManagerMaster("ETAPE 12", "TEST SFLASH", "", "");
             _delay((unsigned long)((500)*(16000000/4000.0)));
             pressBP1(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
@@ -6353,7 +6357,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 13", "TEST LEDS CARTE", "LEDS ALLUMEES", "PRESSER OK / NOK");
+            displayManagerMaster("ETAPE 13", "TEST LEDS CARTE", "LEDS ALLUMEES", "PRESSER OK / NOK");
             pressBP1(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             pressBP1(0);
@@ -6380,7 +6384,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 14", "TEST BP2", "", "");
+            displayManagerMaster("ETAPE 14", "TEST BP2", "", "");
             pressBP2(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             pressBP2(0);
@@ -6409,7 +6413,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 15", "TEST HORLOGE", "", "");
+            displayManagerMaster("ETAPE 15", "TEST HORLOGE", "", "");
             setHorloge(1);
             _delay((unsigned long)((250)*(16000000/4000.0)));
             setHorloge(0);
@@ -6438,7 +6442,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 16", "TEST P1", "", "");
+            displayManagerMaster("ETAPE 16", "TEST P1", "", "");
             setP1(1);
             _delay((unsigned long)((1200)*(16000000/4000.0)));
 
@@ -6466,7 +6470,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 17", "TEST P2", "", "");
+            displayManagerMaster("ETAPE 17", "TEST P2", "", "");
             setP2(1);
             _delay((unsigned long)((1200)*(16000000/4000.0)));
             setP2(0);
@@ -6497,7 +6501,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 18", "TEST BLUETOOTH", "VOIR APPLI", "PRESSER OK / NOK");
+            displayManagerMaster("ETAPE 18", "TEST BLUETOOTH", "VOIR APPLI", "PRESSER OK / NOK");
             activerTouche();
 
             testVoyants = reponseOperateur(automatique);
@@ -6523,7 +6527,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("FIN DE TEST", "CONFORME", "RETIRER CARTE", "ATTENTE ACQUITTEMENT");
+            displayManagerMaster("FIN DE TEST", "CONFORME", "RETIRER CARTE", "ATTENTE ACQUITTEMENT");
             ledConforme(1);
             alimenter(0);
             okAlert();

@@ -5821,12 +5821,15 @@ void attenteAquittement(_Bool *, _Bool *);
 void sortieErreur(_Bool *, _Bool *, _Bool *, _Bool *);
 void marchePAP();
 void processSlaveResponse(char repSlave, _Bool *);
-_Bool checkResponseForSlave(_Bool *);
+void processActionForSlave(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive, unsigned char orderFromWin);
+unsigned char getRS232();
 # 58 "main.c" 2
 
 # 1 "./display.h" 1
 # 23 "./display.h"
 void displayManager(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerMaster(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerSlave(char s1[], char s2[], char s3[], char s4[]);
 # 59 "main.c" 2
 
 # 1 "./I2C_tester.h" 1
@@ -5876,6 +5879,7 @@ void main(void) {
     _Bool slaveInTest = 0;
     char slaveSummary;
     _Bool slaveWaiting = 0;
+    char orderFormWin;
 
 
 
@@ -5925,12 +5929,14 @@ void main(void) {
 
     while (1) {
 
-        LCD_Init(0x4E);
-        displayManager("TEST CARTE D925ED4", "MODULE MAITRE", "POSITIONNER CARTE", "APPUYER SUR OK");
+
+
+        displayManagerMaster("TEST CARTE D925ED4", "MODULE MAITRE", "POSITIONNER CARTE", "APPUYER SUR OK");
         _delay((unsigned long)((100)*(16000000/4000.0)));
 
-        LCD_Init(0x46);
-        displayManager("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
+
+
+        displayManagerSlave("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
         _delay((unsigned long)((100)*(16000000/4000.0)));
 
 
@@ -5989,8 +5995,16 @@ void main(void) {
 
         }
 
+
         slaveSummary = getSlaveSummary();
+
         processSlaveResponse(slaveSummary, slaveWaiting);
+
+        orderFormWin = getRS232();
+
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
+
 
         _delay((unsigned long)((1000)*(16000000/4000.0)));
 
@@ -6020,6 +6034,8 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
 
 
@@ -6052,6 +6068,8 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
 
 
@@ -6082,6 +6100,8 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
 
 
@@ -6113,6 +6133,9 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6141,6 +6164,9 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6168,6 +6194,9 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6195,6 +6224,9 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6231,6 +6263,9 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6269,6 +6304,9 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6310,6 +6348,8 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
 
 
@@ -6337,6 +6377,8 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
 
 
@@ -6363,6 +6405,8 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
 
 
 
@@ -6390,6 +6434,9 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6414,6 +6461,9 @@ void main(void) {
         }
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6442,6 +6492,9 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
 
@@ -6467,6 +6520,9 @@ void main(void) {
 
         slaveSummary = getSlaveSummary();
         processSlaveResponse(slaveSummary, slaveWaiting);
+        orderFormWin = getRS232();
+        processActionForSlave(&automatique, &testActif, &programmation, &slaveInTest, orderFormWin);
+
 
 
         if (testActif) {

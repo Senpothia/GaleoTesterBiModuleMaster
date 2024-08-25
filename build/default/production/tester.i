@@ -5835,6 +5835,8 @@ unsigned char getRS232();
 # 1 "./display.h" 1
 # 23 "./display.h"
 void displayManager(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerMaster(char s1[], char s2[], char s3[], char s4[]);
+void displayManagerSlave(char s1[], char s2[], char s3[], char s4[]);
 # 13 "tester.c" 2
 
 
@@ -6441,6 +6443,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                         *prog = 0;
                         _delay((unsigned long)((50)*(16000000/4000.0)));
                         repOperateur = 1;
+                        displayManagerSlave("ETAPE 1", "TEST 3 RELAIS ON", "", "");
 
                     } else {
 
@@ -6672,6 +6675,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'A':
         {
             printf("-> SLAVETEST:1:1");
+            displayManagerSlave("ETAPE 2", "TEST 3 RELAIS OFF", "", "");
             break;
 
         }
@@ -6687,6 +6691,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'B':
         {
             printf("-> SLAVETEST:2:1");
+            displayManagerSlave("ETAPE 3", "TEST LED ROUGE", "", "");
             break;
 
         }
@@ -6700,6 +6705,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'C':
         {
             printf("-> SLAVETEST:3:1");
+            displayManagerSlave("ETAPE 4", "TEST LED BLEUE", "", "");
             break;
 
         }
@@ -6713,6 +6719,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'D':
         {
             printf("-> SLAVETEST:4:1");
+            displayManagerSlave("ETAPE 5", "TEST LED VERTE", "", "");
             break;
 
         }
@@ -6726,6 +6733,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'E':
         {
             printf("-> SLAVETEST:5:1");
+            displayManagerSlave("ETAPE 6", "TEST R1 ON", "", "");
             break;
 
         }
@@ -6739,6 +6747,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'F':
         {
             printf("-> SLAVETEST:6:1");
+            displayManagerSlave("ETAPE 7", "TEST R1 OFF - R2 ON", "", "");
             break;
 
         }
@@ -6752,6 +6761,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'G':
         {
             printf("-> SLAVETEST:7:1");
+            displayManagerSlave("ETAPE 8", "TEST R2 OFF - R3 ON", "", "");
             break;
 
         }
@@ -6765,6 +6775,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'H':
         {
             printf("-> SLAVETEST:8:1");
+            displayManagerSlave("ETAPE 9", "TEST LED CLAVIER", "CLAVIER ECLAIRE?", "");
             break;
 
         }
@@ -6778,6 +6789,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'I':
         {
             printf("-> SLAVETEST:9:1");
+            displayManagerSlave("ETAPE 10", "TEST LED CLAVIER", "CLAVIER ETEINT?", "");
             break;
 
         }
@@ -6791,6 +6803,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'J':
         {
             printf("-> SLAVETEST:10:1");
+            displayManagerSlave("ETAPE 12", "TEST SFLASH", "", "");
             break;
 
         }
@@ -6804,6 +6817,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'K':
         {
             printf("-> SLAVETEST:11:1");
+            displayManagerSlave("ETAPE 12", "", "", "");
             break;
 
         }
@@ -6817,6 +6831,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'L':
         {
             printf("-> SLAVETEST:12:1");
+            displayManagerSlave("ETAPE 13", "TEST LEDS CARTE", "LEDS ALLUMEES", "PRESSER OK / NOK");
             *slaveIsWaiting = 1;
             break;
 
@@ -6832,6 +6847,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         {
             printf("-> SLAVETEST:13:1");
             *slaveIsWaiting = 0;
+            displayManagerSlave("ETAPE 14", "TEST BP2", "", "");
             break;
 
         }
@@ -6845,6 +6861,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'N':
         {
             printf("-> SLAVETEST:14:1");
+            displayManagerSlave("ETAPE 15", "TEST HORLOGE", "", "");
             break;
 
         }
@@ -6858,6 +6875,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'O':
         {
             printf("-> SLAVETEST:15:1");
+            displayManagerSlave("ETAPE 16", "TEST P1", "", "");
             break;
 
         }
@@ -6871,6 +6889,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'P':
         {
             printf("-> SLAVETEST:16:1");
+            displayManagerSlave("ETAPE 17", "TEST P2", "", "");
             break;
 
         }
@@ -6884,10 +6903,12 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'Q':
         {
             printf("-> SLAVETEST:17:1");
+            displayManagerSlave("ETAPE 18", "TEST BLUETOOTH", "VOIR APPLI", "PRESSER OK / NOK");
             *slaveIsWaiting = 1;
             break;
 
         }
+
 
         case 'q':
         {
@@ -6899,6 +6920,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         {
             printf("-> SLAVETEST:18:1");
             *slaveIsWaiting = 0;
+            displayManagerSlave("FIN DE TEST", "CONFORME", "RETIRER CARTE", "ATTENTE ACQUITTEMENT");
             break;
 
         }
@@ -6909,9 +6931,10 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
             break;
         }
 
-           case 'S':
+        case 'S':
         {
             printf("-> SLAVE TEST CONFORME");
+            displayManagerSlave("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
             break;
         }
 
@@ -6932,7 +6955,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         case 'w':
         {
             printf("-> SLAVE TEST ACQUITTE");
-            ;
+            displayManagerSlave("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
             break;
         }
 
@@ -6943,7 +6966,7 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
 
 }
 
- unsigned char getRS232() {
+unsigned char getRS232() {
 
     unsigned char reception;
 
@@ -7005,9 +7028,9 @@ void processActionForSlave(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *tes
         case 'w':
         {
             char echo = getSlaveStatus('w');
-            if(echo == 'w'){
+            if (echo == 'w') {
 
-               printf("-> SLAVE_TEST GET OK");
+                printf("-> SLAVE_TEST GET OK");
             }
             break;
 

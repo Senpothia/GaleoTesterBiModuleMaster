@@ -19,3 +19,17 @@ void displayManager(char s1[], char s2[], char s3[], char s4[]) {
     LCD_Write_String(s4);
 
 }
+
+void displayManagerMaster(char s1[], char s2[], char s3[], char s4[]) {
+
+    LCD_Init(0x4E);
+    displayManager(s1, s2, s3, s4);
+
+}
+
+void displayManagerSlave(char s1[], char s2[], char s3[], char s4[]) {
+
+    LCD_Init(0x46);
+    displayManager(s1, s2, s3, s4);
+
+}

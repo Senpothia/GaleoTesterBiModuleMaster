@@ -1214,8 +1214,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _testAct `*a ~T0 @X0 1 r2 ]
 [v _testVoy `*a ~T0 @X0 1 r3 ]
 [f ]
-[v F3765 `uc ~T0 @X0 -> 20 `i s ]
-[i F3765
+[v F3780 `uc ~T0 @X0 -> 20 `i s ]
+[i F3780
 :U ..
 "224
 [; ;tester.c: 224:     char error[20] = "-> ERREUR: ";
@@ -1234,9 +1234,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _error `uc ~T0 @X0 -> 20 `i a ]
-[e = _error F3765 ]
-[v F3767 `uc ~T0 @X0 -> 10 `i s ]
-[i F3767
+[e = _error F3780 ]
+[v F3782 `uc ~T0 @X0 -> 10 `i s ]
+[i F3782
 :U ..
 "225
 [; ;tester.c: 225:     char eol[10] = "\r\n";
@@ -1246,7 +1246,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _eol `uc ~T0 @X0 -> 10 `i a ]
-[e = _eol F3767 ]
+[e = _eol F3782 ]
 "226
 [; ;tester.c: 226:     ledNonConforme(1);
 [e ( _ledNonConforme (1 -> -> 1 `i `a ]
@@ -2187,7 +2187,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;tester.c: 559:                 }
 }
 "562
-[; ;tester.c: 562:                   case 'u':
+[; ;tester.c: 562:                 case 'u':
 [e :U 589 ]
 "563
 [; ;tester.c: 563:                 {
@@ -2244,7 +2244,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;tester.c: 583:                 }
 }
 "585
-[; ;tester.c: 585:                     case 'v':
+[; ;tester.c: 585:                 case 'v':
 [e :U 592 ]
 "586
 [; ;tester.c: 586:                 {
@@ -2301,7 +2301,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;tester.c: 606:                 }
 }
 "608
-[; ;tester.c: 608:                       case 'w':
+[; ;tester.c: 608:                 case 'w':
 [e :U 595 ]
 "609
 [; ;tester.c: 609:                 {
@@ -2324,8 +2324,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;tester.c: 615:                         *testAct = 0;
 [e = *U _testAct -> -> 0 `i `a ]
 "616
-[; ;tester.c: 616:                         *testSlaveActive = 1;
-[e = *U _testSlaveActive -> -> 1 `i `a ]
+[; ;tester.c: 616:                         *testSlaveActive = 0;
+[e = *U _testSlaveActive -> -> 0 `i `a ]
 "617
 [; ;tester.c: 617:                         *prog = 0;
 [e = *U _prog -> -> 0 `i `a ]
@@ -2563,8 +2563,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _autom `*a ~T0 @X0 1 r4 ]
 [v _prog `*a ~T0 @X0 1 r5 ]
 [f ]
-[v F3822 `uc ~T0 @X0 -> 20 `i s ]
-[i F3822
+[v F3837 `uc ~T0 @X0 -> 20 `i s ]
+[i F3837
 :U ..
 "704
 [; ;tester.c: 704:     char error[20] = "-> ERREUR: ";
@@ -2583,9 +2583,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _error `uc ~T0 @X0 -> 20 `i a ]
-[e = _error F3822 ]
-[v F3824 `uc ~T0 @X0 -> 10 `i s ]
-[i F3824
+[e = _error F3837 ]
+[v F3839 `uc ~T0 @X0 -> 10 `i s ]
+[i F3839
 :U ..
 "705
 [; ;tester.c: 705:     char eol[10] = "\r\n";
@@ -2595,7 +2595,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _eol `uc ~T0 @X0 -> 10 `i a ]
-[e = _eol F3824 ]
+[e = _eol F3839 ]
 "706
 [; ;tester.c: 706:     ledNonConforme(1);
 [e ( _ledNonConforme (1 -> -> 1 `i `a ]
@@ -2750,620 +2750,650 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _repSlave `uc ~T0 @X0 1 r1 ]
 [v _slaveIsWaiting `*a ~T0 @X0 1 r2 ]
 [f ]
-"768
-[; ;tester.c: 768:     switch (repSlave)
-[e $U 622  ]
+"767
+[; ;tester.c: 767:     unsigned char reception;
+[v _reception `uc ~T0 @X0 1 a ]
 "769
-[; ;tester.c: 769:     {
+[; ;tester.c: 769:     switch (repSlave)
+[e $U 622  ]
+"770
+[; ;tester.c: 770:     {
 {
-"771
-[; ;tester.c: 771:         case 'z':
-[e :U 623 ]
 "772
-[; ;tester.c: 772:         {
-{
+[; ;tester.c: 772:         case 'z':
+[e :U 623 ]
 "773
-[; ;tester.c: 773:             printf("-> SLAVE EN ATTENTE:");
-[e ( _printf :s 60C ]
+[; ;tester.c: 773:         {
+{
 "774
-[; ;tester.c: 774:             break;
-[e $U 621  ]
+[; ;tester.c: 774:             printf("-> SLAVE EN ATTENTE:");
+[e ( _printf :s 60C ]
 "775
-[; ;tester.c: 775:         }
+[; ;tester.c: 775:             break;
+[e $U 621  ]
+"776
+[; ;tester.c: 776:         }
 }
-"777
-[; ;tester.c: 777:         case 'A':
-[e :U 624 ]
 "778
-[; ;tester.c: 778:         {
-{
+[; ;tester.c: 778:         case 'A':
+[e :U 624 ]
 "779
-[; ;tester.c: 779:             printf("-> SLAVETEST:1:1");
-[e ( _printf :s 61C ]
+[; ;tester.c: 779:         {
+{
 "780
-[; ;tester.c: 780:             break;
+[; ;tester.c: 780:             printf("-> SLAVETEST:1:1");
+[e ( _printf :s 61C ]
+"781
+[; ;tester.c: 781:             break;
 [e $U 621  ]
-"782
-[; ;tester.c: 782:         }
+"783
+[; ;tester.c: 783:         }
 }
-"784
-[; ;tester.c: 784:         case 'a':
-[e :U 625 ]
 "785
-[; ;tester.c: 785:         {
-{
+[; ;tester.c: 785:         case 'a':
+[e :U 625 ]
 "786
-[; ;tester.c: 786:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 62C ]
+[; ;tester.c: 786:         {
+{
 "787
-[; ;tester.c: 787:             break;
-[e $U 621  ]
+[; ;tester.c: 787:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 62C ]
 "788
-[; ;tester.c: 788:         }
+[; ;tester.c: 788:             break;
+[e $U 621  ]
+"789
+[; ;tester.c: 789:         }
 }
-"792
-[; ;tester.c: 792:         case 'B':
-[e :U 626 ]
 "793
-[; ;tester.c: 793:         {
-{
+[; ;tester.c: 793:         case 'B':
+[e :U 626 ]
 "794
-[; ;tester.c: 794:             printf("-> SLAVETEST:2:1");
-[e ( _printf :s 63C ]
+[; ;tester.c: 794:         {
+{
 "795
-[; ;tester.c: 795:             break;
+[; ;tester.c: 795:             printf("-> SLAVETEST:2:1");
+[e ( _printf :s 63C ]
+"796
+[; ;tester.c: 796:             break;
 [e $U 621  ]
-"797
-[; ;tester.c: 797:         }
+"798
+[; ;tester.c: 798:         }
 }
-"799
-[; ;tester.c: 799:         case 'b':
-[e :U 627 ]
 "800
-[; ;tester.c: 800:         {
-{
+[; ;tester.c: 800:         case 'b':
+[e :U 627 ]
 "801
-[; ;tester.c: 801:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 64C ]
+[; ;tester.c: 801:         {
+{
 "802
-[; ;tester.c: 802:             break;
-[e $U 621  ]
+[; ;tester.c: 802:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 64C ]
 "803
-[; ;tester.c: 803:         }
+[; ;tester.c: 803:             break;
+[e $U 621  ]
+"804
+[; ;tester.c: 804:         }
 }
-"805
-[; ;tester.c: 805:         case 'C':
-[e :U 628 ]
 "806
-[; ;tester.c: 806:         {
-{
+[; ;tester.c: 806:         case 'C':
+[e :U 628 ]
 "807
-[; ;tester.c: 807:             printf("-> SLAVETEST:3:1");
-[e ( _printf :s 65C ]
+[; ;tester.c: 807:         {
+{
 "808
-[; ;tester.c: 808:             break;
+[; ;tester.c: 808:             printf("-> SLAVETEST:3:1");
+[e ( _printf :s 65C ]
+"809
+[; ;tester.c: 809:             break;
 [e $U 621  ]
-"810
-[; ;tester.c: 810:         }
+"811
+[; ;tester.c: 811:         }
 }
-"812
-[; ;tester.c: 812:         case 'c':
-[e :U 629 ]
 "813
-[; ;tester.c: 813:         {
-{
+[; ;tester.c: 813:         case 'c':
+[e :U 629 ]
 "814
-[; ;tester.c: 814:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 66C ]
+[; ;tester.c: 814:         {
+{
 "815
-[; ;tester.c: 815:             break;
-[e $U 621  ]
+[; ;tester.c: 815:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 66C ]
 "816
-[; ;tester.c: 816:         }
+[; ;tester.c: 816:             break;
+[e $U 621  ]
+"817
+[; ;tester.c: 817:         }
 }
-"818
-[; ;tester.c: 818:         case 'D':
-[e :U 630 ]
 "819
-[; ;tester.c: 819:         {
-{
+[; ;tester.c: 819:         case 'D':
+[e :U 630 ]
 "820
-[; ;tester.c: 820:             printf("-> SLAVETEST:4:1");
-[e ( _printf :s 67C ]
+[; ;tester.c: 820:         {
+{
 "821
-[; ;tester.c: 821:             break;
+[; ;tester.c: 821:             printf("-> SLAVETEST:4:1");
+[e ( _printf :s 67C ]
+"822
+[; ;tester.c: 822:             break;
 [e $U 621  ]
-"823
-[; ;tester.c: 823:         }
+"824
+[; ;tester.c: 824:         }
 }
-"825
-[; ;tester.c: 825:         case 'd':
-[e :U 631 ]
 "826
-[; ;tester.c: 826:         {
-{
+[; ;tester.c: 826:         case 'd':
+[e :U 631 ]
 "827
-[; ;tester.c: 827:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 68C ]
+[; ;tester.c: 827:         {
+{
 "828
-[; ;tester.c: 828:             break;
-[e $U 621  ]
+[; ;tester.c: 828:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 68C ]
 "829
-[; ;tester.c: 829:         }
+[; ;tester.c: 829:             break;
+[e $U 621  ]
+"830
+[; ;tester.c: 830:         }
 }
-"831
-[; ;tester.c: 831:         case 'E':
-[e :U 632 ]
 "832
-[; ;tester.c: 832:         {
-{
+[; ;tester.c: 832:         case 'E':
+[e :U 632 ]
 "833
-[; ;tester.c: 833:             printf("-> SLAVETEST:5:1");
-[e ( _printf :s 69C ]
+[; ;tester.c: 833:         {
+{
 "834
-[; ;tester.c: 834:             break;
+[; ;tester.c: 834:             printf("-> SLAVETEST:5:1");
+[e ( _printf :s 69C ]
+"835
+[; ;tester.c: 835:             break;
 [e $U 621  ]
-"836
-[; ;tester.c: 836:         }
+"837
+[; ;tester.c: 837:         }
 }
-"838
-[; ;tester.c: 838:         case 'e':
-[e :U 633 ]
 "839
-[; ;tester.c: 839:         {
-{
+[; ;tester.c: 839:         case 'e':
+[e :U 633 ]
 "840
-[; ;tester.c: 840:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 70C ]
+[; ;tester.c: 840:         {
+{
 "841
-[; ;tester.c: 841:             break;
-[e $U 621  ]
+[; ;tester.c: 841:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 70C ]
 "842
-[; ;tester.c: 842:         }
+[; ;tester.c: 842:             break;
+[e $U 621  ]
+"843
+[; ;tester.c: 843:         }
 }
-"844
-[; ;tester.c: 844:         case 'F':
-[e :U 634 ]
 "845
-[; ;tester.c: 845:         {
-{
+[; ;tester.c: 845:         case 'F':
+[e :U 634 ]
 "846
-[; ;tester.c: 846:             printf("-> SLAVETEST:6:1");
-[e ( _printf :s 71C ]
+[; ;tester.c: 846:         {
+{
 "847
-[; ;tester.c: 847:             break;
+[; ;tester.c: 847:             printf("-> SLAVETEST:6:1");
+[e ( _printf :s 71C ]
+"848
+[; ;tester.c: 848:             break;
 [e $U 621  ]
-"849
-[; ;tester.c: 849:         }
+"850
+[; ;tester.c: 850:         }
 }
-"851
-[; ;tester.c: 851:         case 'f':
-[e :U 635 ]
 "852
-[; ;tester.c: 852:         {
-{
+[; ;tester.c: 852:         case 'f':
+[e :U 635 ]
 "853
-[; ;tester.c: 853:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 72C ]
+[; ;tester.c: 853:         {
+{
 "854
-[; ;tester.c: 854:             break;
-[e $U 621  ]
+[; ;tester.c: 854:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 72C ]
 "855
-[; ;tester.c: 855:         }
+[; ;tester.c: 855:             break;
+[e $U 621  ]
+"856
+[; ;tester.c: 856:         }
 }
-"857
-[; ;tester.c: 857:         case 'G':
-[e :U 636 ]
 "858
-[; ;tester.c: 858:         {
-{
+[; ;tester.c: 858:         case 'G':
+[e :U 636 ]
 "859
-[; ;tester.c: 859:             printf("-> SLAVETEST:7:1");
-[e ( _printf :s 73C ]
+[; ;tester.c: 859:         {
+{
 "860
-[; ;tester.c: 860:             break;
+[; ;tester.c: 860:             printf("-> SLAVETEST:7:1");
+[e ( _printf :s 73C ]
+"861
+[; ;tester.c: 861:             break;
 [e $U 621  ]
-"862
-[; ;tester.c: 862:         }
+"863
+[; ;tester.c: 863:         }
 }
-"864
-[; ;tester.c: 864:         case 'g':
-[e :U 637 ]
 "865
-[; ;tester.c: 865:         {
-{
+[; ;tester.c: 865:         case 'g':
+[e :U 637 ]
 "866
-[; ;tester.c: 866:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 74C ]
+[; ;tester.c: 866:         {
+{
 "867
-[; ;tester.c: 867:             break;
-[e $U 621  ]
+[; ;tester.c: 867:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 74C ]
 "868
-[; ;tester.c: 868:         }
+[; ;tester.c: 868:             break;
+[e $U 621  ]
+"869
+[; ;tester.c: 869:         }
 }
-"870
-[; ;tester.c: 870:         case 'H':
-[e :U 638 ]
 "871
-[; ;tester.c: 871:         {
-{
+[; ;tester.c: 871:         case 'H':
+[e :U 638 ]
 "872
-[; ;tester.c: 872:             printf("-> SLAVETEST:8:1");
-[e ( _printf :s 75C ]
+[; ;tester.c: 872:         {
+{
 "873
-[; ;tester.c: 873:             break;
+[; ;tester.c: 873:             printf("-> SLAVETEST:8:1");
+[e ( _printf :s 75C ]
+"874
+[; ;tester.c: 874:             break;
 [e $U 621  ]
-"875
-[; ;tester.c: 875:         }
+"876
+[; ;tester.c: 876:         }
 }
-"877
-[; ;tester.c: 877:         case 'h':
-[e :U 639 ]
 "878
-[; ;tester.c: 878:         {
-{
+[; ;tester.c: 878:         case 'h':
+[e :U 639 ]
 "879
-[; ;tester.c: 879:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 76C ]
+[; ;tester.c: 879:         {
+{
 "880
-[; ;tester.c: 880:             break;
-[e $U 621  ]
+[; ;tester.c: 880:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 76C ]
 "881
-[; ;tester.c: 881:         }
+[; ;tester.c: 881:             break;
+[e $U 621  ]
+"882
+[; ;tester.c: 882:         }
 }
-"883
-[; ;tester.c: 883:         case 'I':
-[e :U 640 ]
 "884
-[; ;tester.c: 884:         {
-{
+[; ;tester.c: 884:         case 'I':
+[e :U 640 ]
 "885
-[; ;tester.c: 885:             printf("-> SLAVETEST:9:1");
-[e ( _printf :s 77C ]
+[; ;tester.c: 885:         {
+{
 "886
-[; ;tester.c: 886:             break;
+[; ;tester.c: 886:             printf("-> SLAVETEST:9:1");
+[e ( _printf :s 77C ]
+"887
+[; ;tester.c: 887:             break;
 [e $U 621  ]
-"888
-[; ;tester.c: 888:         }
+"889
+[; ;tester.c: 889:         }
 }
-"890
-[; ;tester.c: 890:         case 'i':
-[e :U 641 ]
 "891
-[; ;tester.c: 891:         {
-{
+[; ;tester.c: 891:         case 'i':
+[e :U 641 ]
 "892
-[; ;tester.c: 892:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 78C ]
+[; ;tester.c: 892:         {
+{
 "893
-[; ;tester.c: 893:             break;
-[e $U 621  ]
+[; ;tester.c: 893:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 78C ]
 "894
-[; ;tester.c: 894:         }
+[; ;tester.c: 894:             break;
+[e $U 621  ]
+"895
+[; ;tester.c: 895:         }
 }
-"896
-[; ;tester.c: 896:         case 'J':
-[e :U 642 ]
 "897
-[; ;tester.c: 897:         {
-{
+[; ;tester.c: 897:         case 'J':
+[e :U 642 ]
 "898
-[; ;tester.c: 898:             printf("-> SLAVETEST:10:1");
-[e ( _printf :s 79C ]
+[; ;tester.c: 898:         {
+{
 "899
-[; ;tester.c: 899:             break;
+[; ;tester.c: 899:             printf("-> SLAVETEST:10:1");
+[e ( _printf :s 79C ]
+"900
+[; ;tester.c: 900:             break;
 [e $U 621  ]
-"901
-[; ;tester.c: 901:         }
+"902
+[; ;tester.c: 902:         }
 }
-"903
-[; ;tester.c: 903:         case 'j':
-[e :U 643 ]
 "904
-[; ;tester.c: 904:         {
-{
+[; ;tester.c: 904:         case 'j':
+[e :U 643 ]
 "905
-[; ;tester.c: 905:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 80C ]
+[; ;tester.c: 905:         {
+{
 "906
-[; ;tester.c: 906:             break;
-[e $U 621  ]
+[; ;tester.c: 906:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 80C ]
 "907
-[; ;tester.c: 907:         }
+[; ;tester.c: 907:             break;
+[e $U 621  ]
+"908
+[; ;tester.c: 908:         }
 }
-"909
-[; ;tester.c: 909:         case 'K':
-[e :U 644 ]
 "910
-[; ;tester.c: 910:         {
-{
+[; ;tester.c: 910:         case 'K':
+[e :U 644 ]
 "911
-[; ;tester.c: 911:             printf("-> SLAVETEST:11:1");
-[e ( _printf :s 81C ]
+[; ;tester.c: 911:         {
+{
 "912
-[; ;tester.c: 912:             break;
+[; ;tester.c: 912:             printf("-> SLAVETEST:11:1");
+[e ( _printf :s 81C ]
+"913
+[; ;tester.c: 913:             break;
 [e $U 621  ]
-"914
-[; ;tester.c: 914:         }
+"915
+[; ;tester.c: 915:         }
 }
-"916
-[; ;tester.c: 916:         case 'k':
-[e :U 645 ]
 "917
-[; ;tester.c: 917:         {
-{
+[; ;tester.c: 917:         case 'k':
+[e :U 645 ]
 "918
-[; ;tester.c: 918:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 82C ]
-"919
-[; ;tester.c: 919:             break;
-[e $U 621  ]
-"920
-[; ;tester.c: 920:         }
-}
-"922
-[; ;tester.c: 922:         case 'L':
-[e :U 646 ]
-"923
-[; ;tester.c: 923:         {
+[; ;tester.c: 918:         {
 {
+"919
+[; ;tester.c: 919:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 82C ]
+"920
+[; ;tester.c: 920:             break;
+[e $U 621  ]
+"921
+[; ;tester.c: 921:         }
+}
+"923
+[; ;tester.c: 923:         case 'L':
+[e :U 646 ]
 "924
-[; ;tester.c: 924:             printf("-> SLAVETEST:12:1");
+[; ;tester.c: 924:         {
+{
+"925
+[; ;tester.c: 925:             printf("-> SLAVETEST:12:1");
 [e ( _printf :s 83C ]
 "926
-[; ;tester.c: 926:             break;
+[; ;tester.c: 926:             *slaveIsWaiting = 1;
+[e = *U _slaveIsWaiting -> -> 1 `i `a ]
+"927
+[; ;tester.c: 927:             break;
 [e $U 621  ]
-"928
-[; ;tester.c: 928:         }
+"929
+[; ;tester.c: 929:         }
 }
-"930
-[; ;tester.c: 930:         case 'l':
-[e :U 647 ]
 "931
-[; ;tester.c: 931:         {
-{
+[; ;tester.c: 931:         case 'l':
+[e :U 647 ]
 "932
-[; ;tester.c: 932:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 84C ]
+[; ;tester.c: 932:         {
+{
 "933
-[; ;tester.c: 933:             break;
-[e $U 621  ]
+[; ;tester.c: 933:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 84C ]
 "934
-[; ;tester.c: 934:         }
+[; ;tester.c: 934:             break;
+[e $U 621  ]
+"935
+[; ;tester.c: 935:         }
 }
-"936
-[; ;tester.c: 936:         case 'M':
-[e :U 648 ]
 "937
-[; ;tester.c: 937:         {
-{
+[; ;tester.c: 937:         case 'M':
+[e :U 648 ]
 "938
-[; ;tester.c: 938:             printf("-> SLAVETEST:13:1");
-[e ( _printf :s 85C ]
+[; ;tester.c: 938:         {
+{
 "939
-[; ;tester.c: 939:             break;
-[e $U 621  ]
+[; ;tester.c: 939:             printf("-> SLAVETEST:13:1");
+[e ( _printf :s 85C ]
+"940
+[; ;tester.c: 940:             *slaveIsWaiting = 0;
+[e = *U _slaveIsWaiting -> -> 0 `i `a ]
 "941
-[; ;tester.c: 941:         }
-}
+[; ;tester.c: 941:             break;
+[e $U 621  ]
 "943
-[; ;tester.c: 943:         case 'm':
-[e :U 649 ]
-"944
-[; ;tester.c: 944:         {
-{
+[; ;tester.c: 943:         }
+}
 "945
-[; ;tester.c: 945:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 86C ]
+[; ;tester.c: 945:         case 'm':
+[e :U 649 ]
 "946
-[; ;tester.c: 946:             break;
-[e $U 621  ]
+[; ;tester.c: 946:         {
+{
 "947
-[; ;tester.c: 947:         }
-}
+[; ;tester.c: 947:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 86C ]
+"948
+[; ;tester.c: 948:             break;
+[e $U 621  ]
 "949
-[; ;tester.c: 949:         case 'N':
-[e :U 650 ]
-"950
-[; ;tester.c: 950:         {
-{
+[; ;tester.c: 949:         }
+}
 "951
-[; ;tester.c: 951:             printf("-> SLAVETEST:14:1");
-[e ( _printf :s 87C ]
+[; ;tester.c: 951:         case 'N':
+[e :U 650 ]
 "952
-[; ;tester.c: 952:             break;
-[e $U 621  ]
+[; ;tester.c: 952:         {
+{
+"953
+[; ;tester.c: 953:             printf("-> SLAVETEST:14:1");
+[e ( _printf :s 87C ]
 "954
-[; ;tester.c: 954:         }
-}
+[; ;tester.c: 954:             break;
+[e $U 621  ]
 "956
-[; ;tester.c: 956:         case 'n':
-[e :U 651 ]
-"957
-[; ;tester.c: 957:         {
-{
+[; ;tester.c: 956:         }
+}
 "958
-[; ;tester.c: 958:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 88C ]
+[; ;tester.c: 958:         case 'n':
+[e :U 651 ]
 "959
-[; ;tester.c: 959:             break;
-[e $U 621  ]
+[; ;tester.c: 959:         {
+{
 "960
-[; ;tester.c: 960:         }
-}
+[; ;tester.c: 960:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 88C ]
+"961
+[; ;tester.c: 961:             break;
+[e $U 621  ]
 "962
-[; ;tester.c: 962:         case 'O':
-[e :U 652 ]
-"963
-[; ;tester.c: 963:         {
-{
+[; ;tester.c: 962:         }
+}
 "964
-[; ;tester.c: 964:             printf("-> SLAVETEST:15:1");
-[e ( _printf :s 89C ]
+[; ;tester.c: 964:         case 'O':
+[e :U 652 ]
 "965
-[; ;tester.c: 965:             break;
-[e $U 621  ]
+[; ;tester.c: 965:         {
+{
+"966
+[; ;tester.c: 966:             printf("-> SLAVETEST:15:1");
+[e ( _printf :s 89C ]
 "967
-[; ;tester.c: 967:         }
-}
+[; ;tester.c: 967:             break;
+[e $U 621  ]
 "969
-[; ;tester.c: 969:         case 'o':
-[e :U 653 ]
-"970
-[; ;tester.c: 970:         {
-{
+[; ;tester.c: 969:         }
+}
 "971
-[; ;tester.c: 971:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 90C ]
+[; ;tester.c: 971:         case 'o':
+[e :U 653 ]
 "972
-[; ;tester.c: 972:             break;
-[e $U 621  ]
+[; ;tester.c: 972:         {
+{
 "973
-[; ;tester.c: 973:         }
-}
+[; ;tester.c: 973:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 90C ]
+"974
+[; ;tester.c: 974:             break;
+[e $U 621  ]
 "975
-[; ;tester.c: 975:         case 'P':
-[e :U 654 ]
-"976
-[; ;tester.c: 976:         {
-{
+[; ;tester.c: 975:         }
+}
 "977
-[; ;tester.c: 977:             printf("-> SLAVETEST:16:1");
-[e ( _printf :s 91C ]
+[; ;tester.c: 977:         case 'P':
+[e :U 654 ]
 "978
-[; ;tester.c: 978:             break;
-[e $U 621  ]
+[; ;tester.c: 978:         {
+{
+"979
+[; ;tester.c: 979:             printf("-> SLAVETEST:16:1");
+[e ( _printf :s 91C ]
 "980
-[; ;tester.c: 980:         }
-}
+[; ;tester.c: 980:             break;
+[e $U 621  ]
 "982
-[; ;tester.c: 982:         case 'p':
-[e :U 655 ]
-"983
-[; ;tester.c: 983:         {
-{
+[; ;tester.c: 982:         }
+}
 "984
-[; ;tester.c: 984:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 92C ]
+[; ;tester.c: 984:         case 'p':
+[e :U 655 ]
 "985
-[; ;tester.c: 985:             break;
-[e $U 621  ]
+[; ;tester.c: 985:         {
+{
 "986
-[; ;tester.c: 986:         }
-}
+[; ;tester.c: 986:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 92C ]
+"987
+[; ;tester.c: 987:             break;
+[e $U 621  ]
 "988
-[; ;tester.c: 988:         case 'Q':
-[e :U 656 ]
-"989
-[; ;tester.c: 989:         {
-{
+[; ;tester.c: 988:         }
+}
 "990
-[; ;tester.c: 990:             printf("-> SLAVETEST:17:1");
-[e ( _printf :s 93C ]
+[; ;tester.c: 990:         case 'Q':
+[e :U 656 ]
 "991
-[; ;tester.c: 991:             break;
-[e $U 621  ]
+[; ;tester.c: 991:         {
+{
+"992
+[; ;tester.c: 992:             printf("-> SLAVETEST:17:1");
+[e ( _printf :s 93C ]
 "993
-[; ;tester.c: 993:         }
-}
-"995
-[; ;tester.c: 995:         case 'q':
-[e :U 657 ]
+[; ;tester.c: 993:             *slaveIsWaiting = 1;
+[e = *U _slaveIsWaiting -> -> 1 `i `a ]
+"994
+[; ;tester.c: 994:             break;
+[e $U 621  ]
 "996
-[; ;tester.c: 996:         {
-{
-"997
-[; ;tester.c: 997:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 94C ]
+[; ;tester.c: 996:         }
+}
 "998
-[; ;tester.c: 998:             break;
-[e $U 621  ]
+[; ;tester.c: 998:         case 'q':
+[e :U 657 ]
 "999
-[; ;tester.c: 999:         }
-}
+[; ;tester.c: 999:         {
+{
+"1000
+[; ;tester.c: 1000:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 94C ]
 "1001
-[; ;tester.c: 1001:         case 'R':
-[e :U 658 ]
+[; ;tester.c: 1001:             break;
+[e $U 621  ]
 "1002
-[; ;tester.c: 1002:         {
-{
-"1003
-[; ;tester.c: 1003:             printf("-> SLAVETEST:18:1");
-[e ( _printf :s 95C ]
+[; ;tester.c: 1002:         }
+}
 "1004
-[; ;tester.c: 1004:             break;
-[e $U 621  ]
+[; ;tester.c: 1004:         case 'R':
+[e :U 658 ]
+"1005
+[; ;tester.c: 1005:         {
+{
 "1006
-[; ;tester.c: 1006:         }
-}
+[; ;tester.c: 1006:             printf("-> SLAVETEST:18:1");
+[e ( _printf :s 95C ]
+"1007
+[; ;tester.c: 1007:             *slaveIsWaiting = 0;
+[e = *U _slaveIsWaiting -> -> 0 `i `a ]
 "1008
-[; ;tester.c: 1008:         case 'r':
-[e :U 659 ]
-"1009
-[; ;tester.c: 1009:         {
-{
+[; ;tester.c: 1008:             break;
+[e $U 621  ]
 "1010
-[; ;tester.c: 1010:             printf("-> SLAVE ERREUR:");
-[e ( _printf :s 96C ]
-"1011
-[; ;tester.c: 1011:             break;
-[e $U 621  ]
+[; ;tester.c: 1010:         }
+}
 "1012
-[; ;tester.c: 1012:         }
-}
+[; ;tester.c: 1012:         case 'r':
+[e :U 659 ]
+"1013
+[; ;tester.c: 1013:         {
+{
+"1014
+[; ;tester.c: 1014:             printf("-> SLAVE ERREUR:");
+[e ( _printf :s 96C ]
 "1015
-[; ;tester.c: 1015:         case 'u':
-[e :U 660 ]
+[; ;tester.c: 1015:             break;
+[e $U 621  ]
 "1016
-[; ;tester.c: 1016:         {
-{
-"1017
-[; ;tester.c: 1017:             printf("-> SLAVE TEST CONFORME");
-[e ( _printf :s 97C ]
+[; ;tester.c: 1016:         }
+}
 "1018
-[; ;tester.c: 1018:             break;
-[e $U 621  ]
+[; ;tester.c: 1018:            case 'S':
+[e :U 660 ]
 "1019
-[; ;tester.c: 1019:         }
-}
+[; ;tester.c: 1019:         {
+{
+"1020
+[; ;tester.c: 1020:             printf("-> SLAVE TEST CONFORME");
+[e ( _printf :s 97C ]
+"1021
+[; ;tester.c: 1021:             break;
+[e $U 621  ]
 "1022
-[; ;tester.c: 1022:         case 'v':
-[e :U 661 ]
-"1023
-[; ;tester.c: 1023:         {
-{
+[; ;tester.c: 1022:         }
+}
 "1024
-[; ;tester.c: 1024:             printf("-> SLAVE TEST NON CONFORME");
-[e ( _printf :s 98C ]
+[; ;tester.c: 1024:         case 'u':
+[e :U 661 ]
 "1025
-[; ;tester.c: 1025:             break;
-[e $U 621  ]
-"1026
-[; ;tester.c: 1026:         }
-}
-"1029
-[; ;tester.c: 1029:         case 'w':
-[e :U 662 ]
-"1030
-[; ;tester.c: 1030:         {
+[; ;tester.c: 1025:         {
 {
-"1031
-[; ;tester.c: 1031:             printf("-> SLAVE TEST ACQUITTE");
-[e ( _printf :s 99C ]
-"1033
-[; ;tester.c: 1033:             break;
+"1026
+[; ;tester.c: 1026:             printf("-> SLAVE TEST OK");
+[e ( _printf :s 98C ]
+"1027
+[; ;tester.c: 1027:             break;
 [e $U 621  ]
-"1034
-[; ;tester.c: 1034:         }
+"1028
+[; ;tester.c: 1028:         }
 }
-"1036
-[; ;tester.c: 1036:         default:
-[e :U 663 ]
-"1037
-[; ;tester.c: 1037:             break;
+"1031
+[; ;tester.c: 1031:         case 'v':
+[e :U 662 ]
+"1032
+[; ;tester.c: 1032:         {
+{
+"1033
+[; ;tester.c: 1033:             printf("-> SLAVE TEST KO");
+[e ( _printf :s 99C ]
+"1034
+[; ;tester.c: 1034:             break;
 [e $U 621  ]
+"1035
+[; ;tester.c: 1035:         }
+}
 "1038
-[; ;tester.c: 1038:     }
+[; ;tester.c: 1038:         case 'w':
+[e :U 663 ]
+"1039
+[; ;tester.c: 1039:         {
+{
+"1040
+[; ;tester.c: 1040:             printf("-> SLAVE TEST ACQUITTE");
+[e ( _printf :s 100C ]
+"1042
+[; ;tester.c: 1042:             break;
+[e $U 621  ]
+"1043
+[; ;tester.c: 1043:         }
+}
+"1045
+[; ;tester.c: 1045:         default:
+[e :U 664 ]
+"1046
+[; ;tester.c: 1046:             break;
+[e $U 621  ]
+"1047
+[; ;tester.c: 1047:     }
 }
 [e $U 621  ]
 [e :U 622 ]
@@ -3404,113 +3434,197 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 113 `ui `i 657
  , $ -> -> 82 `ui `i 658
  , $ -> -> 114 `ui `i 659
- , $ -> -> 117 `ui `i 660
- , $ -> -> 118 `ui `i 661
- , $ -> -> 119 `ui `i 662
- 663 ]
+ , $ -> -> 83 `ui `i 660
+ , $ -> -> 117 `ui `i 661
+ , $ -> -> 118 `ui `i 662
+ , $ -> -> 119 `ui `i 663
+ 664 ]
 [e :U 621 ]
-"1041
-[; ;tester.c: 1041: }
+"1050
+[; ;tester.c: 1050: }
 [e :UE 620 ]
 }
-"1043
-[; ;tester.c: 1043: _Bool checkResponseForSlave(_Bool *slaveWaitingFlag) {
-[v _checkResponseForSlave `(a ~T0 @X0 1 ef1`*a ]
+"1052
+[; ;tester.c: 1052:  unsigned char getRS232() {
+[v _getRS232 `(uc ~T0 @X0 1 ef ]
 {
-[e :U _checkResponseForSlave ]
-[v _slaveWaitingFlag `*a ~T0 @X0 1 r1 ]
+[e :U _getRS232 ]
 [f ]
-"1045
-[; ;tester.c: 1045:     unsigned char reception;
-[v _reception `uc ~T0 @X0 1 a ]
-"1046
-[; ;tester.c: 1046:     if (eusartRxCount != 0) {
-[e $ ! != -> _eusartRxCount `i -> 0 `i 665  ]
-{
-"1048
-[; ;tester.c: 1048:         reception = EUSART_Read();
-[e = _reception ( _EUSART_Read ..  ]
-"1050
-[; ;tester.c: 1050:         switch (reception)
-[e $U 667  ]
-"1051
-[; ;tester.c: 1051:         {
-{
 "1054
-[; ;tester.c: 1054:             case 'u':
-[e :U 668 ]
-"1055
-[; ;tester.c: 1055:             {
-{
-"1056
-[; ;tester.c: 1056:                 char echo = getSlaveStatus('u');
-[v _echo `uc ~T0 @X0 1 a ]
-[e = _echo ( _getSlaveStatus (1 -> -> 117 `ui `uc ]
+[; ;tester.c: 1054:     unsigned char reception;
+[v _reception `uc ~T0 @X0 1 a ]
 "1057
-[; ;tester.c: 1057:                 break;
-[e $U 666  ]
+[; ;tester.c: 1057:     if (eusartRxCount != 0) {
+[e $ ! != -> _eusartRxCount `i -> 0 `i 666  ]
+{
 "1059
-[; ;tester.c: 1059:             }
-}
+[; ;tester.c: 1059:         reception = EUSART_Read();
+[e = _reception ( _EUSART_Read ..  ]
 "1061
-[; ;tester.c: 1061:             case 'v':
-[e :U 669 ]
-"1062
-[; ;tester.c: 1062:             {
+[; ;tester.c: 1061:     } else {
+}
+[e $U 667  ]
+[e :U 666 ]
 {
 "1063
-[; ;tester.c: 1063:                 char echo = getSlaveStatus('v');
-[v _echo `uc ~T0 @X0 1 a ]
-[e = _echo ( _getSlaveStatus (1 -> -> 118 `ui `uc ]
+[; ;tester.c: 1063:     }
+}
+[e :U 667 ]
 "1064
-[; ;tester.c: 1064:                 break;
-[e $U 666  ]
-"1065
-[; ;tester.c: 1065:             }
+[; ;tester.c: 1064:     return reception;
+[e ) _reception ]
+[e $UE 665  ]
+"1066
+[; ;tester.c: 1066: }
+[e :UE 665 ]
 }
 "1068
-[; ;tester.c: 1068:             case 'w':
-[e :U 670 ]
-"1069
-[; ;tester.c: 1069:             {
+[; ;tester.c: 1068: void processActionForSlave(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSlaveActive, unsigned char ordreFromWin) {
+[v _processActionForSlave `(v ~T0 @X0 1 ef5`*a`*a`*a`*a`uc ]
 {
+[e :U _processActionForSlave ]
+[v _autom `*a ~T0 @X0 1 r1 ]
+[v _testAct `*a ~T0 @X0 1 r2 ]
+[v _prog `*a ~T0 @X0 1 r3 ]
+[v _testSlaveActive `*a ~T0 @X0 1 r4 ]
+[v _ordreFromWin `uc ~T0 @X0 1 r5 ]
+[f ]
 "1070
-[; ;tester.c: 1070:                 char echo = getSlaveStatus('w');
+[; ;tester.c: 1070:     switch (ordreFromWin)
+[e $U 670  ]
+"1071
+[; ;tester.c: 1071:     {
+{
+"1074
+[; ;tester.c: 1074:         case 'a':
+[e :U 671 ]
+"1075
+[; ;tester.c: 1075:         {
+{
+"1076
+[; ;tester.c: 1076:             char responseSlave = startTestSlave();
+[v _responseSlave `uc ~T0 @X0 1 a ]
+[e = _responseSlave ( _startTestSlave ..  ]
+"1077
+[; ;tester.c: 1077:             if (responseSlave == 'a') {
+[e $ ! == -> _responseSlave `ui -> 97 `ui 672  ]
+{
+"1079
+[; ;tester.c: 1079:                 printf("-> SLAVE_TEST ON\r\n");
+[e ( _printf :s 101C ]
+"1080
+[; ;tester.c: 1080:                 *autom = 1;
+[e = *U _autom -> -> 1 `i `a ]
+"1081
+[; ;tester.c: 1081:                 *testAct = 1;
+[e = *U _testAct -> -> 1 `i `a ]
+"1082
+[; ;tester.c: 1082:                 *testSlaveActive = 1;
+[e = *U _testSlaveActive -> -> 1 `i `a ]
+"1083
+[; ;tester.c: 1083:                 *prog = 0;
+[e = *U _prog -> -> 0 `i `a ]
+"1084
+[; ;tester.c: 1084:                 _delay((unsigned long)((50)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"1087
+[; ;tester.c: 1087:             } else {
+}
+[e $U 673  ]
+[e :U 672 ]
+{
+"1089
+[; ;tester.c: 1089:                 printf("-> SLAVE RESPONSE NULL\r\n");
+[e ( _printf :s 102C ]
+"1091
+[; ;tester.c: 1091:             }
+}
+[e :U 673 ]
+"1093
+[; ;tester.c: 1093:             break;
+[e $U 669  ]
+"1094
+[; ;tester.c: 1094:         }
+}
+"1097
+[; ;tester.c: 1097:         case 'u':
+[e :U 674 ]
+"1098
+[; ;tester.c: 1098:         {
+{
+"1099
+[; ;tester.c: 1099:             char echo = getSlaveStatus('u');
+[v _echo `uc ~T0 @X0 1 a ]
+[e = _echo ( _getSlaveStatus (1 -> -> 117 `ui `uc ]
+"1100
+[; ;tester.c: 1100:             break;
+[e $U 669  ]
+"1102
+[; ;tester.c: 1102:         }
+}
+"1104
+[; ;tester.c: 1104:         case 'v':
+[e :U 675 ]
+"1105
+[; ;tester.c: 1105:         {
+{
+"1106
+[; ;tester.c: 1106:             char echo = getSlaveStatus('v');
+[v _echo `uc ~T0 @X0 1 a ]
+[e = _echo ( _getSlaveStatus (1 -> -> 118 `ui `uc ]
+"1107
+[; ;tester.c: 1107:             break;
+[e $U 669  ]
+"1108
+[; ;tester.c: 1108:         }
+}
+"1111
+[; ;tester.c: 1111:         case 'w':
+[e :U 676 ]
+"1112
+[; ;tester.c: 1112:         {
+{
+"1113
+[; ;tester.c: 1113:             char echo = getSlaveStatus('w');
 [v _echo `uc ~T0 @X0 1 a ]
 [e = _echo ( _getSlaveStatus (1 -> -> 119 `ui `uc ]
-"1071
-[; ;tester.c: 1071:                 break;
-[e $U 666  ]
-"1073
-[; ;tester.c: 1073:             }
+"1114
+[; ;tester.c: 1114:             if(echo == 'w'){
+[e $ ! == -> _echo `ui -> 119 `ui 677  ]
+{
+"1116
+[; ;tester.c: 1116:                printf("-> SLAVE_TEST GET OK");
+[e ( _printf :s 103C ]
+"1117
+[; ;tester.c: 1117:             }
 }
-"1075
-[; ;tester.c: 1075:             default:
-[e :U 671 ]
-"1076
-[; ;tester.c: 1076:                 break;
-[e $U 666  ]
-"1077
-[; ;tester.c: 1077:         }
+[e :U 677 ]
+"1118
+[; ;tester.c: 1118:             break;
+[e $U 669  ]
+"1120
+[; ;tester.c: 1120:         }
 }
-[e $U 666  ]
-[e :U 667 ]
-[e [\ -> _reception `i , $ -> -> 117 `ui `i 668
- , $ -> -> 118 `ui `i 669
- , $ -> -> 119 `ui `i 670
- 671 ]
-[e :U 666 ]
-"1078
-[; ;tester.c: 1078:     }
+"1122
+[; ;tester.c: 1122:         default:
+[e :U 678 ]
+"1123
+[; ;tester.c: 1123:             break;
+[e $U 669  ]
+"1124
+[; ;tester.c: 1124:     }
 }
-[e :U 665 ]
-"1079
-[; ;tester.c: 1079:     return 0;
-[e ) -> -> 0 `i `a ]
-[e $UE 664  ]
-"1080
-[; ;tester.c: 1080: }
-[e :UE 664 ]
+[e $U 669  ]
+[e :U 670 ]
+[e [\ -> _ordreFromWin `i , $ -> -> 97 `ui `i 671
+ , $ -> -> 117 `ui `i 674
+ , $ -> -> 118 `ui `i 675
+ , $ -> -> 119 `ui `i 676
+ 678 ]
+[e :U 669 ]
+"1125
+[; ;tester.c: 1125: }
+[e :UE 668 ]
 }
 [p f _printf 9437696 ]
 [a 2C 65 84 84 69 78 84 69 32 65 67 81 85 73 84 84 69 77 69 78 84 0 ]
@@ -3518,13 +3632,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 31C 70 73 78 32 69 70 70 65 67 69 77 69 78 84 0 ]
 [a 26C 69 70 70 65 67 69 77 69 78 84 0 ]
 [a 45C 80 82 69 83 83 69 82 32 79 75 32 79 85 32 69 82 82 69 85 82 0 ]
+[a 99C 45 62 32 83 76 65 86 69 32 84 69 83 84 32 75 79 0 ]
 [a 11C 69 82 82 69 85 82 32 80 82 79 71 82 65 77 77 65 84 73 79 78 0 ]
 [a 21C 70 73 78 32 80 82 79 71 82 65 77 77 65 84 73 79 78 0 ]
 [a 16C 80 82 79 71 82 65 77 77 65 84 73 79 78 0 ]
+[a 98C 45 62 32 83 76 65 86 69 32 84 69 83 84 32 79 75 0 ]
 [a 57C 84 69 83 84 32 79 75 0 ]
-[a 99C 45 62 32 83 76 65 86 69 32 84 69 83 84 32 65 67 81 85 73 84 84 69 0 ]
+[a 103C 45 62 32 83 76 65 86 69 95 84 69 83 84 32 71 69 84 32 79 75 0 ]
+[a 100C 45 62 32 83 76 65 86 69 32 84 69 83 84 32 65 67 81 85 73 84 84 69 0 ]
 [a 97C 45 62 32 83 76 65 86 69 32 84 69 83 84 32 67 79 78 70 79 82 77 69 0 ]
-[a 98C 45 62 32 83 76 65 86 69 32 84 69 83 84 32 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
 [a 1C 84 69 83 84 32 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
 [a 43C 84 69 83 84 32 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
 [a 47C 78 79 78 32 67 79 78 70 79 82 77 69 0 ]
@@ -3587,11 +3703,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 37C 45 62 32 83 76 65 86 69 95 84 69 83 84 32 71 69 84 32 75 79 13 10 0 ]
 [a 8C 45 62 32 69 82 82 69 85 82 32 80 82 79 71 82 65 77 77 65 84 73 79 78 13 10 0 ]
 [a 33C 45 62 32 83 76 65 86 69 95 84 69 83 84 32 79 78 13 10 0 ]
+[a 101C 45 62 32 83 76 65 86 69 95 84 69 83 84 32 79 78 13 10 0 ]
 [a 7C 45 62 32 84 69 83 84 32 79 78 13 10 0 ]
 [a 34C 45 62 32 83 76 65 86 69 32 82 69 83 80 79 78 83 69 32 78 85 76 76 13 10 0 ]
 [a 36C 45 62 32 83 76 65 86 69 32 82 69 83 80 79 78 83 69 32 78 85 76 76 13 10 0 ]
 [a 38C 45 62 32 83 76 65 86 69 32 82 69 83 80 79 78 83 69 32 78 85 76 76 13 10 0 ]
 [a 40C 45 62 32 83 76 65 86 69 32 82 69 83 80 79 78 83 69 32 78 85 76 76 13 10 0 ]
+[a 102C 45 62 32 83 76 65 86 69 32 82 69 83 80 79 78 83 69 32 78 85 76 76 13 10 0 ]
 [a 4C 45 62 32 70 73 78 32 84 69 83 84 32 77 65 78 85 69 76 13 10 0 ]
 [a 41C 45 62 32 70 73 78 32 84 69 83 84 32 77 65 78 85 69 76 13 10 0 ]
 [a 59C 45 62 32 65 112 112 117 121 101 114 32 115 117 114 32 79 75 13 10 0 ]

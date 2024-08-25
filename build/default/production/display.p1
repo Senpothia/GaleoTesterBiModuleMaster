@@ -16,6 +16,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "117
 [; ;./I2C_LCD.h: 117: void LCD_Write_String(char*);
 [v _LCD_Write_String `(v ~T0 @X0 0 ef1`*uc ]
+"111
+[; ;./I2C_LCD.h: 111: void LCD_Init(unsigned char I2C_Add);
+[v _LCD_Init `(v ~T0 @X0 0 ef1`uc ]
 "55 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16lf1939.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -590,4 +593,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;display.c: 21: }
 [e :UE 384 ]
+}
+"23
+[; ;display.c: 23: void displayManagerMaster(char s1[], char s2[], char s3[], char s4[]) {
+[v _displayManagerMaster `(v ~T0 @X0 1 ef4`*uc`*uc`*uc`*uc ]
+{
+[e :U _displayManagerMaster ]
+[v _s1 `*uc ~T0 @X0 1 r1 ]
+[v _s2 `*uc ~T0 @X0 1 r2 ]
+[v _s3 `*uc ~T0 @X0 1 r3 ]
+[v _s4 `*uc ~T0 @X0 1 r4 ]
+[f ]
+"25
+[; ;display.c: 25:     LCD_Init(0x4E);
+[e ( _LCD_Init (1 -> -> 78 `i `uc ]
+"26
+[; ;display.c: 26:     displayManager(s1, s2, s3, s4);
+[e ( _displayManager (4 , , , _s1 _s2 _s3 _s4 ]
+"28
+[; ;display.c: 28: }
+[e :UE 385 ]
+}
+"30
+[; ;display.c: 30: void displayManagerSlave(char s1[], char s2[], char s3[], char s4[]) {
+[v _displayManagerSlave `(v ~T0 @X0 1 ef4`*uc`*uc`*uc`*uc ]
+{
+[e :U _displayManagerSlave ]
+[v _s1 `*uc ~T0 @X0 1 r1 ]
+[v _s2 `*uc ~T0 @X0 1 r2 ]
+[v _s3 `*uc ~T0 @X0 1 r3 ]
+[v _s4 `*uc ~T0 @X0 1 r4 ]
+[f ]
+"32
+[; ;display.c: 32:     LCD_Init(0x46);
+[e ( _LCD_Init (1 -> -> 70 `i `uc ]
+"33
+[; ;display.c: 33:     displayManager(s1, s2, s3, s4);
+[e ( _displayManager (4 , , , _s1 _s2 _s3 _s4 ]
+"35
+[; ;display.c: 35: }
+[e :UE 386 ]
 }

@@ -147,12 +147,14 @@ void main(void) {
 
     while (1) {
 
-        LCD_Init(0x4E);
-        displayManager(TITRE, MODE_MASTER, BOARD_REQUEST, OK_REQUEST);
+       // LCD_Init(0x4E);
+       // displayManager(TITRE, MODE_MASTER, BOARD_REQUEST, OK_REQUEST);
+        displayManagerMaster(TITRE, MODE_MASTER, BOARD_REQUEST, OK_REQUEST);
         __delay_ms(100);
 
-        LCD_Init(0x46);
-        displayManager(TITRE, MODE_SLAVE, BOARD_REQUEST, OK_REQUEST);
+        //LCD_Init(0x46);
+        //displayManager(TITRE, MODE_SLAVE, BOARD_REQUEST, OK_REQUEST);
+        displayManagerSlave(TITRE, MODE_SLAVE, BOARD_REQUEST, OK_REQUEST);
         __delay_ms(100);
 
         // sélection test individuel des leds
@@ -182,11 +184,11 @@ void main(void) {
 
         __delay_ms(100);
 
-        LCD_Init(0x46);
-        displayManager(TITRE, "Master en test", BOARD_REQUEST, OK_REQUEST);
+        //LCD_Init(0x46);
+        displayManagerSlave(TITRE, "Master en test", BOARD_REQUEST, OK_REQUEST);
         __delay_ms(100);
-        LCD_Init(0x4E);
-        displayManager("ETAPE 1", "TEST 3 RELAIS ON", LIGNE_VIDE, LIGNE_VIDE);
+        //LCD_Init(0x4E);
+        displayManagerMaster("ETAPE 1", "TEST 3 RELAIS ON", LIGNE_VIDE, LIGNE_VIDE);
 
         // DEMARRAGE SEQUENCE DE TEST
 
@@ -231,7 +233,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 2", "TEST 3 RELAIS OFF", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 2", "TEST 3 RELAIS OFF", LIGNE_VIDE, LIGNE_VIDE);
             pressBP1(false);
             pressBP2(false);
             __delay_ms(500);
@@ -259,7 +261,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 3", "TEST LED ROUGE", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 3", "TEST LED ROUGE", LIGNE_VIDE, LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(250);
             pressBP1(false);
@@ -292,7 +294,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 4", "TEST LED BLEUE", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 4", "TEST LED BLEUE", LIGNE_VIDE, LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(250);
             pressBP1(false);
@@ -325,7 +327,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 5", "TEST LED VERTE", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 5", "TEST LED VERTE", LIGNE_VIDE, LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(250);
             pressBP1(false);
@@ -358,7 +360,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 6", "TEST R1 ON", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 6", "TEST R1 ON", LIGNE_VIDE, LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(1000);
             pressBP1(false);
@@ -389,7 +391,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 7", "TEST R1 OFF - R2 ON", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 7", "TEST R1 OFF - R2 ON", LIGNE_VIDE, LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(1000);
             pressBP1(false);
@@ -418,7 +420,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 8", "TEST R2 OFF - R3 ON", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 8", "TEST R2 OFF - R3 ON", LIGNE_VIDE, LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(1000);
             pressBP1(false);
@@ -448,7 +450,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 9", "TEST LED CLAVIER", "CLAVIER ECLAIRE?", LIGNE_VIDE);
+            displayManagerMaster("ETAPE 9", "TEST LED CLAVIER", "CLAVIER ECLAIRE?", LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(250);
             pressBP1(false);
@@ -488,7 +490,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 10", "TEST LED CLAVIER", "CLAVIER ETEINT?", LIGNE_VIDE);
+            displayManagerMaster("ETAPE 10", "TEST LED CLAVIER", "CLAVIER ETEINT?", LIGNE_VIDE);
             pressBP1(true);
             __delay_ms(250);
             pressBP1(false);
@@ -509,7 +511,7 @@ void main(void) {
             } else {
 
                 alerteDefaut("ETAPE 10", &testActif, &testVoyants);
-                displayManager("ETAPE 10", "TEST LED CLAVIER", slectureAN1, LIGNE_VIDE); // Ligne de test: affichage valeur de mesure analogique
+                displayManagerMaster("ETAPE 10", "TEST LED CLAVIER", slectureAN1, LIGNE_VIDE); // Ligne de test: affichage valeur de mesure analogique
                 REL8_SetHigh();
                 sortieErreur(&automatique, &testActif, &testVoyants, &programmation);
 
@@ -529,7 +531,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 12", "TEST SFLASH", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 12", "TEST SFLASH", LIGNE_VIDE, LIGNE_VIDE);
             __delay_ms(500);
             pressBP1(true);
             __delay_ms(250);
@@ -573,7 +575,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 13", "TEST LEDS CARTE", "LEDS ALLUMEES", "PRESSER OK / NOK");
+            displayManagerMaster("ETAPE 13", "TEST LEDS CARTE", "LEDS ALLUMEES", "PRESSER OK / NOK");
             pressBP1(true);
             __delay_ms(250);
             pressBP1(false);
@@ -600,7 +602,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 14", "TEST BP2", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 14", "TEST BP2", LIGNE_VIDE, LIGNE_VIDE);
             pressBP2(true);
             __delay_ms(250);
             pressBP2(false);
@@ -629,7 +631,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 15", "TEST HORLOGE", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 15", "TEST HORLOGE", LIGNE_VIDE, LIGNE_VIDE);
             setHorloge(true);
             __delay_ms(250);
             setHorloge(false);
@@ -658,7 +660,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 16", "TEST P1", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 16", "TEST P1", LIGNE_VIDE, LIGNE_VIDE);
             setP1(true);
             __delay_ms(1200); // 1200 pour D925ED2
 
@@ -686,7 +688,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 17", "TEST P2", LIGNE_VIDE, LIGNE_VIDE);
+            displayManagerMaster("ETAPE 17", "TEST P2", LIGNE_VIDE, LIGNE_VIDE);
             setP2(true);
             __delay_ms(1200);
             setP2(false);
@@ -717,7 +719,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("ETAPE 18", "TEST BLUETOOTH", "VOIR APPLI", "PRESSER OK / NOK");
+            displayManagerMaster("ETAPE 18", "TEST BLUETOOTH", "VOIR APPLI", "PRESSER OK / NOK");
             activerTouche();
             //printf("ATTENTE VALIDATION BLUETOOTH\r\n");
             testVoyants = reponseOperateur(automatique);
@@ -743,7 +745,7 @@ void main(void) {
 
         if (testActif) {
 
-            displayManager("FIN DE TEST", "CONFORME", "RETIRER CARTE", ACQ);
+            displayManagerMaster("FIN DE TEST", "CONFORME", "RETIRER CARTE", ACQ);
             ledConforme(true);
             alimenter(false);
             okAlert();
