@@ -5848,6 +5848,8 @@ char getSlaveSummary();
 char sendOKToSlave();
 char sendNOKToSlave();
 char sendACQToSlave();
+char startProgSlave();
+char endProgSlave();
 # 63 "main.c" 2
 
 

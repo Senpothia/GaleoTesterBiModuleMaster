@@ -499,7 +499,7 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveAc
 
                 case '9':
                 {
-                    printf("-> PROGRAMMATION TERMINEE\r\n");
+                    printf("-> PROGRAMMATION MODULE 1 TERMINEE\r\n");
                     displayManager(TITRE, LIGNE_VIDE, FIN_PROG, LIGNE_VIDE);
                     *autom = true;
                     __delay_ms(50);
@@ -508,6 +508,7 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveAc
                     REL8_SetLow();
                     break;
                 }
+
 
                 case '8':
                 {
@@ -628,6 +629,60 @@ void attenteDemarrage3(bool *autom, bool *testAct, bool *prog, bool *testSlaveAc
 
                     break;
                 }
+
+
+                case '=':
+                {
+                    char responseSlave = startProgSlave();
+                    if (responseSlave == '=') {
+
+                        printf("-> SLAVE_PROG START\r\n");
+                        *autom = true;
+                        *testAct = false;
+                        *testSlaveActive = false;
+                        *prog = false;
+
+                        __delay_ms(50);
+                        repOperateur = true;
+                        displayManagerSlave(TITRE, EN_PROG, LIGNE_VIDE, LIGNE_VIDE);
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = true;
+
+                    }
+
+                    break;
+                }
+
+                case '*':
+                {
+                    char responseSlave = endProgSlave();
+                    if (responseSlave == '*') {
+
+                        printf("-> PROGRAMMATION MODULE 2 TERMINEE\r\n");
+                        *autom = true;
+                        *testAct = false;
+                        *testSlaveActive = false;
+                        *prog = false;
+
+                        __delay_ms(50);
+                        repOperateur = true;
+                        displayManagerSlave(TITRE, FIN_PROG, LIGNE_VIDE, LIGNE_VIDE);
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = true;
+
+                    }
+
+                    break;
+                }
+
+
+
 
             }
         }
@@ -1060,6 +1115,21 @@ void processSlaveResponse(char repSlave, bool *slaveIsWaiting) {
         {
             printf("-> SLAVE TEST ACQUITTE");
             displayManagerSlave(TITRE, MODE_SLAVE, BOARD_REQUEST, OK_REQUEST);
+            break;
+        }
+
+
+        case '=':
+        {
+            printf("-> SLAVE PROG K8 ON");
+            displayManagerSlave(TITRE, MODE_SLAVE, EN_PROG, OK_REQUEST);
+            break;
+        }
+
+        case '*':
+        {
+            printf("-> SLAVE END PROG K8 OFF");
+            displayManagerSlave(TITRE, MODE_SLAVE, FIN_PROG, OK_REQUEST);
             break;
         }
 

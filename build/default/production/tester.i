@@ -5908,6 +5908,8 @@ char getSlaveSummary();
 char sendOKToSlave();
 char sendNOKToSlave();
 char sendACQToSlave();
+char startProgSlave();
+char endProgSlave();
 # 16 "tester.c" 2
 
 
@@ -6395,7 +6397,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
 
                 case '9':
                 {
-                    printf("-> PROGRAMMATION TERMINEE\r\n");
+                    printf("-> PROGRAMMATION MODULE 1 TERMINEE\r\n");
                     displayManager("TEST CARTE D925ED4", "", "FIN PROGRAMMATION", "");
                     *autom = 1;
                     _delay((unsigned long)((50)*(16000000/4000.0)));
@@ -6404,6 +6406,7 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
                     do { LATAbits.LATA7 = 0; } while(0);
                     break;
                 }
+
 
                 case '8':
                 {
@@ -6524,6 +6527,60 @@ void attenteDemarrage3(_Bool *autom, _Bool *testAct, _Bool *prog, _Bool *testSla
 
                     break;
                 }
+
+
+                case '=':
+                {
+                    char responseSlave = startProgSlave();
+                    if (responseSlave == '=') {
+
+                        printf("-> SLAVE_PROG START\r\n");
+                        *autom = 1;
+                        *testAct = 0;
+                        *testSlaveActive = 0;
+                        *prog = 0;
+
+                        _delay((unsigned long)((50)*(16000000/4000.0)));
+                        repOperateur = 1;
+                        displayManagerSlave("TEST CARTE D925ED4", "PROGRAMMATION", "", "");
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = 1;
+
+                    }
+
+                    break;
+                }
+
+                case '*':
+                {
+                    char responseSlave = endProgSlave();
+                    if (responseSlave == '*') {
+
+                        printf("-> PROGRAMMATION MODULE 2 TERMINEE\r\n");
+                        *autom = 1;
+                        *testAct = 0;
+                        *testSlaveActive = 0;
+                        *prog = 0;
+
+                        _delay((unsigned long)((50)*(16000000/4000.0)));
+                        repOperateur = 1;
+                        displayManagerSlave("TEST CARTE D925ED4", "FIN PROGRAMMATION", "", "");
+
+                    } else {
+
+                        printf("-> SLAVE RESPONSE NULL\r\n");
+                        repOperateur = 1;
+
+                    }
+
+                    break;
+                }
+
+
+
 
             }
         }
@@ -6956,6 +7013,21 @@ void processSlaveResponse(char repSlave, _Bool *slaveIsWaiting) {
         {
             printf("-> SLAVE TEST ACQUITTE");
             displayManagerSlave("TEST CARTE D925ED4", "MODULE ESCLAVE", "POSITIONNER CARTE", "APPUYER SUR OK");
+            break;
+        }
+
+
+        case '=':
+        {
+            printf("-> SLAVE PROG K8 ON");
+            displayManagerSlave("TEST CARTE D925ED4", "MODULE ESCLAVE", "PROGRAMMATION", "APPUYER SUR OK");
+            break;
+        }
+
+        case '*':
+        {
+            printf("-> SLAVE END PROG K8 OFF");
+            displayManagerSlave("TEST CARTE D925ED4", "MODULE ESCLAVE", "FIN PROGRAMMATION", "APPUYER SUR OK");
             break;
         }
 

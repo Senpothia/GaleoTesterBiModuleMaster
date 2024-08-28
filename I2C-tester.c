@@ -73,3 +73,15 @@ char sendACQToSlave() {
 
     return getSlaveStatus('w');
 }
+
+char startProgSlave() {
+
+    return getSlaveStatus('=');
+
+}
+
+char endProgSlave() {
+
+    return getSlaveStatus('*');
+
+}

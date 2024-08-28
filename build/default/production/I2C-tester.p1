@@ -809,3 +809,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;I2C-tester.c: 75: }
 [e :UE 436 ]
 }
+"77
+[; ;I2C-tester.c: 77: char startProgSlave() {
+[v _startProgSlave `(uc ~T0 @X0 1 ef ]
+{
+[e :U _startProgSlave ]
+[f ]
+"79
+[; ;I2C-tester.c: 79:     return getSlaveStatus('=');
+[e ) ( _getSlaveStatus (1 -> -> 61 `ui `uc ]
+[e $UE 437  ]
+"81
+[; ;I2C-tester.c: 81: }
+[e :UE 437 ]
+}
+"83
+[; ;I2C-tester.c: 83: char endProgSlave() {
+[v _endProgSlave `(uc ~T0 @X0 1 ef ]
+{
+[e :U _endProgSlave ]
+[f ]
+"85
+[; ;I2C-tester.c: 85:     return getSlaveStatus('*');
+[e ) ( _getSlaveStatus (1 -> -> 42 `ui `uc ]
+[e $UE 438  ]
+"87
+[; ;I2C-tester.c: 87: }
+[e :UE 438 ]
+}
